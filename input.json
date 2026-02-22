@@ -1,8 +1,8 @@
 {
     "Casovi": [
         {
-            "Nastavnik": "Mr. Smith",
-            "Predmet": "Mathematics",
+            "Nastavnik": "Prof. K. Suresh (HOD - CSE)",
+            "Predmet": "Data Structures (CSE)",
             "Grupe": [
                 "Year 3"
             ],
@@ -11,8 +11,18 @@
             "Ucionica": "LectureHall"
         },
         {
-            "Nastavnik": "Mr. Smith",
-            "Predmet": "Mathematics",
+            "Nastavnik": "Prof. G. Prasad (CSE)",
+            "Predmet": "Python Programming (CSE)",
+            "Grupe": [
+                "Year 1"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Prof. G. Prasad (CSE)",
+            "Predmet": "Python Programming (CSE)",
             "Grupe": [
                 "Year 2"
             ],
@@ -21,8 +31,68 @@
             "Ucionica": "Lab"
         },
         {
-            "Nastavnik": "Ms. Johnson",
-            "Predmet": "English",
+            "Nastavnik": "Dr. P. Ramesh (ECE)",
+            "Predmet": "VLSI Design (ECE)",
+            "Grupe": [
+                "Year 2"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. P. Ramesh (ECE)",
+            "Predmet": "VLSI Design (ECE)",
+            "Grupe": [
+                "Year 2"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Mrs. K. Deepa (ECE)",
+            "Predmet": "Digital Logic Design (ECE)",
+            "Grupe": [
+                "Year 1"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Prof. M. Lakshmi (EEE)",
+            "Predmet": "Circuit Theory (EEE)",
+            "Grupe": [
+                "Year 1"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Mr. V. Ravi Kumar (MECH)",
+            "Predmet": "Thermodynamics (MECH)",
+            "Grupe": [
+                "Year 1"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Mr. V. Ravi Kumar (MECH)",
+            "Predmet": "Thermodynamics (MECH)",
+            "Grupe": [
+                "Year 2"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Ms. S. Anitha (CIVIL)",
+            "Predmet": "Structural Analysis (CIVIL)",
             "Grupe": [
                 "Year 3"
             ],
@@ -31,14 +101,124 @@
             "Ucionica": "LectureHall"
         },
         {
-            "Nastavnik": "Ms. Johnson",
-            "Predmet": "English",
+            "Nastavnik": "Ms. S. Anitha (CIVIL)",
+            "Predmet": "Structural Analysis (CIVIL)",
+            "Grupe": [
+                "Year 1"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Dr. B. Venkat (AI & DS)",
+            "Predmet": "Artificial Intelligence (AI)",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. B. Venkat (AI & DS)",
+            "Predmet": "Artificial Intelligence (AI)",
+            "Grupe": [
+                "Year 1"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Mr. T. Srinivas (Maths)",
+            "Predmet": "Engineering Mathematics I",
+            "Grupe": [
+                "Year 2"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Mr. T. Srinivas (Maths)",
+            "Predmet": "Engineering Mathematics I",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Dr. R. Krishna (Physics)",
+            "Predmet": "Engineering Physics",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. R. Krishna (Physics)",
+            "Predmet": "Engineering Physics",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Prof. G. Prasad (CSE)",
+            "Predmet": "Data Structures (CSE)",
+            "Grupe": [
+                "Year 1"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Prof. G. Prasad (CSE)",
+            "Predmet": "Data Structures (CSE)",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Dr. P. Ramesh (ECE)",
+            "Predmet": "Digital Logic Design (ECE)",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. P. Ramesh (ECE)",
+            "Predmet": "Digital Logic Design (ECE)",
             "Grupe": [
                 "Year 2"
             ],
             "Tip": "L",
             "Trajanje": 1,
             "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "LAKSHMI REDDY",
+            "Predmet": "softskills",
+            "Grupe": [
+                "Year 2"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
         }
     ],
     "Ucionice": {

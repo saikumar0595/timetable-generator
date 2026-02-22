@@ -89,15 +89,12 @@ def load_data(file_path, teachers_empty_space, groups_empty_space, subjects_orde
 
 def set_up(num_of_columns):
     """
-    Sets up the timetable matrix and dictionary that stores free fields from matrix.
-    :param num_of_columns: number of classrooms
-    :return: matrix, free
+    Sets up the timetable matrix. 7 Days * 8 Periods = 56 slots.
     """
-    w, h = num_of_columns, 60                                          # 5 (workdays) * 12 (work hours) = 60
+    w, h = num_of_columns, 56
     matrix = [[None for x in range(w)] for y in range(h)]
     free = []
 
-    # initialise free dict as all the fields from matrix
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             free.append((i, j))
@@ -108,8 +105,9 @@ def show_timetable(matrix):
     """
     Prints timetable matrix.
     """
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-    hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    # 8 Periods
+    hours = [1, 2, 3, 4, 5, 6, 7, 8]
 
     # print heading for classrooms
     for i in range(len(matrix[0])):

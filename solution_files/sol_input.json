@@ -1,52 +1,214 @@
 -------------------------- STATISTICS --------------------------
 
 Hard constraints satisfied: 100.00 %
-Soft constraints satisfied: 100.00 %
+Soft constraints satisfied: 33.33 %
 
 TOTAL empty space for all GROUPS and all days: 0
 MAX empty space for GROUP in day: 0
 AVERAGE empty space for GROUPS per week: 0.00
 
-TOTAL empty space for all TEACHERS and all days: 2
-MAX empty space for TEACHER in day: 2
-AVERAGE empty space for TEACHERS per week: 1.00
+TOTAL empty space for all TEACHERS and all days: 6
+MAX empty space for TEACHER in day: 5
+AVERAGE empty space for TEACHERS per week: 0.55
 
-Free term -> Monday: 9
+Free term -> Monday: 11
 
 --------------------------- SCHEDULE ---------------------------
 
-Class 1
-Teacher: Mr. Smith 
-Subject: Mathematics 
+Class 7
+Teacher: Dr. B. Venkat (AI & DS) 
+Subject: Artificial Intelligence (AI) 
 Groups: Year 3 
 Type: P 
 Duration: 2 hour(s)
-Classroom: Room 102 
-Time: Wednesday 13 14
+Classroom: Room 103 
+Time: Thursday 13 14
 
-Class 2
-Teacher: Ms. Johnson 
-Subject: English 
-Groups: Year 3 
+Class 19
+Teacher: Prof. G. Prasad (CSE) 
+Subject: Python Programming (CSE) 
+Groups: Year 1 
 Type: P 
 Duration: 2 hour(s)
-Classroom: Room 102 
-Time: Wednesday 15 16
+Classroom: Room 101 
+Time: Friday 13 14
+
+Class 11
+Teacher: Mr. V. Ravi Kumar (MECH) 
+Subject: Thermodynamics (MECH) 
+Groups: Year 1 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 103 
+Time: Friday 15 16
 
 Class 3
-Teacher: Ms. Johnson 
-Subject: English 
-Groups: Year 2 
+Teacher: Dr. B. Venkat (AI & DS) 
+Subject: Artificial Intelligence (AI) 
+Groups: Year 1 
 Type: L 
 Duration: 1 hour(s)
 Classroom: Computer Lab 2 
-Time: Wednesday 12
+Time: Wednesday 18
+
+Class 15
+Teacher: Prof. M. Lakshmi (EEE) 
+Subject: Circuit Theory (EEE) 
+Groups: Year 1 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 101 
+Time: Tuesday 15 16
+
+Class 9
+Teacher: Mrs. K. Deepa (ECE) 
+Subject: Digital Logic Design (ECE) 
+Groups: Year 1 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 101 
+Time: Tuesday 17 18
+
+Class 6
+Teacher: Prof. G. Prasad (CSE) 
+Subject: Data Structures (CSE) 
+Groups: Year 1 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 102 
+Time: Monday 15 16
 
 Class 0
-Teacher: Mr. Smith 
-Subject: Mathematics 
+Teacher: Dr. R. Krishna (Physics) 
+Subject: Engineering Physics 
+Groups: Year 3 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 102 
+Time: Tuesday 15 16
+
+Class 18
+Teacher: Prof. K. Suresh (HOD - CSE) 
+Subject: Data Structures (CSE) 
+Groups: Year 3 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 101 
+Time: Wednesday 11 12
+
+Class 20
+Teacher: Dr. P. Ramesh (ECE) 
+Subject: Digital Logic Design (ECE) 
+Groups: Year 3 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 102 
+Time: Tuesday 13 14
+
+Class 5
+Teacher: Dr. P. Ramesh (ECE) 
+Subject: VLSI Design (ECE) 
+Groups: Year 2 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 103 
+Time: Wednesday 11 12
+
+Class 21
+Teacher: Ms. S. Anitha (CIVIL) 
+Subject: Structural Analysis (CIVIL) 
+Groups: Year 3 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 103 
+Time: Wednesday 9 10
+
+Class 17
+Teacher: Mr. T. Srinivas (Maths) 
+Subject: Engineering Mathematics I 
+Groups: Year 2 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 102 
+Time: Wednesday 9 10
+
+Class 13
+Teacher: Prof. G. Prasad (CSE) 
+Subject: Python Programming (CSE) 
 Groups: Year 2 
 Type: L 
 Duration: 1 hour(s)
 Classroom: Computer Lab 1 
-Time: Wednesday 15
+Time: Friday 15
+
+Class 14
+Teacher: LAKSHMI REDDY 
+Subject: softskills 
+Groups: Year 2 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 103 
+Time: Tuesday 13 14
+
+Class 16
+Teacher: Ms. S. Anitha (CIVIL) 
+Subject: Structural Analysis (CIVIL) 
+Groups: Year 1 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab 1 
+Time: Friday 20
+
+Class 8
+Teacher: Dr. R. Krishna (Physics) 
+Subject: Engineering Physics 
+Groups: Year 3 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab 2 
+Time: Friday 16
+
+Class 10
+Teacher: Prof. G. Prasad (CSE) 
+Subject: Data Structures (CSE) 
+Groups: Year 3 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab 2 
+Time: Monday 9
+
+Class 4
+Teacher: Mr. T. Srinivas (Maths) 
+Subject: Engineering Mathematics I 
+Groups: Year 3 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab 2 
+Time: Monday 10
+
+Class 1
+Teacher: Dr. P. Ramesh (ECE) 
+Subject: VLSI Design (ECE) 
+Groups: Year 2 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab 1 
+Time: Monday 13
+
+Class 12
+Teacher: Mr. V. Ravi Kumar (MECH) 
+Subject: Thermodynamics (MECH) 
+Groups: Year 2 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab 1 
+Time: Monday 14
+
+Class 2
+Teacher: Dr. P. Ramesh (ECE) 
+Subject: Digital Logic Design (ECE) 
+Groups: Year 2 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab 2 
+Time: Monday 15
