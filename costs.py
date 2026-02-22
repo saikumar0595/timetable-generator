@@ -32,6 +32,8 @@ def subjects_order_cost(subjects_order):
                 cost += 1
 
     # print(cost, total)
+    if total == 0:
+        return 100.0
     return 100 * (total - cost) / total
 
 
@@ -66,6 +68,9 @@ def empty_space_groups_cost(groups_empty_space):
             if max_empty < value:
                 max_empty = value
 
+    if len(groups_empty_space) == 0:
+        return cost, max_empty, 0
+
     return cost, max_empty, cost / len(groups_empty_space)
 
 
@@ -99,6 +104,9 @@ def empty_space_teachers_cost(teachers_empty_space):
         for key, value in empty_per_day.items():
             if max_empty < value:
                 max_empty = value
+
+    if len(teachers_empty_space) == 0:
+        return cost, max_empty, 0
 
     return cost, max_empty, cost / len(teachers_empty_space)
 

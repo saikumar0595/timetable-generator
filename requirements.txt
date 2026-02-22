@@ -1,0 +1,9 @@
+# Core Python Dependencies
+# No external pip packages required (Standard Library only)
+json
+random
+math
+copy
+operator
+os
+sys

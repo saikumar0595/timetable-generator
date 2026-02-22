@@ -199,6 +199,13 @@ def evolutionary_algorithm(matrix, data, free, filled, groups_empty_space, teach
         t = 0
         stagnation = 0
         cost_stats = 0
+        
+        # Initialize variables to avoid UnboundLocalError
+        loss_after = 0
+        cost_teachers = 0
+        cost_groups = 0
+        cost_classrooms = 0
+
         while stagnation < max_stagnation:
 
             # check if optimal solution is found
@@ -273,8 +280,15 @@ def simulated_hardening(matrix, data, free, filled, groups_empty_space, teachers
         old_teachers_empty_space = copy.deepcopy(teachers_empty_space)
         old_subjects_order = copy.deepcopy(subjects_order)
 
-        # try to mutate 1/4 of all classes
-        for j in range(len(data.classes) // 4):
+        # ADAPTIVE MUTATION: Link mutation rate to temperature
+        # Initial temp was 0.5. As t decreases, we mutate fewer classes.
+        # Start with aggressive mutation (50%) and cool down to 1 class.
+        initial_t = 0.5
+        temperature_ratio = t / initial_t
+        mutation_count = max(1, int((len(data.classes) // 2) * temperature_ratio))
+
+        # try to mutate 'mutation_count' classes
+        for j in range(mutation_count):
             index_class = random.randrange(len(data.classes))
             mutate_ideal_spot(matrix, data, index_class, free, filled, groups_empty_space, teachers_empty_space,
                               subjects_order)

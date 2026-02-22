@@ -1,0 +1,55 @@
+{
+    "Casovi": [
+        {
+            "Nastavnik": "Mr. Smith",
+            "Predmet": "Mathematics",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Mr. Smith",
+            "Predmet": "Mathematics",
+            "Grupe": [
+                "Year 2"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Ms. Johnson",
+            "Predmet": "English",
+            "Grupe": [
+                "Year 3"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Ms. Johnson",
+            "Predmet": "English",
+            "Grupe": [
+                "Year 2"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        }
+    ],
+    "Ucionice": {
+        "LectureHall": [
+            "Room 101",
+            "Room 102",
+            "Room 103"
+        ],
+        "Lab": [
+            "Computer Lab 1",
+            "Computer Lab 2"
+        ]
+    }
+}
