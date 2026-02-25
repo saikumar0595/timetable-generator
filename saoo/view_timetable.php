@@ -61,7 +61,14 @@ file_put_contents($input_file, json_encode($json_data, JSON_PRETTY_PRINT));
 $python_script = 'api.py';
 $input_file_basename = 'input.json';
 $descriptorspec = [0 => ["pipe", "r"], 1 => ["pipe", "w"], 2 => ["pipe", "w"]];
-$process = proc_open("python \"$python_script\" \"$input_file_basename\"", $descriptorspec, $pipes, $base_dir);
+
+// Deployment Fix: Try 'python3' first (Linux/Railway), then fall back to 'python' (Windows)
+$cmd = "python3 \"$python_script\" \"$input_file_basename\"";
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+    $cmd = "python \"$python_script\" \"$input_file_basename\"";
+}
+
+$process = proc_open($cmd, $descriptorspec, $pipes, $base_dir);
 
 if (is_resource($process)) {
     $output = stream_get_contents($pipes[1]);

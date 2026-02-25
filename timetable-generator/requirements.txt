@@ -1,9 +1,4 @@
-# Core Python Dependencies
-# No external pip packages required (Standard Library only)
+# Standard libraries only, but good for environment detection
 json
 random
 math
-copy
-operator
-os
-sys
