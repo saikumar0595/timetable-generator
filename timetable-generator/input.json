@@ -1,0 +1,115 @@
+{
+    "Casovi": [
+        {
+            "Nastavnik": "Prof. K. Suresh",
+            "Predmet": "Data Structures",
+            "Grupe": [
+                "B.Tech CSE-A (Year 1)"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. B. Venkat",
+            "Predmet": "Artificial Intelligence",
+            "Grupe": [
+                "B.Tech AI-DS (Year 1)"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. B. Venkat",
+            "Predmet": "Artificial Intelligence",
+            "Grupe": [
+                "B.Tech AI-DS (Year 1)"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Dr. P. Ramesh",
+            "Predmet": "Digital Electronics",
+            "Grupe": [
+                "B.Tech CSE-B (Year 1)"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. G. Murali",
+            "Predmet": "Cyber Security",
+            "Grupe": [
+                "B.Tech IT (Year 1)"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Dr. G. Murali",
+            "Predmet": "Cyber Security",
+            "Grupe": [
+                "B.Tech IT (Year 1)"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Ms. S. Anitha",
+            "Predmet": "Operating Systems",
+            "Grupe": [
+                "B.Tech CSE-A (Year 1)"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Ms. S. Anitha",
+            "Predmet": "Operating Systems",
+            "Grupe": [
+                "B.Tech CSE-A (Year 1)"
+            ],
+            "Tip": "L",
+            "Trajanje": 1,
+            "Ucionica": "Lab"
+        },
+        {
+            "Nastavnik": "Mr. V. Ravi Kumar",
+            "Predmet": "Python Programming",
+            "Grupe": [
+                "B.Tech CSE-B (Year 1)"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        },
+        {
+            "Nastavnik": "Prof. M. Lakshmi",
+            "Predmet": "Machine Learning",
+            "Grupe": [
+                "B.Tech AI-DS (Year 1)"
+            ],
+            "Tip": "P",
+            "Trajanje": 2,
+            "Ucionica": "LectureHall"
+        }
+    ],
+    "Ucionice": {
+        "LectureHall": [
+            "LH-101",
+            "LH-102",
+            "LH-103"
+        ],
+        "Lab": [
+            "Computer Lab-1",
+            "Computer Lab-2"
+        ]
+    }
+}

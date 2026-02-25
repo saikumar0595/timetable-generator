@@ -1,0 +1,20 @@
+# OS files
+Thumbs.db
+.DS_Store
+
+# PHP/Web
+/saoo/uploads/*
+!/saoo/uploads/00_READ_ME_FIRST.txt
+/saoo/gentelella/node_modules/
+
+# Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# IDEs
+.vscode/
+.idea/
+
+# Local Config
+/saoo/db.php

@@ -1,0 +1,106 @@
+-------------------------- STATISTICS --------------------------
+
+Hard constraints satisfied: 100.00 %
+Soft constraints satisfied: 33.33 %
+
+TOTAL empty space for all GROUPS and all days: 0
+MAX empty space for GROUP in day: 0
+AVERAGE empty space for GROUPS per week: 0.00
+
+TOTAL empty space for all TEACHERS and all days: 0
+MAX empty space for TEACHER in day: 0
+AVERAGE empty space for TEACHERS per week: 0.00
+
+Free term -> Monday: Period 3
+
+--------------------------- SCHEDULE ---------------------------
+
+Class 1
+Teacher: Ms. S. Anitha 
+Subject: Operating Systems 
+Groups: B.Tech CSE-A (Year 1) 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab-1 
+Time: Wednesday 6
+
+Class 9
+Teacher: Dr. B. Venkat 
+Subject: Artificial Intelligence 
+Groups: B.Tech AI-DS (Year 1) 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab-2 
+Time: Tuesday 3
+
+Class 8
+Teacher: Dr. G. Murali 
+Subject: Cyber Security 
+Groups: B.Tech IT (Year 1) 
+Type: L 
+Duration: 1 hour(s)
+Classroom: Computer Lab-1 
+Time: Thursday 2
+
+Class 2
+Teacher: Dr. B. Venkat 
+Subject: Artificial Intelligence 
+Groups: B.Tech AI-DS (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: LH-103 
+Time: Monday 1 2
+
+Class 0
+Teacher: Dr. G. Murali 
+Subject: Cyber Security 
+Groups: B.Tech IT (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: LH-101 
+Time: Sunday 7 8
+
+Class 5
+Teacher: Prof. M. Lakshmi 
+Subject: Machine Learning 
+Groups: B.Tech AI-DS (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: LH-103 
+Time: Wednesday 4 5
+
+Class 4
+Teacher: Prof. K. Suresh 
+Subject: Data Structures 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: LH-102 
+Time: Wednesday 7 8
+
+Class 7
+Teacher: Dr. P. Ramesh 
+Subject: Digital Electronics 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: LH-102 
+Time: Sunday 6 7
+
+Class 6
+Teacher: Ms. S. Anitha 
+Subject: Operating Systems 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: LH-102 
+Time: Thursday 6 7
+
+Class 3
+Teacher: Mr. V. Ravi Kumar 
+Subject: Python Programming 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: LH-101 
+Time: Monday 7 8

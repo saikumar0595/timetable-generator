@@ -1,0 +1,34 @@
+-------------------------- STATISTICS --------------------------
+
+Hard constraints satisfied: 100.00 %
+Soft constraints satisfied: 100.00 %
+
+TOTAL empty space for all GROUPS and all days: 0
+MAX empty space for GROUP in day: 0
+AVERAGE empty space for GROUPS per week: 0.00
+
+TOTAL empty space for all TEACHERS and all days: 0
+MAX empty space for TEACHER in day: 0
+AVERAGE empty space for TEACHERS per week: 0.00
+
+Free term -> Monday: 11
+
+--------------------------- SCHEDULE ---------------------------
+
+Class 0
+Teacher: Ms. Johnson 
+Subject: English 
+Groups: Year 2 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 101 
+Time: Monday 9 10
+
+Class 1
+Teacher: Mr. Smith 
+Subject: Mathematics 
+Groups: Year 1 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room 102 
+Time: Monday 9 10
