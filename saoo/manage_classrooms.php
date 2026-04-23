@@ -4,48 +4,31 @@ include('db.php');
 
 if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 
-// Initialize Demo Data
-if (DEMO_MODE && !isset($_SESSION['classrooms'])) {
-    $_SESSION['classrooms'] = [
-        ['id' => 1, 'name' => 'LH-101 (Main Block)', 'type' => 'LectureHall'],
-        ['id' => 2, 'name' => 'LH-102 (Main Block)', 'type' => 'LectureHall'],
-        ['id' => 3, 'name' => 'Computer Lab-1', 'type' => 'Lab']
-    ];
-}
-
-// Handle Add
 if (isset($_POST['add_classroom'])) {
     $name = trim($_POST['room_name']);
     $type = $_POST['room_type'];
+    $capacity = intval($_POST['room_capacity']);
     if (!empty($name)) {
         if (DEMO_MODE) {
             $id = empty($_SESSION['classrooms']) ? 1 : max(array_column($_SESSION['classrooms'], 'id')) + 1;
-            $_SESSION['classrooms'][] = ['id' => $id, 'name' => $name, 'type' => $type];
+            $_SESSION['classrooms'][] = ['id' => $id, 'name' => $name, 'type' => $type, 'capacity' => $capacity];
         } else {
-            $stmt = $conn->prepare("INSERT INTO classrooms (name, type) VALUES (?, ?)");
-            $stmt->bind_param("ss", $name, $type);
+            $stmt = $conn->prepare("INSERT INTO classrooms (name, type, capacity) VALUES (?, ?, ?)");
+            $stmt->bind_param("ssi", $name, $type, $capacity);
             $stmt->execute();
-            $stmt->close();
         }
-        header("Location: manage_classrooms.php");
-        exit();
+        header("Location: manage_classrooms.php"); exit();
     }
 }
 
-// Handle Delete
 if (isset($_GET['delete_classroom'])) {
     $id = intval($_GET['delete_classroom']);
-    if (DEMO_MODE) {
-        $_SESSION['classrooms'] = array_filter($_SESSION['classrooms'], function($c) use ($id) { return $c['id'] != $id; });
-    } else {
-        $conn->query("DELETE FROM classrooms WHERE id = $id");
-    }
-    header("Location: manage_classrooms.php");
-    exit();
+    if (DEMO_MODE) { $_SESSION['classrooms'] = array_filter($_SESSION['classrooms'], function($c) use ($id) { return $c['id'] != $id; }); }
+    else { $conn->query("DELETE FROM classrooms WHERE id = $id"); }
+    header("Location: manage_classrooms.php"); exit();
 }
 
-// Fetch Classrooms
-$classrooms = DEMO_MODE ? $_SESSION['classrooms'] : mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM classrooms"), MYSQLI_ASSOC);
+$classrooms = DEMO_MODE ? ($_SESSION['classrooms'] ?? []) : mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM classrooms"), MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -112,95 +95,66 @@ $classrooms = DEMO_MODE ? $_SESSION['classrooms'] : mysqli_fetch_all(mysqli_quer
 
     <main class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50">
         <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10 shadow-sm">
-            <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Classroom Management</h2>
+            <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Facility Management</h2>
             <div class="flex items-center gap-4">
+                <a href="legacy_admin.php" class="px-4 py-2 bg-slate-900 text-sky-400 rounded-lg text-xs font-bold border border-sky-900 hover:bg-slate-800 transition">
+                    <i class="fas fa-terminal mr-2"></i> Legacy Console
+                </a>
                 <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">
                     <?php echo substr($_SESSION['user'], 0, 1); ?>
                 </div>
             </div>
         </header>
 
-        <!-- Scrolling Header Bar -->
-        <div class="w-full bg-slate-900 overflow-hidden h-12 flex items-center border-b border-slate-800">
-            <div class="whitespace-nowrap animate-scroll flex items-center">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-            </div>
-        </div>
-
-        <style>
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            .animate-scroll {
-                display: flex;
-                width: max-content;
-                animation: scroll 20s linear infinite;
-            }
-        </style>
-
         <div class="flex-1 overflow-y-auto p-8 pb-20">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
                 <div class="lg:col-span-1">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                         <h3 class="font-bold text-slate-800 text-lg mb-6">Add New Classroom</h3>
-                        <form method="POST" class="space-y-5">
+                        <form method="POST" class="space-y-4">
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Room Name/Number</label>
-                                <input type="text" name="room_name" required placeholder="e.g. Room 302" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Room Name</label>
+                                <input type="text" name="room_name" required placeholder="e.g. LH-301" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Room Type</label>
-                                <select name="room_type" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Room Type</label>
+                                <select name="room_type" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none text-sm">
                                     <option value="LectureHall">Lecture Hall</option>
-                                    <option value="Lab">Laboratory</option>
+                                    <option value="Lab">Lab</option>
                                 </select>
                             </div>
-                            <button type="submit" name="add_classroom" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition-all">
-                                Save Classroom
-                            </button>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Capacity (Seats)</label>
+                                <input type="number" name="room_capacity" required value="60" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                            </div>
+                            <button type="submit" name="add_classroom" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition-all">Save Facility</button>
                         </form>
                     </div>
                 </div>
-
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                         <table class="w-full text-left">
-                            <thead class="bg-slate-50 text-xs uppercase text-slate-500 font-semibold">
-                                <tr>
-                                    <th class="px-6 py-4">Room Name</th>
-                                    <th class="px-6 py-4">Type</th>
-                                    <th class="px-6 py-4 text-right">Actions</th>
-                                </tr>
-                            </thead>
+                            <thead class="bg-slate-50 text-xs uppercase text-slate-500 font-semibold"><tr class="border-b"><th class="px-6 py-4">Room Name</th><th class="px-6 py-4">Type</th><th class="px-6 py-4 text-center">Capacity</th><th class="px-6 py-4 text-right">Action</th></tr></thead>
                             <tbody class="divide-y divide-slate-50">
                                 <?php foreach($classrooms as $c): ?>
-                                <tr class="hover:bg-slate-50/80 transition-colors">
-                                    <td class="px-6 py-4 font-bold text-slate-700"><?php echo htmlspecialchars($c['name']); ?></td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-3 py-1 rounded-full text-xs font-bold <?php echo $c['type'] == 'Lab' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'; ?>">
-                                            <?php echo $c['type']; ?>
+                                <tr class="hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-4 font-bold text-slate-700"><?= htmlspecialchars($c['name']) ?></td>
+                                    <td class="px-6 py-4 text-xs font-bold uppercase <?= $c['type'] == 'Lab' ? 'text-emerald-500' : 'text-indigo-500' ?>"><?= $c['type'] ?></td>
+                                    <td class="px-6 py-4 text-center">
+                                        <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600">
+                                            <?= $c['capacity'] ?? 60 ?> Seats
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="?delete_classroom=<?php echo $c['id']; ?>" class="text-red-400 hover:text-red-600" onclick="return confirm('Delete this room?');">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </td>
+                                    <td class="px-6 py-4 text-right"><a href="?delete_classroom=<?= $c['id'] ?>" class="text-red-400 hover:text-red-600"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
+    <script src="assets/js/chatbot.js"></script>
 </body>
 </html>

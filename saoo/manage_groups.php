@@ -4,16 +4,6 @@ include('db.php');
 
 if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 
-// Initialize Demo Data
-if (DEMO_MODE && !isset($_SESSION['groups'])) {
-    $_SESSION['groups'] = [
-        ['id' => 1, 'name' => 'B.Tech CSE-A (Year 1)'],
-        ['id' => 2, 'name' => 'B.Tech CSE-B (Year 1)'],
-        ['id' => 3, 'name' => 'B.Tech AI-DS (Year 1)']
-    ];
-}
-
-// Handle Add
 if (isset($_POST['add_group'])) {
     $name = trim($_POST['group_name']);
     if (!empty($name)) {
@@ -24,27 +14,19 @@ if (isset($_POST['add_group'])) {
             $stmt = $conn->prepare("INSERT INTO groups (name) VALUES (?)");
             $stmt->bind_param("s", $name);
             $stmt->execute();
-            $stmt->close();
         }
-        header("Location: manage_groups.php");
-        exit();
+        header("Location: manage_groups.php"); exit();
     }
 }
 
-// Handle Delete
 if (isset($_GET['delete_group'])) {
     $id = intval($_GET['delete_group']);
-    if (DEMO_MODE) {
-        $_SESSION['groups'] = array_filter($_SESSION['groups'], function($g) use ($id) { return $g['id'] != $id; });
-    } else {
-        $conn->query("DELETE FROM groups WHERE id = $id");
-    }
-    header("Location: manage_groups.php");
-    exit();
+    if (DEMO_MODE) { $_SESSION['groups'] = array_filter($_SESSION['groups'], function($g) use ($id) { return $g['id'] != $id; }); }
+    else { $conn->query("DELETE FROM groups WHERE id = $id"); }
+    header("Location: manage_groups.php"); exit();
 }
 
-// Fetch Groups
-$groups = DEMO_MODE ? $_SESSION['groups'] : mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM groups"), MYSQLI_ASSOC);
+$groups = DEMO_MODE ? ($_SESSION['groups'] ?? []) : mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM groups"), MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -111,82 +93,43 @@ $groups = DEMO_MODE ? $_SESSION['groups'] : mysqli_fetch_all(mysqli_query($conn,
 
     <main class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50">
         <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10 shadow-sm">
-            <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Student Groups</h2>
+            <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Group Management</h2>
             <div class="flex items-center gap-4">
+                <a href="legacy_admin.php" class="px-4 py-2 bg-slate-900 text-sky-400 rounded-lg text-xs font-bold border border-sky-900 hover:bg-slate-800 transition">
+                    <i class="fas fa-terminal mr-2"></i> Legacy Console
+                </a>
                 <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">
                     <?php echo substr($_SESSION['user'], 0, 1); ?>
                 </div>
             </div>
         </header>
 
-        <!-- Scrolling Header Bar -->
-        <div class="w-full bg-slate-900 overflow-hidden h-12 flex items-center border-b border-slate-800">
-            <div class="whitespace-nowrap animate-scroll flex items-center">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-                <img src="assets_login/img/header.png" alt="Header" class="h-8 mx-4">
-            </div>
-        </div>
-
-        <style>
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            .animate-scroll {
-                display: flex;
-                width: max-content;
-                animation: scroll 20s linear infinite;
-            }
-        </style>
-
         <div class="flex-1 overflow-y-auto p-8 pb-20">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
                 <div class="lg:col-span-1">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                         <h3 class="font-bold text-slate-800 text-lg mb-6">Add New Group</h3>
-                        <form method="POST" class="space-y-5">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Group Name</label>
-                                <input type="text" name="group_name" required placeholder="e.g. Year 1 - CSE" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
-                            </div>
-                            <button type="submit" name="add_group" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition-all">
-                                Save Group
-                            </button>
+                        <form method="POST" class="space-y-4">
+                            <input type="text" name="group_name" required placeholder="Group Name (e.g. B.Tech CSE-A)" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                            <button type="submit" name="add_group" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition-all">Save Group</button>
                         </form>
                     </div>
                 </div>
-
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                         <table class="w-full text-left">
-                            <thead class="bg-slate-50 text-xs uppercase text-slate-500 font-semibold">
-                                <tr>
-                                    <th class="px-6 py-4">Group Name</th>
-                                    <th class="px-6 py-4 text-right">Actions</th>
-                                </tr>
-                            </thead>
+                            <thead class="bg-slate-50 text-xs uppercase text-slate-500 font-semibold"><tr class="border-b"><th class="px-6 py-4">Group Name</th><th class="px-6 py-4 text-right">Action</th></tr></thead>
                             <tbody class="divide-y divide-slate-50">
                                 <?php foreach($groups as $g): ?>
-                                <tr class="hover:bg-slate-50/80 transition-colors">
-                                    <td class="px-6 py-4 font-bold text-slate-700"><?php echo htmlspecialchars($g['name']); ?></td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="?delete_group=<?php echo $g['id']; ?>" class="text-red-400 hover:text-red-600" onclick="return confirm('Delete this group?');">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors"><td class="px-6 py-4 font-bold text-slate-700"><?= htmlspecialchars($g['name']) ?></td><td class="px-6 py-4 text-right"><a href="?delete_group=<?= $g['id'] ?>" class="text-red-400 hover:text-red-600"><i class="fas fa-trash-alt"></i></a></td></tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
+    <script src="assets/js/chatbot.js"></script>
 </body>
 </html>

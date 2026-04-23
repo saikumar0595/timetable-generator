@@ -4,101 +4,41 @@ include('db.php');
 
 if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 
+$role = $_SESSION['role'] ?? 'student';
+
 // ... (Keep existing logic for calling Python API) ...
-// 2. Prepare Data for Python Algorithm
 $base_dir = realpath(__DIR__ . '/../timetable-generator');
-if (!$base_dir) { die("Error: Could not find timetable-generator directory."); }
+$timetable = $_SESSION['last_generated_timetable'] ?? [];
+$stats = $_SESSION['last_generated_stats'] ?? [];
+$error = null;
 
-// Fetch Data Logic
-if (DEMO_MODE) {
-    $assignments = $_SESSION['assignments'] ?? [];
-    $classrooms_data = $_SESSION['classrooms'] ?? [];
-    $groups_data = $_SESSION['groups'] ?? [];
-} else {
-    $result = mysqli_query($conn, "SELECT t.name as t_name, s.name as s_name FROM teacher_subjects ts JOIN teachers t ON ts.teacher_id = t.id JOIN subjects s ON ts.subject_id = s.id");
-    $assignments = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $classrooms_data = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM classrooms"), MYSQLI_ASSOC);
-    $groups_data = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM groups"), MYSQLI_ASSOC);
+// Handle Generation Request (Only Admin can generate)
+if (isset($_GET['generate']) && $role == 'admin') {
+    // Call the new generation API
+    include('generate_timetable.php');
+    exit();
 }
 
-// Format Classrooms for Python
-$rooms_by_type = [];
-foreach($classrooms_data as $cr) {
-    $rooms_by_type[$cr['type']][] = $cr['name'];
-}
+$groups_data = DEMO_MODE ? ($_SESSION['groups'] ?? []) : mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM groups"), MYSQLI_ASSOC);
+$selected_group = $_GET['group'] ?? ($groups_data[0]['name'] ?? null);
 
-// Generate JSON
-$json_data = [
-    "Casovi" => [],
-    "Ucionice" => $rooms_by_type
-];
+$periods = ["09:30 - 10:20", "10:20 - 11:10", "11:10 - 12:00", "12:00 - 12:50", "01:30 - 02:15", "02:15 - 03:00", "03:00 - 03:45", "03:45 - 04:30"];
+$days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-if (!empty($assignments)) {
-    foreach ($assignments as $a) {
-        // Use the actual group assigned to this subject/teacher link
-        $assigned_group = $a['g_name'] ?? (!empty($groups_data) ? $groups_data[0]['name'] : "Default Group");
-        
-        $json_data["Casovi"][] = [
-            "Nastavnik" => $a['t_name'], "Predmet" => $a['s_name'], "Grupe" => [$assigned_group],
-            "Tip" => "P", "Trajanje" => 2, "Ucionica" => "LectureHall"
-        ];
-        if (rand(0, 1)) {
-            $json_data["Casovi"][] = [
-                "Nastavnik" => $a['t_name'], "Predmet" => $a['s_name'], "Grupe" => [$assigned_group],
-                "Tip" => "L", "Trajanje" => 1, "Ucionica" => "Lab"
-            ];
+// PERFORMANCE OPTIMIZATION: Pre-filter timetable for the selected group
+$group_timetable = [];
+if ($selected_group && !empty($timetable)) {
+    foreach ($days as $day) {
+        foreach ($periods as $period) {
+            foreach (($timetable[$day][$period] ?? []) as $cls) {
+                if (in_array($selected_group, $cls['groups'])) {
+                    $group_timetable[$day][$period] = $cls;
+                    break;
+                }
+            }
         }
     }
 }
-
-// Selected Group for Filtering
-$selected_group = $_GET['group'] ?? ($groups_data[0]['name'] ?? null);
-
-// Write & Execute
-$input_file = $base_dir . DIRECTORY_SEPARATOR . 'input.json';
-file_put_contents($input_file, json_encode($json_data, JSON_PRETTY_PRINT));
-
-$python_script = 'api.py';
-$input_file_basename = 'input.json';
-$descriptorspec = [0 => ["pipe", "r"], 1 => ["pipe", "w"], 2 => ["pipe", "w"]];
-
-// Deployment Fix: Try 'python3' first (Linux/Railway), then fall back to 'python' (Windows)
-$cmd = "python3 \"$python_script\" \"$input_file_basename\"";
-if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-    $cmd = "python \"$python_script\" \"$input_file_basename\"";
-}
-
-$process = proc_open($cmd, $descriptorspec, $pipes, $base_dir);
-
-if (is_resource($process)) {
-    $output = stream_get_contents($pipes[1]);
-    $error_output = stream_get_contents($pipes[2]);
-    fclose($pipes[0]); fclose($pipes[1]); fclose($pipes[2]);
-    proc_close($process);
-} else { $output = ""; }
-
-$data = json_decode($output, true);
-$timetable = $data['schedule'] ?? [];
-$stats = $data['statistics'] ?? [];
-
-if (empty($timetable)) {
-    // Graceful error handling
-    if (!empty($error_output)) {
-        $error = "Python script failed. Output: <pre>" . htmlspecialchars($error_output) . "</pre>";
-    } else {
-        $error = "Python script returned empty or invalid data. Ensure sufficient assignments exist.";
-    }
-    $timetable = []; 
-} else {
-    // Save to session for Notification Service
-    $_SESSION['last_generated_timetable'] = $timetable;
-}
-
-$periods = [
-    "09:30 - 10:20", "10:20 - 11:10", "11:10 - 12:00", "12:00 - 12:50",
-    "01:30 - 02:15", "02:15 - 03:00", "03:00 - 03:45", "03:45 - 04:30"
-];
-$days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ?>
 
 <!DOCTYPE html>
@@ -191,18 +131,42 @@ $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Su
                 <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium text-sm shadow-lg shadow-indigo-500/30">
                     <i class="fas fa-file-pdf"></i> Save PDF
                 </button>
+                <button onclick="exportToCSV()" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium text-sm shadow-lg shadow-blue-500/30">
+                    <i class="fas fa-file-csv"></i> Export CSV
+                </button>
+                <?php if($role=='admin'): ?>
+                <button onclick="generateTimetable(this)" class="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition font-medium text-sm shadow-lg shadow-amber-500/30">
+                    <i class="fas fa-sync-alt"></i> <span>Update AI Schedule</span>
+                </button>
+                <?php endif; ?>
             </div>
         </header>
 
         <div class="flex-1 overflow-y-auto p-8 pb-20">
-            
+            <?php if ($error): ?>
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0"><i class="fas fa-exclamation-circle text-red-500"></i></div>
+                        <div class="ml-3"><p class="text-sm text-red-700"><?= $error ?></p></div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
             <?php if (empty($timetable)): ?>
                 <div class="max-w-4xl mx-auto text-center mt-20">
-                    <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-300 text-4xl animate-pulse">
-                        <i class="fas fa-cog fa-spin"></i>
+                    <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-300 text-4xl">
+                        <i class="fas fa-calendar-times"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-2">Generating Schedule...</h3>
-                    <p class="text-slate-500">If this takes too long, ensure you have assigned subjects to teachers and created classrooms.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">No Timetable Generated</h3>
+                    <p class="text-slate-500 mb-8">The AI scheduling engine has not been triggered yet for this session.</p>
+                    
+                    <?php if($role == 'admin'): ?>
+                        <button onclick="generateTimetable(this)" class="px-8 py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition-all inline-flex items-center gap-2">
+                            <i class="fas fa-rocket"></i> <span>Trigger Genetic Engine Now</span>
+                        </button>
+                    <?php else: ?>
+                        <p class="text-indigo-600 font-medium italic">Please ask an administrator to generate the institutional schedule.</p>
+                    <?php endif; ?>
                 </div>
             <?php else: ?>
             
@@ -274,16 +238,7 @@ $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Su
                                             endif;
 
                                             $period = $periods[$i];
-                                            $all_classes = $timetable[$day][$period] ?? [];
-                                            
-                                            // Filter for selected group
-                                            $cell = null;
-                                            foreach($all_classes as $cls) {
-                                                if (in_array($selected_group, $cls['groups'])) {
-                                                    $cell = $cls;
-                                                    break;
-                                                }
-                                            }
+                                            $cell = $group_timetable[$day][$period] ?? null;
                                     ?>
                                     <td class="px-2 py-3 border-r border-slate-100 last:border-0 h-24 align-top">
                                         <?php if ($cell): ?>
@@ -329,6 +284,33 @@ $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Su
         .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); }
     </style>
     <script>
+        function exportToCSV() {
+            const table = document.querySelector('table');
+            if (!table) return;
+            let csv = [];
+            const rows = table.querySelectorAll('tr');
+            
+            for (let i = 0; i < rows.length; i++) {
+                let row = [], cols = rows[i].querySelectorAll('td, th');
+                
+                for (let j = 0; j < cols.length; j++) {
+                    let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").trim();
+                    data = data.replace(/"/g, '""');
+                    row.push('"' + data + '"');
+                }
+                csv.push(row.join(','));
+            }
+            
+            const csvFile = new Blob([csv.join('\n')], {type: 'text/csv'});
+            const downloadLink = document.createElement('a');
+            downloadLink.download = 'timetable_' + '<?php echo htmlspecialchars($selected_group); ?>' + '.csv';
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.style.display = 'none';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
         function shareTimetable() {
             const group = '<?php echo $selected_group; ?>';
             const shareData = {
@@ -348,6 +330,31 @@ $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Su
                 document.execCommand('copy');
                 document.body.removeChild(dummy);
                 alert('Link copied to clipboard! (Web Share not supported in this browser)');
+            }
+        }
+
+        // Generate timetable using Python AI engine
+        async function generateTimetable(button) {
+            button.disabled = true;
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner animate-spin"></i> <span>Generating...</span>';
+            
+            try {
+                const response = await fetch('api_generate.php', { method: 'POST' });
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('Timetable generated successfully!');
+                    window.location.reload();
+                } else {
+                    alert('Error: ' + data.error);
+                    button.innerHTML = originalHTML;
+                    button.disabled = false;
+                }
+            } catch (error) {
+                alert('Network error: ' + error.message);
+                button.innerHTML = originalHTML;
+                button.disabled = false;
             }
         }
 

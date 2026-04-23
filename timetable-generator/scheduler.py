@@ -197,8 +197,8 @@ def evolutionary_algorithm(matrix, data, free, filled, groups_empty_space, teach
     """
     n = 3
     sigma = 2
-    run_times = 5
-    max_stagnation = 200
+    run_times = 1
+    max_stagnation = 20
 
     for run in range(run_times):
         print('Run {} | sigma = {}'.format(run + 1, sigma))
@@ -266,7 +266,7 @@ def simulated_hardening(matrix, data, free, filled, groups_empty_space, teachers
     soft constraints as much as possible (empty space for groups and existence of an hour in which there is no classes).
     """
     # number of iterations
-    iter_count = 2500
+    iter_count = 500
     # temperature
     t = 0.5
     _, _, curr_cost_group = empty_space_groups_cost(groups_empty_space)

@@ -1,79 +1,5559 @@
 -------------------------- STATISTICS --------------------------
+Hard constraints NOT satisfied, cost: 64
+Soft constraints satisfied: 100.00 %
 
-Hard constraints satisfied: 100.00 %
-Soft constraints satisfied: 50.00 %
+TOTAL empty space for all GROUPS and all days: 79
+MAX empty space for GROUP in day: 4
+AVERAGE empty space for GROUPS per week: 0.90
 
-TOTAL empty space for all GROUPS and all days: 0
-MAX empty space for GROUP in day: 0
-AVERAGE empty space for GROUPS per week: 0.00
+TOTAL empty space for all TEACHERS and all days: 150
+MAX empty space for TEACHER in day: 4
+AVERAGE empty space for TEACHERS per week: 2.27
 
-TOTAL empty space for all TEACHERS and all days: 0
-MAX empty space for TEACHER in day: 0
-AVERAGE empty space for TEACHERS per week: 0.00
-
-Free term -> Monday: Period 1
+NO hours without classes.
 
 --------------------------- SCHEDULE ---------------------------
 
-Class 5
-Teacher: Prof. K. Suresh 
-Subject: Machine Learning 
-Groups: B.Tech CSE-A (Year 1) 
+Class 8
+Teacher: Dr. B. Rao 
+Subject: Problem Solving & Programming 
+Groups: B.Tech Cyber Security-A (Year 1) 
 Type: P 
 Duration: 2 hour(s)
-Classroom: LH-102 (Main Block) 
-Time: Friday 1 2
+Classroom: Room B121 
+Time: Sunday 2 3
 
-Class 3
-Teacher: Prof. K. Suresh 
-Subject: Data Structures & Algorithms 
-Groups: B.Tech CSE-A (Year 1) 
-Type: L 
-Duration: 1 hour(s)
-Classroom: AI Innovation Lab 
-Time: Wednesday 7
-
-Class 6
-Teacher: Dr. B. Venkat 
-Subject: Artificial Intelligence 
-Groups: B.Tech AI-DS (Year 1) 
+Class 15
+Teacher: Dr. B. Rao 
+Subject: Problem Solving & Programming 
+Groups: B.Tech ECE-A (Year 2) 
 Type: P 
 Duration: 2 hour(s)
-Classroom: LH-102 (Main Block) 
-Time: Monday 5 6
+Classroom: Room D121 
+Time: Wednesday 2 3
 
-Class 0
-Teacher: Prof. K. Suresh 
-Subject: Data Structures & Algorithms 
-Groups: B.Tech CSE-A (Year 1) 
+Class 18
+Teacher: Dr. B. Rao 
+Subject: Computer Graphics 
+Groups: B.Tech AI-ML-A (Year 4) 
 Type: P 
 Duration: 2 hour(s)
-Classroom: LH-102 (Main Block) 
-Time: Saturday 5 6
+Classroom: Room D113 
+Time: Wednesday 3 4
 
-Class 1
-Teacher: Dr. B. Venkat 
-Subject: Artificial Intelligence 
-Groups: B.Tech AI-DS (Year 1) 
-Type: L 
-Duration: 1 hour(s)
-Classroom: AI Innovation Lab 
-Time: Wednesday 3
+Class 33
+Teacher: Ms. G. Suresh 
+Subject: Database Systems 
+Groups: B.Tech EEE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Tuesday 3 4
 
-Class 4
-Teacher: Dr. P. Ramesh 
-Subject: Engineering Mathematics I 
+Class 35
+Teacher: Dr. J. Prasad 
+Subject: Communicative English 
+Groups: B.Tech AI-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Wednesday 6 7
+
+Class 45
+Teacher: Dr. B. Rao 
+Subject: Computer Networks 
+Groups: B.Tech ECE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A112 
+Time: Thursday 2 3
+
+Class 62
+Teacher: Dr. J. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B115 
+Time: Tuesday 5 6
+
+Class 64
+Teacher: Ms. G. Suresh 
+Subject: Data Structures 
+Groups: B.Tech EEE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D113 
+Time: Wednesday 5 6
+
+Class 67
+Teacher: Dr. J. Prasad 
+Subject: Distributed Systems 
+Groups: B.Tech MECH-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Tuesday 5 6
+
+Class 82
+Teacher: Dr. B. Murali 
+Subject: Software Engineering 
+Groups: B.Tech CSE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Monday 4 5
+
+Class 107
+Teacher: Dr. J. Prasad 
+Subject: Problem Solving & Programming 
 Groups: B.Tech CSE-B (Year 1) 
 Type: P 
 Duration: 2 hour(s)
-Classroom: LH-102 (Main Block) 
-Time: Thursday 7 8
+Classroom: Room C115 
+Time: Tuesday 3 4
 
-Class 2
-Teacher: Dr. G. Murali 
-Subject: Cyber Security 
-Groups: B.Tech IT (Year 1) 
+Class 113
+Teacher: Dr. J. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech Cyber Security-B (Year 2) 
 Type: P 
 Duration: 2 hour(s)
-Classroom: LH-101 (Main Block) 
+Classroom: Room D103 
+Time: Monday 6 7
+
+Class 115
+Teacher: Dr. B. Rao 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B106 
+Time: Thursday 6 7
+
+Class 117
+Teacher: Ms. G. Suresh 
+Subject: Database Systems 
+Groups: B.Tech CSE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
 Time: Wednesday 7 8
+
+Class 127
+Teacher: Dr. J. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D112 
+Time: Saturday 6 7
+
+Class 134
+Teacher: Dr. J. Prasad 
+Subject: Software Engineering 
+Groups: B.Tech Cyber Security-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Sunday 1 2
+
+Class 143
+Teacher: Dr. J. Prasad 
+Subject: Applied Physics 
+Groups: B.Tech CSE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Sunday 3 4
+
+Class 145
+Teacher: Dr. B. Murali 
+Subject: Applied Physics 
+Groups: B.Tech CSE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D112 
+Time: Saturday 1 2
+
+Class 151
+Teacher: Dr. B. Murali 
+Subject: Cloud Computing 
+Groups: B.Tech EEE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B112 
+Time: Friday 7 8
+
+Class 160
+Teacher: Dr. B. Rao 
+Subject: Data Structures 
+Groups: B.Tech AI-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C116 
+Time: Monday 3 4
+
+Class 162
+Teacher: Dr. B. Murali 
+Subject: Database Systems 
+Groups: B.Tech Cyber Security-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C109 
+Time: Wednesday 6 7
+
+Class 181
+Teacher: Dr. B. Rao 
+Subject: Data Structures 
+Groups: B.Tech EEE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C116 
+Time: Sunday 4 5
+
+Class 187
+Teacher: Dr. B. Rao 
+Subject: Database Systems 
+Groups: B.Tech MECH-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D109 
+Time: Tuesday 4 5
+
+Class 198
+Teacher: Ms. G. Suresh 
+Subject: Database Systems 
+Groups: B.Tech AI-DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C115 
+Time: Monday 5 6
+
+Class 199
+Teacher: Ms. G. Suresh 
+Subject: Database Systems 
+Groups: B.Tech DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Saturday 1 2
+
+Class 203
+Teacher: Dr. B. Murali 
+Subject: Data Structures 
+Groups: B.Tech CSE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B122 
+Time: Friday 4 5
+
+Class 205
+Teacher: Dr. J. Prasad 
+Subject: Compiler Design 
+Groups: B.Tech DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Friday 2 3
+
+Class 218
+Teacher: Dr. B. Rao 
+Subject: Computer Graphics 
+Groups: B.Tech DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D111 
+Time: Wednesday 6 7
+
+Class 220
+Teacher: Ms. G. Suresh 
+Subject: Problem Solving & Programming 
+Groups: B.Tech MECH-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B111 
+Time: Sunday 3 4
+
+Class 222
+Teacher: Dr. B. Rao 
+Subject: Problem Solving & Programming 
+Groups: B.Tech ECE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Thursday 6 7
+
+Class 233
+Teacher: Dr. J. Prasad 
+Subject: Database Systems 
+Groups: B.Tech AI-ML-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Saturday 2 3
+
+Class 251
+Teacher: Ms. G. Suresh 
+Subject: Software Engineering 
+Groups: B.Tech EEE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Wednesday 2 3
+
+Class 255
+Teacher: Dr. J. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-ML-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Wednesday 7 8
+
+Class 281
+Teacher: Dr. J. Prasad 
+Subject: Cloud Computing 
+Groups: B.Tech CSE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D118 
+Time: Saturday 5 6
+
+Class 294
+Teacher: Dr. B. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Friday 1 2
+
+Class 298
+Teacher: Dr. J. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Friday 1 2
+
+Class 300
+Teacher: Dr. B. Murali 
+Subject: Data Structures 
+Groups: B.Tech DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D112 
+Time: Wednesday 2 3
+
+Class 306
+Teacher: Dr. B. Rao 
+Subject: Database Systems 
+Groups: B.Tech AI-DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Saturday 5 6
+
+Class 325
+Teacher: Dr. J. Prasad 
+Subject: Web Technologies 
+Groups: B.Tech ECE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B115 
+Time: Monday 7 8
+
+Class 330
+Teacher: Dr. B. Rao 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-ML-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Friday 1 2
+
+Class 334
+Teacher: Dr. B. Rao 
+Subject: Software Engineering 
+Groups: B.Tech CSE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A122 
+Time: Friday 5 6
+
+Class 336
+Teacher: Dr. B. Rao 
+Subject: Computer Graphics 
+Groups: B.Tech AI-DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Saturday 5 6
+
+Class 341
+Teacher: Ms. G. Suresh 
+Subject: Computer Graphics 
+Groups: B.Tech AI-DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Tuesday 1 2
+
+Class 343
+Teacher: Ms. G. Suresh 
+Subject: Software Engineering 
+Groups: B.Tech CSE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D115 
+Time: Tuesday 7 8
+
+Class 344
+Teacher: Dr. J. Prasad 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A107 
+Time: Sunday 7 8
+
+Class 347
+Teacher: Dr. J. Prasad 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D105 
+Time: Friday 1 2
+
+Class 354
+Teacher: Dr. B. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech MECH-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A107 
+Time: Saturday 2 3
+
+Class 357
+Teacher: Dr. J. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Monday 2 3
+
+Class 376
+Teacher: Dr. B. Murali 
+Subject: Data Science Foundations 
+Groups: B.Tech DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D110 
+Time: Wednesday 5 6
+
+Class 379
+Teacher: Dr. J. Prasad 
+Subject: Computer Graphics 
+Groups: B.Tech ECE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Wednesday 2 3
+
+Class 381
+Teacher: Dr. J. Prasad 
+Subject: Communicative English 
+Groups: B.Tech MECH-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C111 
+Time: Wednesday 2 3
+
+Class 387
+Teacher: Dr. B. Murali 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Thursday 5 6
+
+Class 414
+Teacher: Ms. G. Suresh 
+Subject: Data Structures 
+Groups: B.Tech ECE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Thursday 4 5
+
+Class 424
+Teacher: Dr. J. Prasad 
+Subject: Communicative English 
+Groups: B.Tech MECH-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A120 
+Time: Thursday 3 4
+
+Class 437
+Teacher: Dr. B. Murali 
+Subject: Computer Graphics 
+Groups: B.Tech MECH-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Thursday 7 8
+
+Class 441
+Teacher: Dr. J. Prasad 
+Subject: Communicative English 
+Groups: B.Tech CSE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C120 
+Time: Tuesday 7 8
+
+Class 447
+Teacher: Dr. J. Prasad 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Tuesday 7 8
+
+Class 468
+Teacher: Dr. B. Murali 
+Subject: Communicative English 
+Groups: B.Tech MECH-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Wednesday 3 4
+
+Class 472
+Teacher: Dr. B. Murali 
+Subject: Web Technologies 
+Groups: B.Tech Cyber Security-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Sunday 4 5
+
+Class 479
+Teacher: Dr. B. Murali 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech MECH-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B121 
+Time: Thursday 3 4
+
+Class 483
+Teacher: Dr. B. Rao 
+Subject: Communicative English 
+Groups: B.Tech MECH-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C121 
+Time: Saturday 2 3
+
+Class 486
+Teacher: Dr. J. Prasad 
+Subject: Communicative English 
+Groups: B.Tech AI-ML-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D111 
+Time: Friday 7 8
+
+Class 487
+Teacher: Dr. B. Rao 
+Subject: Communicative English 
+Groups: B.Tech AI-DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B120 
+Time: Saturday 2 3
+
+Class 491
+Teacher: Dr. B. Murali 
+Subject: Distributed Systems 
+Groups: B.Tech CSE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Thursday 6 7
+
+Class 493
+Teacher: Dr. J. Prasad 
+Subject: Database Systems 
+Groups: B.Tech EEE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Tuesday 1 2
+
+Class 506
+Teacher: Dr. B. Rao 
+Subject: Computer Networks 
+Groups: B.Tech MECH-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Wednesday 7 8
+
+Class 535
+Teacher: Ms. G. Suresh 
+Subject: Problem Solving & Programming 
+Groups: B.Tech EEE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A122 
+Time: Monday 2 3
+
+Class 541
+Teacher: Ms. G. Suresh 
+Subject: Data Structures 
+Groups: B.Tech AI-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A120 
+Time: Friday 6 7
+
+Class 550
+Teacher: Dr. B. Rao 
+Subject: Database Systems 
+Groups: B.Tech AI-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Friday 5 6
+
+Class 552
+Teacher: Dr. B. Rao 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Monday 1 2
+
+Class 554
+Teacher: Dr. J. Prasad 
+Subject: Applied Physics 
+Groups: B.Tech AI-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D120 
+Time: Monday 4 5
+
+Class 572
+Teacher: Dr. J. Prasad 
+Subject: Software Engineering 
+Groups: B.Tech CSE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Thursday 4 5
+
+Class 589
+Teacher: Dr. J. Prasad 
+Subject: Problem Solving & Programming 
+Groups: B.Tech DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Saturday 7 8
+
+Class 594
+Teacher: Dr. J. Prasad 
+Subject: Network Security 
+Groups: B.Tech Cyber Security-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D105 
+Time: Monday 5 6
+
+Class 597
+Teacher: Dr. B. Murali 
+Subject: Communicative English 
+Groups: B.Tech AI-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Tuesday 7 8
+
+Class 163
+Teacher: Dr. J. Prasad 
+Subject: Data Structures 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A120 
+Time: Friday 4 5
+
+Class 270
+Teacher: Dr. B. Rao 
+Subject: Software Engineering 
+Groups: B.Tech DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B111 
+Time: Sunday 7 8
+
+Class 271
+Teacher: Dr. J. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Sunday 5 6
+
+Class 582
+Teacher: Ms. G. Suresh 
+Subject: Data Structures 
+Groups: B.Tech MECH-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Saturday 3 4
+
+Class 186
+Teacher: Dr. J. Prasad 
+Subject: Communicative English 
+Groups: B.Tech ECE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Thursday 7 8
+
+Class 197
+Teacher: Ms. G. Suresh 
+Subject: Computer Networks 
+Groups: B.Tech AI-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D119 
+Time: Friday 4 5
+
+Class 200
+Teacher: Dr. B. Rao 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Monday 7 8
+
+Class 234
+Teacher: Ms. G. Suresh 
+Subject: Compiler Design 
+Groups: B.Tech DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Friday 2 3
+
+Class 247
+Teacher: Dr. B. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech ECE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Tuesday 1 2
+
+Class 296
+Teacher: Dr. J. Prasad 
+Subject: Engineering Chemistry 
+Groups: B.Tech CSE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Wednesday 4 5
+
+Class 322
+Teacher: Dr. B. Rao 
+Subject: Engineering Chemistry 
+Groups: B.Tech ECE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Friday 3 4
+
+Class 396
+Teacher: Dr. J. Prasad 
+Subject: Natural Language Processing 
+Groups: B.Tech AI-ML-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D107 
+Time: Thursday 1 2
+
+Class 455
+Teacher: Dr. B. Rao 
+Subject: Applied Physics 
+Groups: B.Tech DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A115 
+Time: Tuesday 7 8
+
+Class 522
+Teacher: Dr. B. Murali 
+Subject: Web Technologies 
+Groups: B.Tech DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Saturday 7 8
+
+Class 25
+Teacher: Ms. G. Suresh 
+Subject: Computer Networks 
+Groups: B.Tech AI-ML-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Sunday 6 7
+
+Class 142
+Teacher: Ms. G. Suresh 
+Subject: Database Systems 
+Groups: B.Tech EEE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Saturday 5 6
+
+Class 157
+Teacher: Dr. B. Murali 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B108 
+Time: Saturday 5 6
+
+Class 238
+Teacher: Dr. B. Rao 
+Subject: Engineering Chemistry 
+Groups: B.Tech ECE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D102 
+Time: Monday 5 6
+
+Class 372
+Teacher: Dr. B. Rao 
+Subject: Database Systems 
+Groups: B.Tech Cyber Security-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Thursday 4 5
+
+Class 59
+Teacher: Dr. B. Rao 
+Subject: Engineering Chemistry 
+Groups: B.Tech Cyber Security-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Friday 7 8
+
+Class 135
+Teacher: Dr. B. Rao 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D109 
+Time: Tuesday 2 3
+
+Class 153
+Teacher: Dr. B. Murali 
+Subject: Applied Physics 
+Groups: B.Tech ECE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Sunday 2 3
+
+Class 165
+Teacher: Ms. G. Suresh 
+Subject: Problem Solving & Programming 
+Groups: B.Tech EEE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Thursday 6 7
+
+Class 175
+Teacher: Dr. B. Rao 
+Subject: Computer Graphics 
+Groups: B.Tech CSE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D109 
+Time: Saturday 7 8
+
+Class 227
+Teacher: Dr. B. Murali 
+Subject: Applied Physics 
+Groups: B.Tech CSE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Thursday 1 2
+
+Class 257
+Teacher: Ms. G. Suresh 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Thursday 2 3
+
+Class 324
+Teacher: Dr. B. Murali 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A107 
+Time: Tuesday 5 6
+
+Class 333
+Teacher: Ms. G. Suresh 
+Subject: Compiler Design 
+Groups: B.Tech MECH-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C109 
+Time: Sunday 1 2
+
+Class 340
+Teacher: Dr. B. Murali 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech CSE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Monday 2 3
+
+Class 358
+Teacher: Dr. B. Murali 
+Subject: Engineering Chemistry 
+Groups: B.Tech ECE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Monday 7 8
+
+Class 392
+Teacher: Dr. B. Murali 
+Subject: Database Systems 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Tuesday 3 4
+
+Class 105
+Teacher: Dr. B. Murali 
+Subject: Engineering Chemistry 
+Groups: B.Tech CSE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Sunday 6 7
+
+Class 140
+Teacher: Ms. G. Suresh 
+Subject: Data Structures 
+Groups: B.Tech CSE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D111 
+Time: Saturday 7 8
+
+Class 170
+Teacher: Ms. G. Suresh 
+Subject: Database Systems 
+Groups: B.Tech DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A115 
+Time: Tuesday 5 6
+
+Class 462
+Teacher: Ms. G. Suresh 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Monday 7 8
+
+Class 561
+Teacher: Ms. G. Naidu 
+Subject: Applied Physics 
+Groups: B.Tech ECE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B102 
+Time: Sunday 2 3
+
+Class 120
+Teacher: Ms. S. Srinivas 
+Subject: Data Structures 
+Groups: B.Tech CSE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A105 
+Time: Sunday 3 4
+
+Class 53
+Teacher: Ms. S. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C122 
+Time: Tuesday 5 6
+
+Class 564
+Teacher: Ms. G. Reddy 
+Subject: Applied Physics 
+Groups: B.Tech AI-DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B119 
+Time: Sunday 3 4
+
+Class 208
+Teacher: Dr. K. Reddy 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Monday 3 4
+
+Class 394
+Teacher: Prof. M. Anitha 
+Subject: Database Systems 
+Groups: B.Tech ECE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Saturday 3 4
+
+Class 177
+Teacher: Ms. G. Karthik 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-ML-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Wednesday 7 8
+
+Class 490
+Teacher: Dr. V. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech EEE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Tuesday 3 4
+
+Class 168
+Teacher: Ms. S. Murali 
+Subject: Engineering Chemistry 
+Groups: B.Tech Cyber Security-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Friday 5 6
+
+Class 475
+Teacher: Ms. G. Karthik 
+Subject: Antenna & Wave Propagation 
+Groups: B.Tech ECE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Thursday 3 4
+
+Class 442
+Teacher: Ms. G. Priya 
+Subject: Database Systems 
+Groups: B.Tech CSE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C109 
+Time: Thursday 7 8
+
+Class 32
+Teacher: Ms. G. Srinivas 
+Subject: Artificial Intelligence 
+Groups: B.Tech AI-DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A101 
+Time: Sunday 6 7
+
+Class 283
+Teacher: Dr. N. Anitha 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Sunday 5 6
+
+Class 313
+Teacher: Dr. N. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech AI-ML-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C121 
+Time: Friday 3 4
+
+Class 540
+Teacher: Prof. M. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech EEE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Monday 3 4
+
+Class 427
+Teacher: Dr. V. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech CSE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A114 
+Time: Monday 4 5
+
+Class 504
+Teacher: Mr. R. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech CSE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Monday 3 4
+
+Class 22
+Teacher: Prof. H. Krishna 
+Subject: Data Structures 
+Groups: B.Tech MECH-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D107 
+Time: Monday 7 8
+
+Class 359
+Teacher: Prof. M. Anitha 
+Subject: Web Technologies 
+Groups: B.Tech EEE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Wednesday 5 6
+
+Class 549
+Teacher: Ms. S. Karthik 
+Subject: Communicative English 
+Groups: B.Tech ECE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Tuesday 7 8
+
+Class 342
+Teacher: Prof. A. Priya 
+Subject: Applied Physics 
+Groups: B.Tech EEE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Sunday 2 3
+
+Class 332
+Teacher: Dr. J. Karthik 
+Subject: Software Engineering 
+Groups: B.Tech ECE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D119 
+Time: Tuesday 7 8
+
+Class 230
+Teacher: Ms. G. Anitha 
+Subject: Database Systems 
+Groups: B.Tech CSE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D115 
+Time: Sunday 1 2
+
+Class 47
+Teacher: Ms. G. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech Cyber Security-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B119 
+Time: Saturday 1 2
+
+Class 428
+Teacher: Prof. A. Reddy 
+Subject: Distributed Systems 
+Groups: B.Tech MECH-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D107 
+Time: Sunday 1 2
+
+Class 531
+Teacher: Ms. G. Anitha 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech EEE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A104 
+Time: Tuesday 7 8
+
+Class 557
+Teacher: Dr. K. Lakshmi 
+Subject: Database Systems 
+Groups: B.Tech CSE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Sunday 7 8
+
+Class 288
+Teacher: Prof. M. Anitha 
+Subject: Software Engineering 
+Groups: B.Tech AI-ML-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C103 
+Time: Monday 7 8
+
+Class 297
+Teacher: Dr. K. Lakshmi 
+Subject: Problem Solving & Programming 
+Groups: B.Tech EEE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Monday 3 4
+
+Class 231
+Teacher: Prof. H. Venkat 
+Subject: Web Technologies 
+Groups: B.Tech Cyber Security-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Friday 3 4
+
+Class 95
+Teacher: Prof. H. Krishna 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D119 
+Time: Sunday 7 8
+
+Class 202
+Teacher: Mr. R. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Sunday 1 2
+
+Class 159
+Teacher: Prof. H. Krishna 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Monday 3 4
+
+Class 565
+Teacher: Dr. V. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B103 
+Time: Sunday 6 7
+
+Class 466
+Teacher: Dr. P. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Friday 4 5
+
+Class 436
+Teacher: Dr. B. Prasad 
+Subject: Problem Solving & Programming 
+Groups: B.Tech EEE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B119 
+Time: Wednesday 3 4
+
+Class 390
+Teacher: Prof. A. Reddy 
+Subject: Mobile Application Development 
+Groups: B.Tech Cyber Security-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C119 
+Time: Monday 3 4
+
+Class 500
+Teacher: Dr. B. Prasad 
+Subject: Database Systems 
+Groups: B.Tech CSE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Thursday 2 3
+
+Class 207
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech MECH-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Monday 1 2
+
+Class 243
+Teacher: Prof. M. Anitha 
+Subject: Thermodynamics 
+Groups: B.Tech MECH-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Friday 3 4
+
+Class 244
+Teacher: Dr. P. Prasad 
+Subject: Communicative English 
+Groups: B.Tech EEE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Saturday 5 6
+
+Class 478
+Teacher: Mr. R. Priya 
+Subject: Applied Physics 
+Groups: B.Tech AI-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B112 
+Time: Thursday 5 6
+
+Class 409
+Teacher: Dr. B. Priya 
+Subject: Computer Graphics 
+Groups: B.Tech CSE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Thursday 1 2
+
+Class 449
+Teacher: Prof. H. Priya 
+Subject: Data Structures 
+Groups: B.Tech CSE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Friday 7 8
+
+Class 189
+Teacher: Prof. H. Krishna 
+Subject: Software Engineering 
+Groups: B.Tech AI-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A107 
+Time: Thursday 1 2
+
+Class 599
+Teacher: Ms. G. Karthik 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Thursday 1 2
+
+Class 429
+Teacher: Dr. V. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Wednesday 1 2
+
+Class 411
+Teacher: Dr. V. Murali 
+Subject: Software Engineering 
+Groups: B.Tech AI-ML-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Friday 4 5
+
+Class 229
+Teacher: Dr. V. Murali 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech EEE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C113 
+Time: Saturday 3 4
+
+Class 126
+Teacher: Dr. J. Karthik 
+Subject: Problem Solving & Programming 
+Groups: B.Tech MECH-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B102 
+Time: Thursday 5 6
+
+Class 438
+Teacher: Ms. G. Naidu 
+Subject: Communicative English 
+Groups: B.Tech MECH-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C121 
+Time: Friday 7 8
+
+Class 293
+Teacher: Dr. N. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A112 
+Time: Saturday 7 8
+
+Class 328
+Teacher: Dr. B. Prasad 
+Subject: Applied Physics 
+Groups: B.Tech DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D113 
+Time: Thursday 5 6
+
+Class 485
+Teacher: Dr. J. Srinivas 
+Subject: Network Analysis 
+Groups: B.Tech ECE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Friday 7 8
+
+Class 364
+Teacher: Ms. G. Ramesh 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-ML-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A104 
+Time: Monday 5 6
+
+Class 284
+Teacher: Dr. J. Karthik 
+Subject: Data Structures 
+Groups: B.Tech MECH-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Thursday 7 8
+
+Class 511
+Teacher: Dr. P. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A108 
+Time: Friday 7 8
+
+Class 4
+Teacher: Mr. R. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B121 
+Time: Friday 6 7
+
+Class 609
+Teacher: Mr. R. Priya 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B108 
+Time: Monday 7 8
+
+Class 55
+Teacher: Ms. S. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech MECH-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Sunday 1 2
+
+Class 178
+Teacher: Prof. H. Krishna 
+Subject: Data Structures 
+Groups: B.Tech Cyber Security-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B120 
+Time: Wednesday 2 3
+
+Class 401
+Teacher: Dr. B. Prasad 
+Subject: Operating Systems 
+Groups: B.Tech AI-DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Friday 5 6
+
+Class 164
+Teacher: Ms. G. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Saturday 3 4
+
+Class 542
+Teacher: Dr. V. Murali 
+Subject: Mobile Application Development 
+Groups: B.Tech DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Monday 7 8
+
+Class 290
+Teacher: Ms. S. Srinivas 
+Subject: Computer Graphics 
+Groups: B.Tech ECE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C113 
+Time: Monday 2 3
+
+Class 94
+Teacher: Ms. G. Rao 
+Subject: Applied Physics 
+Groups: B.Tech AI-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Monday 3 4
+
+Class 0
+Teacher: Prof. M. Karthik 
+Subject: Communicative English 
+Groups: B.Tech AI-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Sunday 6 7
+
+Class 174
+Teacher: Dr. J. Karthik 
+Subject: Data Structures 
+Groups: B.Tech Cyber Security-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B120 
+Time: Sunday 7 8
+
+Class 185
+Teacher: Prof. H. Priya 
+Subject: Database Systems 
+Groups: B.Tech CSE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Tuesday 5 6
+
+Class 87
+Teacher: Dr. V. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech AI-ML-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B120 
+Time: Thursday 2 3
+
+Class 318
+Teacher: Ms. G. Anitha 
+Subject: Computer Networks 
+Groups: B.Tech EEE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Thursday 1 2
+
+Class 484
+Teacher: Mr. R. Lakshmi 
+Subject: Power Systems 
+Groups: B.Tech EEE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C120 
+Time: Monday 7 8
+
+Class 196
+Teacher: Dr. P. Murali 
+Subject: Web Technologies 
+Groups: B.Tech EEE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Sunday 2 3
+
+Class 123
+Teacher: Ms. S. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-ML-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Saturday 7 8
+
+Class 24
+Teacher: Dr. V. Murali 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech CSE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Sunday 3 4
+
+Class 580
+Teacher: Dr. K. Lakshmi 
+Subject: Database Systems 
+Groups: B.Tech AI-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Monday 5 6
+
+Class 569
+Teacher: Ms. G. Reddy 
+Subject: Communicative English 
+Groups: B.Tech EEE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B109 
+Time: Tuesday 6 7
+
+Class 574
+Teacher: Mr. R. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech MECH-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Wednesday 1 2
+
+Class 250
+Teacher: Ms. G. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech AI-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B122 
+Time: Thursday 5 6
+
+Class 450
+Teacher: Dr. K. Suresh 
+Subject: Applied Physics 
+Groups: B.Tech AI-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Saturday 2 3
+
+Class 492
+Teacher: Ms. G. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech ECE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Wednesday 1 2
+
+Class 481
+Teacher: Dr. K. Krishna 
+Subject: Applied Physics 
+Groups: B.Tech AI-ML-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Wednesday 2 3
+
+Class 568
+Teacher: Dr. P. Prasad 
+Subject: Communicative English 
+Groups: B.Tech Cyber Security-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D120 
+Time: Thursday 2 3
+
+Class 426
+Teacher: Prof. M. Anitha 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech AI-DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Saturday 5 6
+
+Class 291
+Teacher: Mr. R. Naidu 
+Subject: Communicative English 
+Groups: B.Tech EEE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D113 
+Time: Friday 5 6
+
+Class 395
+Teacher: Dr. V. Murali 
+Subject: Database Systems 
+Groups: B.Tech ECE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Friday 1 2
+
+Class 570
+Teacher: Dr. K. Krishna 
+Subject: Applied Physics 
+Groups: B.Tech MECH-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B122 
+Time: Wednesday 7 8
+
+Class 66
+Teacher: Dr. K. Lakshmi 
+Subject: Data Structures 
+Groups: B.Tech ECE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B101 
+Time: Friday 4 5
+
+Class 612
+Teacher: Ms. S. Srinivas 
+Subject: Operating Systems 
+Groups: B.Tech MECH-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C114 
+Time: Saturday 4 5
+
+Class 104
+Teacher: Dr. P. Murali 
+Subject: Mobile Application Development 
+Groups: B.Tech MECH-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Friday 7 8
+
+Class 515
+Teacher: Ms. S. Srinivas 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D105 
+Time: Tuesday 5 6
+
+Class 508
+Teacher: Ms. G. Reddy 
+Subject: Communicative English 
+Groups: B.Tech EEE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Thursday 5 6
+
+Class 37
+Teacher: Ms. S. Naidu 
+Subject: Control Systems 
+Groups: B.Tech EEE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Saturday 6 7
+
+Class 34
+Teacher: Dr. V. Murali 
+Subject: Database Systems 
+Groups: B.Tech AI-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Thursday 3 4
+
+Class 480
+Teacher: Dr. P. Prasad 
+Subject: Communicative English 
+Groups: B.Tech ECE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Thursday 5 6
+
+Class 61
+Teacher: Dr. B. Priya 
+Subject: Data Structures 
+Groups: B.Tech EEE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A115 
+Time: Friday 4 5
+
+Class 460
+Teacher: Prof. A. Suresh 
+Subject: Applied Physics 
+Groups: B.Tech Cyber Security-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C104 
+Time: Friday 5 6
+
+Class 606
+Teacher: Mr. R. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech ECE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Thursday 4 5
+
+Class 470
+Teacher: Prof. H. Venkat 
+Subject: Software Engineering 
+Groups: B.Tech DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B122 
+Time: Monday 1 2
+
+Class 36
+Teacher: Ms. S. Murali 
+Subject: Data Structures 
+Groups: B.Tech CSE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C122 
+Time: Thursday 5 6
+
+Class 206
+Teacher: Dr. V. Murali 
+Subject: Operating Systems 
+Groups: B.Tech AI-DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C104 
+Time: Monday 3 4
+
+Class 114
+Teacher: Prof. M. Anitha 
+Subject: Operating Systems 
+Groups: B.Tech EEE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D110 
+Time: Wednesday 7 8
+
+Class 405
+Teacher: Dr. K. Reddy 
+Subject: Engineering Chemistry 
+Groups: B.Tech CSE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C106 
+Time: Saturday 3 4
+
+Class 400
+Teacher: Ms. G. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C109 
+Time: Friday 3 4
+
+Class 128
+Teacher: Dr. J. Karthik 
+Subject: Database Systems 
+Groups: B.Tech MECH-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B112 
+Time: Sunday 1 2
+
+Class 587
+Teacher: Prof. H. Krishna 
+Subject: Computer Networks 
+Groups: B.Tech AI-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C115 
+Time: Tuesday 5 6
+
+Class 89
+Teacher: Prof. M. Anitha 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-ML-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C115 
+Time: Friday 5 6
+
+Class 435
+Teacher: Dr. J. Ramesh 
+Subject: Digital Signal Processing 
+Groups: B.Tech ECE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Saturday 2 3
+
+Class 192
+Teacher: Mr. R. Naidu 
+Subject: Engineering Chemistry 
+Groups: B.Tech MECH-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Monday 5 6
+
+Class 412
+Teacher: Dr. J. Karthik 
+Subject: Data Structures 
+Groups: B.Tech MECH-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B122 
+Time: Sunday 5 6
+
+Class 316
+Teacher: Dr. K. Suresh 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Sunday 3 4
+
+Class 403
+Teacher: Prof. M. Anitha 
+Subject: Compiler Design 
+Groups: B.Tech Cyber Security-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Tuesday 2 3
+
+Class 308
+Teacher: Ms. S. Srinivas 
+Subject: Operating Systems 
+Groups: B.Tech ECE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Wednesday 3 4
+
+Class 615
+Teacher: Mr. R. Chowdary 
+Subject: Thermodynamics 
+Groups: B.Tech MECH-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Tuesday 1 2
+
+Class 360
+Teacher: Dr. J. Karthik 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech AI-DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Monday 3 4
+
+Class 204
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-ML-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D113 
+Time: Monday 7 8
+
+Class 385
+Teacher: Dr. J. Srinivas 
+Subject: Power Systems 
+Groups: B.Tech EEE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C115 
+Time: Wednesday 3 4
+
+Class 124
+Teacher: Prof. M. Anitha 
+Subject: Database Systems 
+Groups: B.Tech AI-ML-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C104 
+Time: Sunday 5 6
+
+Class 319
+Teacher: Prof. H. Krishna 
+Subject: Computer Graphics 
+Groups: B.Tech CSE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Tuesday 1 2
+
+Class 578
+Teacher: Ms. G. Priya 
+Subject: Computer Graphics 
+Groups: B.Tech EEE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D117 
+Time: Saturday 5 6
+
+Class 236
+Teacher: Ms. G. Ramesh 
+Subject: Computer Graphics 
+Groups: B.Tech Cyber Security-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B106 
+Time: Sunday 1 2
+
+Class 110
+Teacher: Dr. J. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech EEE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Sunday 1 2
+
+Class 533
+Teacher: Ms. G. Anitha 
+Subject: Software Engineering 
+Groups: B.Tech AI-DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Monday 7 8
+
+Class 125
+Teacher: Mr. R. Naidu 
+Subject: Natural Language Processing 
+Groups: B.Tech AI-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D116 
+Time: Wednesday 7 8
+
+Class 106
+Teacher: Prof. A. Priya 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D105 
+Time: Monday 7 8
+
+Class 40
+Teacher: Ms. G. Ramesh 
+Subject: Data Structures 
+Groups: B.Tech AI-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Tuesday 2 3
+
+Class 513
+Teacher: Ms. S. Srinivas 
+Subject: Data Structures 
+Groups: B.Tech ECE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Friday 2 3
+
+Class 133
+Teacher: Dr. J. Srinivas 
+Subject: Renewable Energy Sources 
+Groups: B.Tech EEE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D112 
+Time: Thursday 3 4
+
+Class 273
+Teacher: Dr. N. Anitha 
+Subject: Engineering Chemistry 
+Groups: B.Tech MECH-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B122 
+Time: Saturday 5 6
+
+Class 464
+Teacher: Mr. R. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech MECH-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Sunday 3 4
+
+Class 430
+Teacher: Ms. G. Reddy 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-ML-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Wednesday 7 8
+
+Class 591
+Teacher: Ms. G. Priya 
+Subject: Signals and Systems 
+Groups: B.Tech ECE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Friday 2 3
+
+Class 545
+Teacher: Dr. N. Anitha 
+Subject: Engineering Chemistry 
+Groups: B.Tech ECE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C111 
+Time: Saturday 1 2
+
+Class 311
+Teacher: Dr. V. Murali 
+Subject: Data Structures 
+Groups: B.Tech EEE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Monday 1 2
+
+Class 362
+Teacher: Dr. B. Prasad 
+Subject: Software Engineering 
+Groups: B.Tech MECH-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C103 
+Time: Tuesday 3 4
+
+Class 457
+Teacher: Ms. S. Murali 
+Subject: Database Systems 
+Groups: B.Tech AI-DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A108 
+Time: Sunday 7 8
+
+Class 215
+Teacher: Ms. G. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Tuesday 5 6
+
+Class 279
+Teacher: Ms. G. Anitha 
+Subject: Software Engineering 
+Groups: B.Tech AI-DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A107 
+Time: Sunday 3 4
+
+Class 523
+Teacher: Dr. K. Suresh 
+Subject: Applied Physics 
+Groups: B.Tech EEE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Friday 6 7
+
+Class 370
+Teacher: Dr. P. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech Cyber Security-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Monday 5 6
+
+Class 498
+Teacher: Ms. S. Srinivas 
+Subject: Data Structures 
+Groups: B.Tech AI-DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Tuesday 3 4
+
+Class 509
+Teacher: Ms. G. Rao 
+Subject: Communicative English 
+Groups: B.Tech MECH-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C104 
+Time: Monday 7 8
+
+Class 611
+Teacher: Prof. M. Anitha 
+Subject: Database Systems 
+Groups: B.Tech ECE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Tuesday 7 8
+
+Class 217
+Teacher: Mr. R. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Monday 1 2
+
+Class 373
+Teacher: Dr. K. Suresh 
+Subject: Applied Physics 
+Groups: B.Tech Cyber Security-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Tuesday 4 5
+
+Class 303
+Teacher: Prof. H. Venkat 
+Subject: Data Structures 
+Groups: B.Tech AI-DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Monday 5 6
+
+Class 111
+Teacher: Dr. N. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Wednesday 3 4
+
+Class 605
+Teacher: Ms. G. Reddy 
+Subject: Communicative English 
+Groups: B.Tech AI-ML-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A120 
+Time: Monday 3 4
+
+Class 562
+Teacher: Ms. G. Anitha 
+Subject: Compiler Design 
+Groups: B.Tech CSE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B111 
+Time: Tuesday 2 3
+
+Class 576
+Teacher: Dr. K. Lakshmi 
+Subject: Operating Systems 
+Groups: B.Tech CSE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Saturday 2 3
+
+Class 423
+Teacher: Ms. G. Ramesh 
+Subject: Database Systems 
+Groups: B.Tech CSE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Tuesday 5 6
+
+Class 329
+Teacher: Dr. J. Karthik 
+Subject: Software Engineering 
+Groups: B.Tech AI-DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A105 
+Time: Tuesday 1 2
+
+Class 109
+Teacher: Mr. R. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Wednesday 3 4
+
+Class 92
+Teacher: Dr. V. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech MECH-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A114 
+Time: Saturday 2 3
+
+Class 172
+Teacher: Ms. G. Rao 
+Subject: Applied Physics 
+Groups: B.Tech AI-ML-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D115 
+Time: Wednesday 2 3
+
+Class 559
+Teacher: Ms. G. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D107 
+Time: Friday 5 6
+
+Class 520
+Teacher: Ms. S. Murali 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Wednesday 1 2
+
+Class 146
+Teacher: Prof. M. Anitha 
+Subject: Data Structures 
+Groups: B.Tech MECH-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Monday 3 4
+
+Class 521
+Teacher: Prof. H. Venkat 
+Subject: Computer Networks 
+Groups: B.Tech CSE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Tuesday 6 7
+
+Class 86
+Teacher: Dr. P. Prasad 
+Subject: Engineering Chemistry 
+Groups: B.Tech DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Friday 1 2
+
+Class 402
+Teacher: Prof. M. Karthik 
+Subject: Communicative English 
+Groups: B.Tech DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Sunday 2 3
+
+Class 497
+Teacher: Ms. G. Anitha 
+Subject: Database Systems 
+Groups: B.Tech DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Friday 1 2
+
+Class 534
+Teacher: Dr. J. Karthik 
+Subject: Data Structures 
+Groups: B.Tech CSE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Wednesday 3 4
+
+Class 122
+Teacher: Ms. S. Murali 
+Subject: Computer Graphics 
+Groups: B.Tech CSE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C121 
+Time: Wednesday 4 5
+
+Class 473
+Teacher: Ms. G. Priya 
+Subject: Web Technologies 
+Groups: B.Tech MECH-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Sunday 3 4
+
+Class 216
+Teacher: Ms. S. Murali 
+Subject: Computer Graphics 
+Groups: B.Tech AI-ML-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A111 
+Time: Friday 7 8
+
+Class 581
+Teacher: Ms. G. Priya 
+Subject: Analog Communications 
+Groups: B.Tech ECE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Friday 5 6
+
+Class 285
+Teacher: Prof. A. Reddy 
+Subject: Data Structures 
+Groups: B.Tech MECH-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Tuesday 2 3
+
+Class 101
+Teacher: Ms. S. Murali 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A111 
+Time: Sunday 5 6
+
+Class 193
+Teacher: Dr. J. Srinivas 
+Subject: Network Analysis 
+Groups: B.Tech ECE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Saturday 6 7
+
+Class 548
+Teacher: Dr. K. Reddy 
+Subject: Applied Physics 
+Groups: B.Tech ECE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Sunday 5 6
+
+Class 277
+Teacher: Ms. G. Anitha 
+Subject: Data Structures 
+Groups: B.Tech AI-DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B121 
+Time: Wednesday 3 4
+
+Class 137
+Teacher: Mr. R. Lakshmi 
+Subject: Renewable Energy Sources 
+Groups: B.Tech EEE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D120 
+Time: Sunday 3 4
+
+Class 415
+Teacher: Prof. M. Anitha 
+Subject: Problem Solving & Programming 
+Groups: B.Tech Cyber Security-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C103 
+Time: Sunday 3 4
+
+Class 440
+Teacher: Ms. S. Murali 
+Subject: Data Structures 
+Groups: B.Tech DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A112 
+Time: Saturday 1 2
+
+Class 29
+Teacher: Ms. G. Anitha 
+Subject: Web Technologies 
+Groups: B.Tech AI-ML-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Friday 6 7
+
+Class 603
+Teacher: Dr. V. Murali 
+Subject: Data Structures 
+Groups: B.Tech AI-DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C116 
+Time: Friday 6 7
+
+Class 527
+Teacher: Prof. H. Priya 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech AI-ML-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D116 
+Time: Monday 2 3
+
+Class 518
+Teacher: Prof. H. Venkat 
+Subject: Database Systems 
+Groups: B.Tech MECH-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Monday 7 8
+
+Class 88
+Teacher: Prof. H. Venkat 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Sunday 5 6
+
+Class 501
+Teacher: Ms. G. Karthik 
+Subject: Communicative English 
+Groups: B.Tech AI-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C116 
+Time: Sunday 1 2
+
+Class 514
+Teacher: Mr. R. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech ECE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Friday 2 3
+
+Class 265
+Teacher: Ms. S. Srinivas 
+Subject: Cloud Computing 
+Groups: B.Tech CSE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Monday 4 5
+
+Class 144
+Teacher: Ms. G. Reddy 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Friday 5 6
+
+Class 461
+Teacher: Ms. G. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech MECH-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Saturday 5 6
+
+Class 43
+Teacher: Dr. J. Karthik 
+Subject: Database Systems 
+Groups: B.Tech AI-ML-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Saturday 5 6
+
+Class 292
+Teacher: Ms. S. Srinivas 
+Subject: Database Systems 
+Groups: B.Tech MECH-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Friday 7 8
+
+Class 585
+Teacher: Dr. B. Priya 
+Subject: Database Systems 
+Groups: B.Tech AI-ML-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Friday 7 8
+
+Class 23
+Teacher: Dr. P. Murali 
+Subject: Data Structures 
+Groups: B.Tech MECH-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Saturday 7 8
+
+Class 604
+Teacher: Ms. G. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Sunday 7 8
+
+Class 154
+Teacher: Prof. M. Murali 
+Subject: Artificial Intelligence 
+Groups: B.Tech AI-ML-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A122 
+Time: Thursday 1 2
+
+Class 141
+Teacher: Dr. P. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech Cyber Security-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B121 
+Time: Saturday 6 7
+
+Class 30
+Teacher: Dr. N. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech EEE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Friday 1 2
+
+Class 299
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Sunday 5 6
+
+Class 386
+Teacher: Ms. S. Murali 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Monday 4 5
+
+Class 593
+Teacher: Ms. S. Srinivas 
+Subject: Compiler Design 
+Groups: B.Tech AI-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Wednesday 7 8
+
+Class 510
+Teacher: Ms. G. Naidu 
+Subject: Applied Physics 
+Groups: B.Tech CSE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D117 
+Time: Monday 3 4
+
+Class 78
+Teacher: Ms. G. Karthik 
+Subject: Communicative English 
+Groups: B.Tech Cyber Security-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Friday 7 8
+
+Class 150
+Teacher: Prof. A. Reddy 
+Subject: Problem Solving & Programming 
+Groups: B.Tech MECH-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Thursday 1 2
+
+Class 573
+Teacher: Ms. G. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech MECH-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D109 
+Time: Tuesday 7 8
+
+Class 232
+Teacher: Dr. B. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech MECH-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Thursday 3 4
+
+Class 39
+Teacher: Dr. P. Karthik 
+Subject: Network Analysis 
+Groups: B.Tech ECE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C103 
+Time: Sunday 7 8
+
+Class 530
+Teacher: Ms. G. Karthik 
+Subject: Signals and Systems 
+Groups: B.Tech ECE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D107 
+Time: Thursday 7 8
+
+Class 161
+Teacher: Mr. R. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech ECE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Saturday 1 2
+
+Class 375
+Teacher: Ms. G. Priya 
+Subject: Database Systems 
+Groups: B.Tech AI-ML-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Saturday 1 2
+
+Class 584
+Teacher: Ms. G. Anitha 
+Subject: Web Technologies 
+Groups: B.Tech EEE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A107 
+Time: Thursday 6 7
+
+Class 211
+Teacher: Dr. V. Murali 
+Subject: Web Technologies 
+Groups: B.Tech MECH-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B121 
+Time: Tuesday 1 2
+
+Class 246
+Teacher: Dr. J. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Thursday 6 7
+
+Class 76
+Teacher: Dr. J. Karthik 
+Subject: Software Engineering 
+Groups: B.Tech EEE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D105 
+Time: Friday 7 8
+
+Class 588
+Teacher: Dr. P. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C122 
+Time: Wednesday 4 5
+
+Class 463
+Teacher: Prof. H. Venkat 
+Subject: Database Systems 
+Groups: B.Tech EEE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C121 
+Time: Sunday 3 4
+
+Class 248
+Teacher: Dr. N. Anitha 
+Subject: Ethical Hacking 
+Groups: B.Tech Cyber Security-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B109 
+Time: Thursday 2 3
+
+Class 263
+Teacher: Ms. G. Srinivas 
+Subject: Artificial Intelligence 
+Groups: B.Tech AI-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Saturday 3 4
+
+Class 326
+Teacher: Dr. B. Prasad 
+Subject: Applied Physics 
+Groups: B.Tech AI-DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B109 
+Time: Monday 4 5
+
+Class 519
+Teacher: Dr. J. Karthik 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech MECH-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C113 
+Time: Monday 7 8
+
+Class 6
+Teacher: Dr. J. Srinivas 
+Subject: Power Systems 
+Groups: B.Tech EEE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C119 
+Time: Tuesday 7 8
+
+Class 258
+Teacher: Prof. H. Krishna 
+Subject: Data Structures 
+Groups: B.Tech AI-ML-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A111 
+Time: Friday 1 2
+
+Class 571
+Teacher: Dr. J. Karthik 
+Subject: Data Structures 
+Groups: B.Tech DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Wednesday 1 2
+
+Class 383
+Teacher: Prof. H. Priya 
+Subject: Computer Graphics 
+Groups: B.Tech AI-ML-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A104 
+Time: Wednesday 5 6
+
+Class 260
+Teacher: Prof. M. Anitha 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech AI-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Friday 1 2
+
+Class 507
+Teacher: Dr. B. Prasad 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Tuesday 5 6
+
+Class 108
+Teacher: Ms. G. Priya 
+Subject: Network Analysis 
+Groups: B.Tech ECE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C114 
+Time: Friday 7 8
+
+Class 382
+Teacher: Dr. J. Ramesh 
+Subject: Deep Learning 
+Groups: B.Tech AI-ML-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C113 
+Time: Thursday 3 4
+
+Class 526
+Teacher: Dr. P. Murali 
+Subject: Web Technologies 
+Groups: B.Tech CSE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Tuesday 3 4
+
+Class 374
+Teacher: Dr. N. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech AI-DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Sunday 1 2
+
+Class 10
+Teacher: Dr. K. Reddy 
+Subject: Applied Physics 
+Groups: B.Tech MECH-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D117 
+Time: Friday 4 5
+
+Class 241
+Teacher: Prof. A. Reddy 
+Subject: Computer Networks 
+Groups: B.Tech MECH-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C106 
+Time: Monday 6 7
+
+Class 9
+Teacher: Dr. J. Karthik 
+Subject: Compiler Design 
+Groups: B.Tech ECE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B101 
+Time: Saturday 1 2
+
+Class 448
+Teacher: Ms. G. Priya 
+Subject: Database Systems 
+Groups: B.Tech ECE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B109 
+Time: Monday 1 2
+
+Class 210
+Teacher: Mr. R. Chowdary 
+Subject: Thermodynamics 
+Groups: B.Tech MECH-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Sunday 5 6
+
+Class 48
+Teacher: Ms. G. Reddy 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech MECH-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Monday 7 8
+
+Class 51
+Teacher: Dr. K. Suresh 
+Subject: Applied Physics 
+Groups: B.Tech MECH-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Wednesday 6 7
+
+Class 138
+Teacher: Prof. A. Reddy 
+Subject: Database Systems 
+Groups: B.Tech MECH-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A115 
+Time: Monday 1 2
+
+Class 312
+Teacher: Ms. G. Naidu 
+Subject: Applied Physics 
+Groups: B.Tech AI-ML-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B112 
+Time: Thursday 1 2
+
+Class 99
+Teacher: Prof. H. Krishna 
+Subject: Operating Systems 
+Groups: B.Tech MECH-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C119 
+Time: Sunday 2 3
+
+Class 608
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Thursday 5 6
+
+Class 555
+Teacher: Prof. H. Krishna 
+Subject: Compiler Design 
+Groups: B.Tech Cyber Security-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Wednesday 5 6
+
+Class 512
+Teacher: Ms. S. Srinivas 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech AI-DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C120 
+Time: Wednesday 1 2
+
+Class 131
+Teacher: Dr. B. Priya 
+Subject: Data Structures 
+Groups: B.Tech ECE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C120 
+Time: Wednesday 5 6
+
+Class 575
+Teacher: Dr. B. Prasad 
+Subject: Web Technologies 
+Groups: B.Tech ECE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C116 
+Time: Monday 7 8
+
+Class 517
+Teacher: Prof. M. Anitha 
+Subject: Machine Design 
+Groups: B.Tech MECH-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D110 
+Time: Friday 7 8
+
+Class 83
+Teacher: Ms. S. Murali 
+Subject: Distributed Systems 
+Groups: B.Tech ECE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D116 
+Time: Monday 6 7
+
+Class 309
+Teacher: Prof. H. Priya 
+Subject: Compiler Design 
+Groups: B.Tech EEE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B101 
+Time: Monday 7 8
+
+Class 69
+Teacher: Prof. A. Reddy 
+Subject: Data Structures 
+Groups: B.Tech Cyber Security-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Friday 3 4
+
+Class 444
+Teacher: Ms. G. Ramesh 
+Subject: Database Systems 
+Groups: B.Tech Cyber Security-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Monday 7 8
+
+Class 327
+Teacher: Dr. V. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D120 
+Time: Tuesday 1 2
+
+Class 253
+Teacher: Prof. H. Krishna 
+Subject: Software Engineering 
+Groups: B.Tech AI-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Saturday 5 6
+
+Class 598
+Teacher: Prof. H. Krishna 
+Subject: Data Structures 
+Groups: B.Tech EEE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Saturday 1 2
+
+Class 399
+Teacher: Ms. G. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D112 
+Time: Monday 1 2
+
+Class 136
+Teacher: Dr. K. Lakshmi 
+Subject: Problem Solving & Programming 
+Groups: B.Tech EEE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Wednesday 4 5
+
+Class 413
+Teacher: Dr. N. Anitha 
+Subject: Engineering Chemistry 
+Groups: B.Tech CSE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Friday 6 7
+
+Class 355
+Teacher: Ms. S. Murali 
+Subject: Communicative English 
+Groups: B.Tech Cyber Security-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Sunday 1 2
+
+Class 406
+Teacher: Dr. K. Suresh 
+Subject: Communicative English 
+Groups: B.Tech AI-ML-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Tuesday 2 3
+
+Class 254
+Teacher: Dr. K. Lakshmi 
+Subject: Software Engineering 
+Groups: B.Tech ECE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C111 
+Time: Sunday 5 6
+
+Class 560
+Teacher: Prof. H. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Thursday 3 4
+
+Class 551
+Teacher: Dr. N. Anitha 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Friday 3 4
+
+Class 365
+Teacher: Ms. G. Ramesh 
+Subject: Thermodynamics 
+Groups: B.Tech MECH-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Thursday 7 8
+
+Class 614
+Teacher: Ms. G. Rao 
+Subject: Digital Signal Processing 
+Groups: B.Tech ECE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D112 
+Time: Tuesday 5 6
+
+Class 261
+Teacher: Prof. M. Prasad 
+Subject: Electrical Machines 
+Groups: B.Tech EEE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A115 
+Time: Wednesday 1 2
+
+Class 90
+Teacher: Dr. B. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech ECE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Sunday 7 8
+
+Class 213
+Teacher: Ms. S. Srinivas 
+Subject: Operating Systems 
+Groups: B.Tech CSE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Sunday 7 8
+
+Class 553
+Teacher: Ms. G. Anitha 
+Subject: Data Structures 
+Groups: B.Tech CSE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D115 
+Time: Thursday 3 4
+
+Class 496
+Teacher: Dr. K. Reddy 
+Subject: Engineering Chemistry 
+Groups: B.Tech CSE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Sunday 7 8
+
+Class 11
+Teacher: Dr. B. Priya 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech ECE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Thursday 6 7
+
+Class 103
+Teacher: Dr. V. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B111 
+Time: Thursday 7 8
+
+Class 121
+Teacher: Dr. V. Ramesh 
+Subject: Information Security 
+Groups: B.Tech Cyber Security-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Tuesday 5 6
+
+Class 272
+Teacher: Ms. G. Anitha 
+Subject: Database Systems 
+Groups: B.Tech EEE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Monday 5 6
+
+Class 432
+Teacher: Ms. S. Srinivas 
+Subject: Data Structures 
+Groups: B.Tech ECE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D112 
+Time: Sunday 5 6
+
+Class 305
+Teacher: Dr. P. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-ML-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A112 
+Time: Wednesday 4 5
+
+Class 338
+Teacher: Ms. G. Ramesh 
+Subject: Heat Transfer 
+Groups: B.Tech MECH-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A111 
+Time: Friday 4 5
+
+Class 302
+Teacher: Ms. S. Naidu 
+Subject: Electrical Machines 
+Groups: B.Tech EEE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D120 
+Time: Monday 2 3
+
+Class 209
+Teacher: Dr. P. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech CSE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Tuesday 7 8
+
+Class 388
+Teacher: Dr. B. Priya 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech Cyber Security-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Tuesday 1 2
+
+Class 363
+Teacher: Dr. K. Srinivas 
+Subject: Power Electronics 
+Groups: B.Tech EEE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D118 
+Time: Saturday 7 8
+
+Class 240
+Teacher: Dr. B. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Tuesday 7 8
+
+Class 321
+Teacher: Dr. V. Murali 
+Subject: Compiler Design 
+Groups: B.Tech CSE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Sunday 5 6
+
+Class 77
+Teacher: Dr. N. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech CSE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B102 
+Time: Wednesday 5 6
+
+Class 579
+Teacher: Dr. P. Krishna 
+Subject: CAD/CAM 
+Groups: B.Tech MECH-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Saturday 7 8
+
+Class 171
+Teacher: Ms. G. Anitha 
+Subject: Database Systems 
+Groups: B.Tech AI-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Wednesday 7 8
+
+Class 367
+Teacher: Ms. G. Ramesh 
+Subject: Software Engineering 
+Groups: B.Tech AI-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Sunday 5 6
+
+Class 176
+Teacher: Ms. S. Srinivas 
+Subject: Database Systems 
+Groups: B.Tech AI-DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A101 
+Time: Tuesday 7 8
+
+Class 14
+Teacher: Ms. G. Karthik 
+Subject: Communicative English 
+Groups: B.Tech DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B109 
+Time: Sunday 5 6
+
+Class 57
+Teacher: Dr. N. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech MECH-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Thursday 3 4
+
+Class 147
+Teacher: Mr. R. Naidu 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C105 
+Time: Monday 2 3
+
+Class 130
+Teacher: Ms. S. Murali 
+Subject: Data Structures 
+Groups: B.Tech CSE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D103 
+Time: Thursday 1 2
+
+Class 547
+Teacher: Dr. K. Naidu 
+Subject: Electrical Measurements 
+Groups: B.Tech EEE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D117 
+Time: Thursday 3 4
+
+Class 169
+Teacher: Prof. H. Krishna 
+Subject: Problem Solving & Programming 
+Groups: B.Tech EEE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Wednesday 7 8
+
+Class 433
+Teacher: Dr. P. Murali 
+Subject: Data Structures 
+Groups: B.Tech AI-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Wednesday 1 2
+
+Class 592
+Teacher: Mr. R. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech EEE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B122 
+Time: Saturday 7 8
+
+Class 42
+Teacher: Ms. S. Krishna 
+Subject: Communicative English 
+Groups: B.Tech DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Saturday 7 8
+
+Class 613
+Teacher: Ms. G. Priya 
+Subject: Software Engineering 
+Groups: B.Tech AI-DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A104 
+Time: Thursday 5 6
+
+Class 458
+Teacher: Ms. S. Krishna 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D120 
+Time: Friday 4 5
+
+Class 167
+Teacher: Ms. S. Srinivas 
+Subject: Web Technologies 
+Groups: B.Tech CSE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C106 
+Time: Thursday 4 5
+
+Class 417
+Teacher: Dr. P. Rao 
+Subject: Electrical Measurements 
+Groups: B.Tech EEE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Saturday 3 4
+
+Class 378
+Teacher: Dr. B. Prasad 
+Subject: Web Technologies 
+Groups: B.Tech DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Saturday 2 3
+
+Class 425
+Teacher: Prof. H. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Monday 5 6
+
+Class 97
+Teacher: Dr. N. Anitha 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-ML-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Tuesday 4 5
+
+Class 419
+Teacher: Ms. S. Karthik 
+Subject: Engineering Chemistry 
+Groups: B.Tech MECH-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Thursday 3 4
+
+Class 320
+Teacher: Prof. M. Anitha 
+Subject: Data Structures 
+Groups: B.Tech AI-ML-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Saturday 1 2
+
+Class 85
+Teacher: Ms. S. Murali 
+Subject: Applied Physics 
+Groups: B.Tech Cyber Security-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Tuesday 3 4
+
+Class 282
+Teacher: Dr. V. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech MECH-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Saturday 6 7
+
+Class 583
+Teacher: Dr. B. Priya 
+Subject: Data Structures 
+Groups: B.Tech Cyber Security-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Monday 6 7
+
+Class 488
+Teacher: Ms. S. Murali 
+Subject: Operating Systems 
+Groups: B.Tech AI-ML-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C106 
+Time: Saturday 5 6
+
+Class 3
+Teacher: Prof. A. Reddy 
+Subject: Problem Solving & Programming 
+Groups: B.Tech DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Wednesday 1 2
+
+Class 31
+Teacher: Prof. M. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech MECH-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B103 
+Time: Friday 3 4
+
+Class 489
+Teacher: Prof. A. Priya 
+Subject: Applied Physics 
+Groups: B.Tech DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Tuesday 7 8
+
+Class 503
+Teacher: Dr. B. Prasad 
+Subject: Compiler Design 
+Groups: B.Tech AI-DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Sunday 1 2
+
+Class 179
+Teacher: Ms. G. Priya 
+Subject: Data Structures 
+Groups: B.Tech MECH-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Saturday 7 8
+
+Class 600
+Teacher: Dr. K. Lakshmi 
+Subject: Data Structures 
+Groups: B.Tech DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Tuesday 2 3
+
+Class 418
+Teacher: Dr. J. Karthik 
+Subject: Database Systems 
+Groups: B.Tech EEE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A120 
+Time: Saturday 3 4
+
+Class 2
+Teacher: Dr. V. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech CSE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C114 
+Time: Tuesday 6 7
+
+Class 182
+Teacher: Prof. A. Reddy 
+Subject: Data Structures 
+Groups: B.Tech AI-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A120 
+Time: Sunday 7 8
+
+Class 422
+Teacher: Prof. H. Krishna 
+Subject: Software Engineering 
+Groups: B.Tech CSE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D115 
+Time: Friday 3 4
+
+Class 49
+Teacher: Prof. H. Krishna 
+Subject: Problem Solving & Programming 
+Groups: B.Tech Cyber Security-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Friday 7 8
+
+Class 245
+Teacher: Prof. M. Anitha 
+Subject: Problem Solving & Programming 
+Groups: B.Tech ECE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A112 
+Time: Wednesday 2 3
+
+Class 274
+Teacher: Dr. B. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech Cyber Security-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Saturday 4 5
+
+Class 41
+Teacher: Prof. H. Krishna 
+Subject: Distributed Systems 
+Groups: B.Tech Cyber Security-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D113 
+Time: Sunday 5 6
+
+Class 543
+Teacher: Dr. B. Priya 
+Subject: Data Structures 
+Groups: B.Tech AI-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Tuesday 5 6
+
+Class 221
+Teacher: Dr. P. Prasad 
+Subject: Engineering Chemistry 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Sunday 2 3
+
+Class 538
+Teacher: Dr. K. Lakshmi 
+Subject: Data Structures 
+Groups: B.Tech ECE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B103 
+Time: Thursday 6 7
+
+Class 524
+Teacher: Prof. A. Priya 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C109 
+Time: Monday 2 3
+
+Class 269
+Teacher: Prof. H. Priya 
+Subject: Operating Systems 
+Groups: B.Tech MECH-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Thursday 1 2
+
+Class 7
+Teacher: Ms. G. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Monday 5 6
+
+Class 528
+Teacher: Dr. B. Prasad 
+Subject: Database Systems 
+Groups: B.Tech EEE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Thursday 7 8
+
+Class 188
+Teacher: Ms. G. Anitha 
+Subject: Operating Systems 
+Groups: B.Tech AI-ML-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Tuesday 5 6
+
+Class 610
+Teacher: Ms. S. Murali 
+Subject: Data Structures 
+Groups: B.Tech DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Thursday 7 8
+
+Class 323
+Teacher: Prof. A. Suresh 
+Subject: Engineering Chemistry 
+Groups: B.Tech DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Sunday 6 7
+
+Class 596
+Teacher: Dr. N. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech ECE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D116 
+Time: Saturday 3 4
+
+Class 259
+Teacher: Ms. G. Reddy 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Thursday 7 8
+
+Class 129
+Teacher: Dr. J. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D105 
+Time: Wednesday 3 4
+
+Class 149
+Teacher: Dr. V. Venkat 
+Subject: Machine Design 
+Groups: B.Tech MECH-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Friday 6 7
+
+Class 116
+Teacher: Dr. K. Venkat 
+Subject: Electrical Machines 
+Groups: B.Tech EEE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D111 
+Time: Saturday 5 6
+
+Class 12
+Teacher: Dr. V. Suresh 
+Subject: Automobile Engineering 
+Groups: B.Tech MECH-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Thursday 1 2
+
+Class 63
+Teacher: Dr. N. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Monday 3 4
+
+Class 102
+Teacher: Ms. G. Anitha 
+Subject: Data Structures 
+Groups: B.Tech ECE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C119 
+Time: Friday 4 5
+
+Class 307
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Saturday 1 2
+
+Class 482
+Teacher: Prof. M. Anitha 
+Subject: Compiler Design 
+Groups: B.Tech ECE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D110 
+Time: Thursday 7 8
+
+Class 471
+Teacher: Mr. R. Chowdary 
+Subject: Big Data Analytics 
+Groups: B.Tech DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Thursday 1 2
+
+Class 474
+Teacher: Ms. S. Krishna 
+Subject: Communicative English 
+Groups: B.Tech Cyber Security-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C106 
+Time: Friday 1 2
+
+Class 16
+Teacher: Prof. H. Priya 
+Subject: Compiler Design 
+Groups: B.Tech AI-DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C115 
+Time: Thursday 7 8
+
+Class 239
+Teacher: Prof. A. Reddy 
+Subject: Database Systems 
+Groups: B.Tech AI-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A116 
+Time: Friday 5 6
+
+Class 13
+Teacher: Dr. B. Priya 
+Subject: Cloud Computing 
+Groups: B.Tech ECE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D102 
+Time: Saturday 5 6
+
+Class 60
+Teacher: Dr. B. Priya 
+Subject: Data Structures 
+Groups: B.Tech EEE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Sunday 1 2
+
+Class 445
+Teacher: Ms. G. Ramesh 
+Subject: Software Engineering 
+Groups: B.Tech DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D103 
+Time: Wednesday 5 6
+
+Class 26
+Teacher: Ms. S. Karthik 
+Subject: Communicative English 
+Groups: B.Tech MECH-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Tuesday 1 2
+
+Class 546
+Teacher: Dr. K. Krishna 
+Subject: Applied Physics 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B106 
+Time: Tuesday 1 2
+
+Class 19
+Teacher: Prof. H. Venkat 
+Subject: Software Engineering 
+Groups: B.Tech ECE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D110 
+Time: Tuesday 4 5
+
+Class 223
+Teacher: Dr. K. Krishna 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C109 
+Time: Sunday 7 8
+
+Class 601
+Teacher: Prof. H. Venkat 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Friday 1 2
+
+Class 132
+Teacher: Dr. P. Murali 
+Subject: Data Structures 
+Groups: B.Tech AI-ML-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Wednesday 5 6
+
+Class 73
+Teacher: Ms. S. Krishna 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech MECH-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Thursday 6 7
+
+Class 499
+Teacher: Ms. G. Priya 
+Subject: Computer Networks 
+Groups: B.Tech Cyber Security-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C120 
+Time: Tuesday 3 4
+
+Class 194
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech Cyber Security-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Wednesday 1 2
+
+Class 331
+Teacher: Ms. G. Reddy 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-ML-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A105 
+Time: Sunday 5 6
+
+Class 397
+Teacher: Dr. J. Karthik 
+Subject: Software Engineering 
+Groups: B.Tech EEE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B115 
+Time: Monday 1 2
+
+Class 304
+Teacher: Ms. S. Murali 
+Subject: Applied Physics 
+Groups: B.Tech AI-DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D120 
+Time: Friday 1 2
+
+Class 267
+Teacher: Dr. K. Suresh 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Saturday 5 6
+
+Class 84
+Teacher: Prof. A. Priya 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech Cyber Security-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B115 
+Time: Wednesday 5 6
+
+Class 266
+Teacher: Dr. B. Prasad 
+Subject: Communicative English 
+Groups: B.Tech AI-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Friday 1 2
+
+Class 380
+Teacher: Ms. G. Karthik 
+Subject: Communicative English 
+Groups: B.Tech AI-DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B111 
+Time: Monday 3 4
+
+Class 505
+Teacher: Dr. B. Prasad 
+Subject: Applied Physics 
+Groups: B.Tech AI-DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Saturday 7 8
+
+Class 389
+Teacher: Dr. V. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech AI-ML-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B108 
+Time: Friday 3 4
+
+Class 494
+Teacher: Dr. J. Karthik 
+Subject: Computer Networks 
+Groups: B.Tech Cyber Security-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Sunday 3 4
+
+Class 391
+Teacher: Dr. K. Krishna 
+Subject: Applied Physics 
+Groups: B.Tech AI-DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Saturday 3 4
+
+Class 214
+Teacher: Dr. N. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech Cyber Security-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Tuesday 7 8
+
+Class 529
+Teacher: Prof. H. Priya 
+Subject: Database Systems 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B112 
+Time: Saturday 1 2
+
+Class 602
+Teacher: Prof. H. Priya 
+Subject: Database Systems 
+Groups: B.Tech MECH-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C106 
+Time: Sunday 7 8
+
+Class 516
+Teacher: Dr. K. Suresh 
+Subject: Engineering Chemistry 
+Groups: B.Tech MECH-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D121 
+Time: Wednesday 4 5
+
+Class 393
+Teacher: Prof. H. Anitha 
+Subject: Network Analysis 
+Groups: B.Tech ECE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Wednesday 4 5
+
+Class 158
+Teacher: Dr. P. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech AI-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Thursday 5 6
+
+Class 148
+Teacher: Prof. A. Priya 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech EEE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Tuesday 2 3
+
+Class 44
+Teacher: Ms. S. Karthik 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A120 
+Time: Wednesday 4 5
+
+Class 544
+Teacher: Dr. P. Krishna 
+Subject: Electrical Machines 
+Groups: B.Tech EEE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Tuesday 3 4
+
+Class 184
+Teacher: Prof. H. Priya 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B111 
+Time: Sunday 5 6
+
+Class 566
+Teacher: Dr. B. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Sunday 3 4
+
+Class 278
+Teacher: Prof. H. Venkat 
+Subject: Data Structures 
+Groups: B.Tech Cyber Security-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Monday 3 4
+
+Class 567
+Teacher: Prof. A. Priya 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Monday 5 6
+
+Class 349
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Friday 7 8
+
+Class 20
+Teacher: Dr. P. Ramesh 
+Subject: Natural Language Processing 
+Groups: B.Tech AI-DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B121 
+Time: Friday 3 4
+
+Class 262
+Teacher: Ms. S. Srinivas 
+Subject: Data Structures 
+Groups: B.Tech MECH-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Thursday 6 7
+
+Class 532
+Teacher: Dr. J. Karthik 
+Subject: Web Technologies 
+Groups: B.Tech AI-ML-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B101 
+Time: Tuesday 3 4
+
+Class 368
+Teacher: Ms. G. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Thursday 1 2
+
+Class 398
+Teacher: Ms. G. Naidu 
+Subject: Applied Physics 
+Groups: B.Tech ECE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Friday 5 6
+
+Class 348
+Teacher: Dr. B. Prasad 
+Subject: Computer Networks 
+Groups: B.Tech AI-DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Monday 1 2
+
+Class 556
+Teacher: Dr. J. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech ECE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C111 
+Time: Friday 2 3
+
+Class 377
+Teacher: Ms. G. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech EEE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Friday 1 2
+
+Class 439
+Teacher: Ms. G. Reddy 
+Subject: Communicative English 
+Groups: B.Tech ECE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Tuesday 4 5
+
+Class 173
+Teacher: Dr. B. Priya 
+Subject: Software Engineering 
+Groups: B.Tech DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B109 
+Time: Friday 2 3
+
+Class 451
+Teacher: Prof. M. Naidu 
+Subject: Fluid Mechanics 
+Groups: B.Tech MECH-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Friday 6 7
+
+Class 52
+Teacher: Prof. M. Anitha 
+Subject: Distributed Systems 
+Groups: B.Tech ECE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Tuesday 4 5
+
+Class 456
+Teacher: Ms. G. Anitha 
+Subject: Database Systems 
+Groups: B.Tech CSE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B120 
+Time: Saturday 7 8
+
+Class 190
+Teacher: Dr. K. Suresh 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Friday 3 4
+
+Class 75
+Teacher: Mr. R. Naidu 
+Subject: Deep Learning 
+Groups: B.Tech AI-DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C113 
+Time: Tuesday 7 8
+
+Class 350
+Teacher: Dr. B. Priya 
+Subject: Design & Analysis of Algorithms 
+Groups: B.Tech AI-ML-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A107 
+Time: Monday 4 5
+
+Class 156
+Teacher: Prof. A. Reddy 
+Subject: Operating Systems 
+Groups: B.Tech AI-DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A105 
+Time: Saturday 3 4
+
+Class 536
+Teacher: Prof. H. Venkat 
+Subject: Distributed Systems 
+Groups: B.Tech AI-DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Wednesday 5 6
+
+Class 191
+Teacher: Prof. A. Suresh 
+Subject: Communicative English 
+Groups: B.Tech AI-DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A122 
+Time: Wednesday 4 5
+
+Class 155
+Teacher: Dr. J. Karthik 
+Subject: Software Engineering 
+Groups: B.Tech AI-ML-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Thursday 3 4
+
+Class 607
+Teacher: Dr. N. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech MECH-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A114 
+Time: Thursday 1 2
+
+Class 353
+Teacher: Dr. B. Priya 
+Subject: Database Systems 
+Groups: B.Tech MECH-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A106 
+Time: Wednesday 2 3
+
+Class 346
+Teacher: Mr. R. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech AI-DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Monday 6 7
+
+Class 371
+Teacher: Ms. S. Murali 
+Subject: Cloud Computing 
+Groups: B.Tech Cyber Security-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Friday 3 4
+
+Class 335
+Teacher: Dr. K. Krishna 
+Subject: Applied Physics 
+Groups: B.Tech AI-ML-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Thursday 5 6
+
+Class 100
+Teacher: Prof. H. Venkat 
+Subject: Web Technologies 
+Groups: B.Tech ECE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D108 
+Time: Saturday 3 4
+
+Class 295
+Teacher: Dr. V. Murali 
+Subject: Data Structures 
+Groups: B.Tech Cyber Security-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A111 
+Time: Monday 5 6
+
+Class 345
+Teacher: Prof. A. Priya 
+Subject: Engineering Chemistry 
+Groups: B.Tech EEE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D103 
+Time: Tuesday 5 6
+
+Class 495
+Teacher: Dr. N. Chowdary 
+Subject: Applied Physics 
+Groups: B.Tech DS-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Tuesday 3 4
+
+Class 256
+Teacher: Dr. J. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech Cyber Security-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B102 
+Time: Tuesday 5 6
+
+Class 201
+Teacher: Dr. J. Karthik 
+Subject: Web Technologies 
+Groups: B.Tech AI-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D116 
+Time: Wednesday 5 6
+
+Class 28
+Teacher: Prof. A. Reddy 
+Subject: Database Systems 
+Groups: B.Tech MECH-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Thursday 4 5
+
+Class 119
+Teacher: Mr. R. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech MECH-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Tuesday 3 4
+
+Class 469
+Teacher: Ms. G. Rao 
+Subject: Applied Physics 
+Groups: B.Tech DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C103 
+Time: Friday 3 4
+
+Class 237
+Teacher: Ms. S. Murali 
+Subject: Software Engineering 
+Groups: B.Tech AI-ML-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B115 
+Time: Tuesday 7 8
+
+Class 452
+Teacher: Ms. G. Rao 
+Subject: Embedded Systems 
+Groups: B.Tech ECE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A114 
+Time: Thursday 5 6
+
+Class 384
+Teacher: Mr. R. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-ML-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C120 
+Time: Thursday 6 7
+
+Class 315
+Teacher: Prof. M. Anitha 
+Subject: Cloud Computing 
+Groups: B.Tech AI-DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C121 
+Time: Monday 1 2
+
+Class 46
+Teacher: Ms. G. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech Cyber Security-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C101 
+Time: Sunday 3 4
+
+Class 226
+Teacher: Prof. A. Reddy 
+Subject: Computer Networks 
+Groups: B.Tech ECE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D103 
+Time: Saturday 1 2
+
+Class 431
+Teacher: Ms. G. Priya 
+Subject: Database Systems 
+Groups: B.Tech AI-DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Saturday 3 4
+
+Class 446
+Teacher: Dr. J. Srinivas 
+Subject: Electrical Measurements 
+Groups: B.Tech EEE-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D111 
+Time: Monday 2 3
+
+Class 249
+Teacher: Prof. H. Venkat 
+Subject: Operating Systems 
+Groups: B.Tech Cyber Security-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C103 
+Time: Saturday 6 7
+
+Class 219
+Teacher: Prof. H. Krishna 
+Subject: Database Systems 
+Groups: B.Tech ECE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Tuesday 3 4
+
+Class 264
+Teacher: Dr. P. Murali 
+Subject: Database Systems 
+Groups: B.Tech Cyber Security-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A114 
+Time: Monday 1 2
+
+Class 1
+Teacher: Ms. G. Karthik 
+Subject: Engineering Chemistry 
+Groups: B.Tech Cyber Security-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C117 
+Time: Tuesday 3 4
+
+Class 407
+Teacher: Ms. S. Krishna 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D101 
+Time: Wednesday 3 4
+
+Class 195
+Teacher: Prof. H. Venkat 
+Subject: Database Systems 
+Groups: B.Tech AI-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D102 
+Time: Friday 5 6
+
+Class 502
+Teacher: Ms. G. Naidu 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B117 
+Time: Tuesday 6 7
+
+Class 112
+Teacher: Dr. J. Karthik 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-ML-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Friday 1 2
+
+Class 166
+Teacher: Prof. H. Anitha 
+Subject: Antenna & Wave Propagation 
+Groups: B.Tech ECE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C122 
+Time: Friday 7 8
+
+Class 71
+Teacher: Dr. P. Murali 
+Subject: Computer Networks 
+Groups: B.Tech CSE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Thursday 3 4
+
+Class 275
+Teacher: Prof. M. Anitha 
+Subject: Web Technologies 
+Groups: B.Tech AI-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A110 
+Time: Thursday 1 2
+
+Class 586
+Teacher: Prof. M. Anitha 
+Subject: Data Structures 
+Groups: B.Tech CSE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A103 
+Time: Saturday 7 8
+
+Class 287
+Teacher: Ms. G. Ramesh 
+Subject: Data Structures 
+Groups: B.Tech DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D117 
+Time: Monday 1 2
+
+Class 408
+Teacher: Ms. G. Karthik 
+Subject: Engineering Chemistry 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Wednesday 3 4
+
+Class 337
+Teacher: Dr. K. Suresh 
+Subject: Engineering Chemistry 
+Groups: B.Tech DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B114 
+Time: Sunday 7 8
+
+Class 81
+Teacher: Ms. S. Krishna 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-ML-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D119 
+Time: Monday 6 7
+
+Class 317
+Teacher: Ms. S. Srinivas 
+Subject: Problem Solving & Programming 
+Groups: B.Tech EEE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D117 
+Time: Sunday 1 2
+
+Class 268
+Teacher: Prof. H. Krishna 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Tuesday 7 8
+
+Class 476
+Teacher: Dr. J. Chowdary 
+Subject: Engineering Chemistry 
+Groups: B.Tech ECE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B105 
+Time: Monday 5 6
+
+Class 525
+Teacher: Dr. V. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Thursday 4 5
+
+Class 74
+Teacher: Mr. R. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C104 
+Time: Saturday 3 4
+
+Class 80
+Teacher: Prof. M. Naidu 
+Subject: Fluid Mechanics 
+Groups: B.Tech MECH-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C122 
+Time: Monday 5 6
+
+Class 410
+Teacher: Dr. N. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C104 
+Time: Sunday 7 8
+
+Class 139
+Teacher: Ms. G. Rao 
+Subject: Applied Physics 
+Groups: B.Tech CSE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A115 
+Time: Friday 6 7
+
+Class 356
+Teacher: Dr. B. Prasad 
+Subject: Operating Systems 
+Groups: B.Tech DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B118 
+Time: Tuesday 1 2
+
+Class 96
+Teacher: Dr. N. Lakshmi 
+Subject: Signals and Systems 
+Groups: B.Tech ECE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C120 
+Time: Monday 3 4
+
+Class 276
+Teacher: Ms. G. Reddy 
+Subject: Communicative English 
+Groups: B.Tech CSE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A119 
+Time: Saturday 5 6
+
+Class 465
+Teacher: Ms. S. Srinivas 
+Subject: Database Systems 
+Groups: B.Tech DS-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C122 
+Time: Saturday 1 2
+
+Class 361
+Teacher: Prof. A. Suresh 
+Subject: Applied Physics 
+Groups: B.Tech AI-DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B119 
+Time: Thursday 5 6
+
+Class 56
+Teacher: Prof. M. Karthik 
+Subject: Applied Physics 
+Groups: B.Tech DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Thursday 3 4
+
+Class 252
+Teacher: Ms. G. Priya 
+Subject: Web Technologies 
+Groups: B.Tech Cyber Security-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B121 
+Time: Wednesday 7 8
+
+Class 454
+Teacher: Ms. G. Priya 
+Subject: Data Structures 
+Groups: B.Tech ECE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D103 
+Time: Sunday 5 6
+
+Class 228
+Teacher: Dr. K. Krishna 
+Subject: Engineering Chemistry 
+Groups: B.Tech MECH-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A102 
+Time: Wednesday 5 6
+
+Class 539
+Teacher: Dr. B. Prasad 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech ECE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C112 
+Time: Friday 7 8
+
+Class 79
+Teacher: Mr. R. Priya 
+Subject: Engineering Chemistry 
+Groups: B.Tech AI-ML-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D115 
+Time: Tuesday 5 6
+
+Class 404
+Teacher: Dr. N. Lakshmi 
+Subject: Satellite Communications 
+Groups: B.Tech ECE-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B104 
+Time: Thursday 7 8
+
+Class 58
+Teacher: Dr. K. Reddy 
+Subject: Communicative English 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D105 
+Time: Wednesday 1 2
+
+Class 310
+Teacher: Ms. S. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D113 
+Time: Tuesday 5 6
+
+Class 242
+Teacher: Dr. B. Venkat 
+Subject: Fluid Mechanics 
+Groups: B.Tech MECH-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C109 
+Time: Monday 7 8
+
+Class 98
+Teacher: Dr. V. Murali 
+Subject: Compiler Design 
+Groups: B.Tech AI-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C108 
+Time: Wednesday 3 4
+
+Class 453
+Teacher: Ms. G. Ramesh 
+Subject: Software Engineering 
+Groups: B.Tech AI-ML-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A114 
+Time: Saturday 7 8
+
+Class 27
+Teacher: Dr. P. Chowdary 
+Subject: Communicative English 
+Groups: B.Tech AI-ML-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C119 
+Time: Sunday 4 5
+
+Class 289
+Teacher: Ms. G. Prasad 
+Subject: Network Security 
+Groups: B.Tech Cyber Security-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D104 
+Time: Saturday 1 2
+
+Class 537
+Teacher: Dr. B. Priya 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D118 
+Time: Tuesday 3 4
+
+Class 72
+Teacher: Dr. P. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-ML-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Tuesday 7 8
+
+Class 152
+Teacher: Prof. M. Anitha 
+Subject: Database Systems 
+Groups: B.Tech MECH-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B108 
+Time: Thursday 5 6
+
+Class 352
+Teacher: Ms. S. Murali 
+Subject: Data Structures 
+Groups: B.Tech MECH-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B113 
+Time: Saturday 3 4
+
+Class 286
+Teacher: Dr. P. Krishna 
+Subject: Utilization of Electrical Energy 
+Groups: B.Tech EEE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Wednesday 1 2
+
+Class 70
+Teacher: Dr. P. Krishna 
+Subject: Electrical Machines 
+Groups: B.Tech EEE-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A101 
+Time: Thursday 5 6
+
+Class 224
+Teacher: Dr. K. Suresh 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-DS-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A113 
+Time: Tuesday 7 8
+
+Class 563
+Teacher: Ms. G. Anitha 
+Subject: Data Structures 
+Groups: B.Tech Cyber Security-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D122 
+Time: Wednesday 1 2
+
+Class 91
+Teacher: Dr. V. Murali 
+Subject: Data Structures 
+Groups: B.Tech AI-ML-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A118 
+Time: Saturday 5 6
+
+Class 443
+Teacher: Dr. N. Anitha 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech MECH-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A112 
+Time: Thursday 5 6
+
+Class 54
+Teacher: Prof. A. Suresh 
+Subject: Applied Physics 
+Groups: B.Tech EEE-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B101 
+Time: Friday 2 3
+
+Class 180
+Teacher: Prof. H. Krishna 
+Subject: Database Systems 
+Groups: B.Tech AI-DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A114 
+Time: Thursday 7 8
+
+Class 235
+Teacher: Prof. H. Venkat 
+Subject: Database Systems 
+Groups: B.Tech ECE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A111 
+Time: Wednesday 3 4
+
+Class 421
+Teacher: Prof. H. Venkat 
+Subject: Compiler Design 
+Groups: B.Tech MECH-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C107 
+Time: Wednesday 7 8
+
+Class 301
+Teacher: Mr. R. Priya 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech Cyber Security-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A112 
+Time: Saturday 3 4
+
+Class 558
+Teacher: Prof. H. Venkat 
+Subject: Operating Systems 
+Groups: B.Tech AI-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A122 
+Time: Thursday 5 6
+
+Class 577
+Teacher: Prof. H. Venkat 
+Subject: Problem Solving & Programming 
+Groups: B.Tech AI-ML-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Sunday 7 8
+
+Class 38
+Teacher: Dr. B. Prasad 
+Subject: Problem Solving & Programming 
+Groups: B.Tech CSE-A (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B107 
+Time: Wednesday 5 6
+
+Class 212
+Teacher: Mr. R. Chowdary 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-ML-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C116 
+Time: Wednesday 7 8
+
+Class 339
+Teacher: Dr. P. Priya 
+Subject: Analog Communications 
+Groups: B.Tech ECE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A115 
+Time: Wednesday 6 7
+
+Class 590
+Teacher: Dr. P. Murali 
+Subject: Software Engineering 
+Groups: B.Tech DS-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D106 
+Time: Saturday 3 4
+
+Class 416
+Teacher: Mr. R. Naidu 
+Subject: Applied Physics 
+Groups: B.Tech AI-DS-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C114 
+Time: Thursday 5 6
+
+Class 65
+Teacher: Dr. V. Murali 
+Subject: Database Systems 
+Groups: B.Tech MECH-C (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D114 
+Time: Sunday 1 2
+
+Class 459
+Teacher: Dr. J. Karthik 
+Subject: Data Structures 
+Groups: B.Tech CSE-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B106 
+Time: Thursday 1 2
+
+Class 595
+Teacher: Dr. P. Murali 
+Subject: Problem Solving & Programming 
+Groups: B.Tech Cyber Security-B (Year 1) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A109 
+Time: Friday 3 4
+
+Class 369
+Teacher: Ms. G. Ramesh 
+Subject: Computer Networks 
+Groups: B.Tech DS-B (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A121 
+Time: Sunday 7 8
+
+Class 118
+Teacher: Mr. R. Naidu 
+Subject: Communicative English 
+Groups: B.Tech ECE-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C118 
+Time: Tuesday 5 6
+
+Class 314
+Teacher: Ms. S. Naidu 
+Subject: Control Systems 
+Groups: B.Tech EEE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B120 
+Time: Friday 2 3
+
+Class 50
+Teacher: Dr. V. Ramesh 
+Subject: Information Security 
+Groups: B.Tech Cyber Security-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A117 
+Time: Monday 1 2
+
+Class 225
+Teacher: Dr. J. Karthik 
+Subject: Computer Networks 
+Groups: B.Tech EEE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A122 
+Time: Tuesday 5 6
+
+Class 420
+Teacher: Dr. P. Rao 
+Subject: Power Electronics 
+Groups: B.Tech EEE-C (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C102 
+Time: Monday 4 5
+
+Class 366
+Teacher: Dr. K. Srinivas 
+Subject: Electrical Measurements 
+Groups: B.Tech EEE-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B116 
+Time: Saturday 3 4
+
+Class 21
+Teacher: Ms. G. Priya 
+Subject: Database Systems 
+Groups: B.Tech ECE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D118 
+Time: Wednesday 4 5
+
+Class 434
+Teacher: Prof. A. Anitha 
+Subject: Deep Learning 
+Groups: B.Tech AI-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D109 
+Time: Friday 7 8
+
+Class 280
+Teacher: Prof. H. Krishna 
+Subject: Data Structures 
+Groups: B.Tech EEE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D117 
+Time: Thursday 5 6
+
+Class 93
+Teacher: Dr. K. Lakshmi 
+Subject: Digital Logic Design 
+Groups: B.Tech ECE-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C116 
+Time: Friday 1 2
+
+Class 5
+Teacher: Ms. G. Anitha 
+Subject: Distributed Systems 
+Groups: B.Tech AI-A (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Saturday 1 2
+
+Class 68
+Teacher: Prof. H. Priya 
+Subject: Web Technologies 
+Groups: B.Tech MECH-C (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C103 
+Time: Friday 5 6
+
+Class 183
+Teacher: Dr. K. Krishna 
+Subject: Linear Algebra and Calculus 
+Groups: B.Tech AI-DS-B (Year 4) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room D109 
+Time: Sunday 5 6
+
+Class 351
+Teacher: Dr. J. Krishna 
+Subject: Network Security 
+Groups: B.Tech Cyber Security-A (Year 3) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A108 
+Time: Wednesday 4 5
+
+Class 467
+Teacher: Prof. H. Krishna 
+Subject: Database Systems 
+Groups: B.Tech DS-A (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room A118 
+Time: Monday 5 6
+
+Class 477
+Teacher: Dr. N. Anitha 
+Subject: Communicative English 
+Groups: B.Tech ECE-B (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room C110 
+Time: Saturday 3 4
+
+Class 17
+Teacher: Ms. G. Rao 
+Subject: Applied Physics 
+Groups: B.Tech ECE-C (Year 2) 
+Type: P 
+Duration: 2 hour(s)
+Classroom: Room B110 
+Time: Tuesday 7 8

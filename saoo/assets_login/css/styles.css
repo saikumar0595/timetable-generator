@@ -101,11 +101,14 @@ img{
     border-bottom: 1px solid var(--first-color);
 }
 
-.form__div-one{
+.form__div-one{ 
     margin-bottom: 3rem;
 }
 
-.form__icon{
+.form__icon{ 
+
+
+    \\\
     font-size: 1.5rem;
     color: var(--text-color);
     transition: .3s;
