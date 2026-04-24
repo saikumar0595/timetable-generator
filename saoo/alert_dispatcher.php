@@ -4,7 +4,10 @@
  * Routes alerts to SMS, Browser Notifications, Audio, and Dashboard
  */
 
-session_start();
+// Ensure session is started (check if already active)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 header('Content-Type: application/json');
 
 class AlertDispatcher {

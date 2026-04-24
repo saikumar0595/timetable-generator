@@ -1,10 +1,19 @@
 <?php
-session_start();
+// Ensure session is started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include('db.php');
 
 if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 
 $role = $_SESSION['role'] ?? 'student';
+
+// Helper function to safely access array values
+function get_safe($array, $key, $default = 'N/A') {
+    return $array[$key] ?? $default;
+}
 
 // ... (Keep existing logic for calling Python API) ...
 $base_dir = realpath(__DIR__ . '/../timetable-generator');
@@ -20,7 +29,7 @@ if (isset($_GET['generate']) && $role == 'admin') {
 }
 
 $groups_data = DEMO_MODE ? ($_SESSION['groups'] ?? []) : mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM groups"), MYSQLI_ASSOC);
-$selected_group = $_GET['group'] ?? ($groups_data[0]['name'] ?? null);
+$selected_group = $_GET['group'] ?? (is_array($groups_data) && count($groups_data) > 0 ? $groups_data[0]['name'] : null);
 
 $periods = ["09:30 - 10:20", "10:20 - 11:10", "11:10 - 12:00", "12:00 - 12:50", "01:30 - 02:15", "02:15 - 03:00", "03:00 - 03:45", "03:45 - 04:30"];
 $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -174,27 +183,27 @@ if ($selected_group && !empty($timetable)) {
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 no-print">
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Hard Constraints</p>
-                        <h4 class="text-xl font-bold text-emerald-600"><?php echo $stats['hard_constraints']; ?>%</h4>
+                        <h4 class="text-xl font-bold text-emerald-600"><?php echo get_safe($stats, 'hard_constraints', 0); ?>%</h4>
                         <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2">
-                            <div class="bg-emerald-500 h-1.5 rounded-full" style="width: <?php echo $stats['hard_constraints']; ?>%"></div>
+                            <div class="bg-emerald-500 h-1.5 rounded-full" style="width: <?php echo get_safe($stats, 'hard_constraints', 0); ?>%"></div>
                         </div>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Soft Constraints</p>
-                        <h4 class="text-xl font-bold text-indigo-600"><?php echo $stats['soft_constraints']; ?>%</h4>
+                        <h4 class="text-xl font-bold text-indigo-600"><?php echo get_safe($stats, 'soft_constraints', 0); ?>%</h4>
                         <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2">
-                            <div class="bg-indigo-500 h-1.5 rounded-full" style="width: <?php echo $stats['soft_constraints']; ?>%"></div>
+                            <div class="bg-indigo-500 h-1.5 rounded-full" style="width: <?php echo get_safe($stats, 'soft_constraints', 0); ?>%"></div>
                         </div>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Avg. Group Idle</p>
-                        <h4 class="text-xl font-bold text-slate-800"><?php echo $stats['avg_idle_groups']; ?></h4>
-                        <p class="text-[10px] text-slate-400 mt-1">Total: <?php echo $stats['total_idle_groups']; ?> slots</p>
+                        <h4 class="text-xl font-bold text-slate-800"><?php echo get_safe($stats, 'avg_idle_groups', 0); ?></h4>
+                        <p class="text-[10px] text-slate-400 mt-1">Total: <?php echo get_safe($stats, 'total_idle_groups', 0); ?> slots</p>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Free Hour</p>
-                        <h4 class="text-xl font-bold <?php echo $stats['free_hour_exists'] == 'Yes' ? 'text-emerald-600' : 'text-rose-500'; ?>">
-                            <?php echo $stats['free_hour_exists']; ?>
+                        <h4 class="text-xl font-bold <?php echo get_safe($stats, 'free_hour_exists', 'No') == 'Yes' ? 'text-emerald-600' : 'text-rose-500'; ?>">
+                            <?php echo get_safe($stats, 'free_hour_exists', 'No'); ?>
                         </h4>
                         <p class="text-[10px] text-slate-400 mt-1">Found in week</p>
                     </div>

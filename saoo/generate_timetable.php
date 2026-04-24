@@ -1,5 +1,14 @@
 <?php
-session_start();
+/**
+ * Timetable Generation Handler
+ * Receives POST request and generates timetable via Python API
+ */
+
+// Ensure session is started (check if already active)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include('db.php');
 
 // Only admins can generate
