@@ -120,7 +120,7 @@ class AlertHandler {
     }
 
     /**
-     * Generate and play alert tone
+     * Generate and play alert tone (Siren Style)
      */
     play_alert_tone(ctx, start_time, volume) {
         const now = ctx.currentTime;
@@ -130,18 +130,54 @@ class AlertHandler {
         osc.connect(gain);
         gain.connect(ctx.destination);
 
-        // Alert tone: alternating frequency
-        osc.frequency.setValueAtTime(800, now);
-        osc.frequency.setValueAtTime(1000, now + 0.1);
-        osc.frequency.setValueAtTime(800, now + 0.2);
+        // Siren Effect: Slide frequency from low to high
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.3);
+        osc.frequency.exponentialRampToValueAtTime(440, now + 0.6);
 
         gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(volume, now + 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+        gain.gain.linearRampToValueAtTime(volume, now + 0.1);
+        gain.gain.linearRampToValueAtTime(0, now + 0.6);
 
         osc.start(now);
-        osc.stop(now + 0.5);
+        osc.stop(now + 0.6);
     }
+
+    /**
+     * Show SMS Sent Toast
+     */
+    show_sms_toast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'sms-toast';
+        toast.innerHTML = `<i class="fas fa-sms"></i> <strong>SMS ALERT SENT:</strong> ${message}`;
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e3a8a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 10000;
+            font-size: 14px;
+            animation: fadeInUp 0.5s ease;
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 5000);
+    }
+}
+
+// Add fadeInUp animation
+const styleSheet = document.createElement("style")
+styleSheet.textContent = `
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translate(-50%, 20px); }
+        to { opacity: 1; transform: translate(-50%, 0); }
+    }
+`;
+document.head.appendChild(styleSheet);
 
     /**
      * Show dashboard alert banner

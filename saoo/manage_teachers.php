@@ -69,6 +69,14 @@ if (isset($_GET['delete_teacher'])) {
     header("Location: manage_teachers.php"); exit();
 }
 
+// Include components
+include('components/sidebar.php');
+include('components/header.php');
+include('components/cards.php');
+include('components/table.php');
+include('components/styles.php');
+include('utils_timetable.php');
+
 $teachers = DEMO_MODE ? ($_SESSION['teachers'] ?? []) : [];
 $assignments = $_SESSION['assignments'] ?? [];
 
@@ -85,141 +93,182 @@ function get_teacher_subjects($tid, $assignments) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Teachers | Audisankara University</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Teachers | ChronoGen AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; } </style>
 </head>
 <body class="bg-slate-50 text-slate-800 flex h-screen overflow-hidden">
 
     <!-- Sidebar -->
-    <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-2xl z-20">
-        <div class="h-20 flex items-center px-8 border-b border-slate-800">
-            <div class="w-8 h-8 mr-3">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none"><path d="M50 95C50 95 85 75 85 35V15L50 5L15 15V35C15 75 50 95 50 95Z" fill="#1e3a8a" stroke="#fbbf24" stroke-width="5"/><text x="50" y="55" font-weight="bold" font-size="28" fill="white" text-anchor="middle">A</text></svg>
-            </div>
-            <span class="text-lg font-bold tracking-tight uppercase">Audisankara</span>
-        </div>
-        <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-            <a href="index.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-th-large w-5"></i><span>Dashboard</span></a>
-            <a href="manage_teachers.php" class="flex items-center gap-3 px-4 py-3 bg-indigo-600/10 text-indigo-400 rounded-xl border border-indigo-500/20 shadow-sm"><i class="fas fa-chalkboard-teacher w-5"></i><span>Teachers</span></a>
-            <a href="manage_subjects.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-book w-5"></i><span>Subjects</span></a>
-            <a href="manage_classrooms.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-door-open w-5"></i><span>Classrooms</span></a>
-            <a href="view_timetable.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-calendar-alt w-5"></i><span>Timetable</span></a>
-            <div class="mt-8 border-t border-slate-800 pt-6">
-                <a href="logout.php" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition-all group"><i class="fas fa-sign-out-alt w-5"></i><span>Sign Out</span></a>
-            </div>
-        </nav>
-    </aside>
+    <?php renderSidebar('teachers', $_SESSION['role'] ?? 'admin'); ?>
 
     <main class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50">
-        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10 shadow-sm">
-            <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Faculty Management</h2>
-            <div class="flex items-center gap-4">
-                <a href="legacy_admin.php" class="px-4 py-2 bg-slate-900 text-sky-400 rounded-lg text-xs font-bold border border-sky-900 hover:bg-slate-800 transition"><i class="fas fa-terminal mr-2"></i> Legacy Console</a>
-                <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold"><?= strtoupper(substr($_SESSION['user'], 0, 1)) ?></div>
-            </div>
-        </header>
+        <!-- Header -->
+        <?php renderHeader('Faculty Management', $_SESSION['user'], $_SESSION['role'] ?? 'admin', true); ?>
 
-        <div class="flex-1 overflow-y-auto p-8 pb-20">
-            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+
+        <div class="flex-1 overflow-y-auto p-8 pb-20 fade-in">
+            <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
                 <!-- Form Column -->
                 <div class="xl:col-span-1">
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 sticky top-0">
-                        <h3 class="font-bold text-slate-800 text-xl mb-8"><?= $editing_teacher ? 'Edit' : 'Add New' ?> Teacher</h3>
-                        <form method="POST" class="space-y-5">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 sticky top-24">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
+                                <i class="fas fa-<?= $editing_teacher ? 'user-edit' : 'user-plus' ?> text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-xl"><?= $editing_teacher ? 'Edit' : 'Add New' ?> Faculty</h3>
+                        </div>
+                        
+                        <form method="POST" class="space-y-4">
                             <input type="hidden" name="teacher_id_pk" value="<?= $editing_teacher['id'] ?? 0 ?>">
                             
                             <div>
-                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">University ID</label>
-                                <input type="text" name="univ_id" value="<?= $editing_teacher['univ_id'] ?? '' ?>" placeholder="STAFF@1001" class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">University ID</label>
+                                <input type="text" name="univ_id" value="<?= htmlspecialchars($editing_teacher['univ_id'] ?? '') ?>" placeholder="STAFF@1001" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all focus:bg-white">
                             </div>
                             
                             <div>
-                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Full Name</label>
-                                <input type="text" name="teacher_name" required value="<?= $editing_teacher['name'] ?? '' ?>" placeholder="Dr. Suresh Reddy" class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Full Name</label>
+                                <input type="text" name="teacher_name" required value="<?= htmlspecialchars($editing_teacher['name'] ?? '') ?>" placeholder="Dr. Suresh Reddy" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all focus:bg-white">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Qualification</label>
+                                    <input type="text" name="teacher_qualification" value="<?= htmlspecialchars($editing_teacher['qualification'] ?? '') ?>" placeholder="Ph.D" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all focus:bg-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Experience</label>
+                                    <input type="text" name="teacher_experience" value="<?= htmlspecialchars($editing_teacher['experience'] ?? '') ?>" placeholder="10 Yrs" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all focus:bg-white">
+                                </div>
                             </div>
 
                             <div>
-                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Qualification</label>
-                                <input type="text" name="teacher_qualification" value="<?= $editing_teacher['qualification'] ?? '' ?>" placeholder="Ph.D in AI" class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Email Address</label>
+                                <input type="email" name="teacher_email" value="<?= htmlspecialchars($editing_teacher['email'] ?? '') ?>" placeholder="faculty@univ.edu" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all focus:bg-white">
                             </div>
 
                             <div>
-                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Experience</label>
-                                <input type="text" name="teacher_experience" value="<?= $editing_teacher['experience'] ?? '' ?>" placeholder="15 Years" class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Photo URL</label>
+                                <input type="text" name="teacher_photo" value="<?= htmlspecialchars($editing_teacher['photo'] ?? '') ?>" placeholder="https://..." class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all focus:bg-white">
                             </div>
 
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Email Address</label>
-                                <input type="email" name="teacher_email" value="<?= $editing_teacher['email'] ?? '' ?>" placeholder="suresh@audisankara.ac.in" class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+                            <div class="pt-4">
+                                <button type="submit" name="save_teacher" class="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-indigo-500/20 hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center gap-2">
+                                    <i class="fas fa-check-circle"></i>
+                                    <?= $editing_teacher ? 'Update' : 'Register' ?> Faculty
+                                </button>
+                                <?php if($editing_teacher): ?>
+                                    <a href="manage_teachers.php" class="block text-center text-[10px] text-slate-400 hover:text-indigo-600 mt-4 font-bold uppercase tracking-widest transition-colors">Cancel Editing</a>
+                                <?php endif; ?>
                             </div>
-
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Photo URL</label>
-                                <input type="text" name="teacher_photo" value="<?= $editing_teacher['photo'] ?? '' ?>" placeholder="https://..." class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
-                            </div>
-
-                            <button type="submit" name="save_teacher" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition-all active:scale-95">
-                                <?= $editing_teacher ? 'Update' : 'Register' ?> Faculty Member
-                            </button>
-                            <?php if($editing_teacher): ?>
-                                <a href="manage_teachers.php" class="block text-center text-xs text-slate-400 hover:text-slate-600 mt-2 font-bold">Cancel Editing</a>
-                            <?php endif; ?>
                         </form>
                     </div>
                 </div>
 
                 <!-- Table Column -->
-                <div class="xl:col-span-2">
-                    <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
-                        <table class="w-full text-left">
-                            <thead class="bg-slate-50 text-[10px] uppercase text-slate-400 font-bold tracking-widest">
-                                <tr>
-                                    <th class="px-6 py-5">Faculty</th>
-                                    <th class="px-6 py-5">Experience</th>
-                                    <th class="px-6 py-5">Subjects</th>
-                                    <th class="px-6 py-5 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-50">
-                                <?php foreach($teachers as $t): 
-                                    $t_subs = get_teacher_subjects($t['id'], $assignments);
-                                ?>
-                                <tr class="hover:bg-slate-50/80 transition-colors group">
-                                    <td class="px-6 py-5">
-                                        <div class="flex items-center gap-4">
-                                            <img src="<?= $t['photo'] ?>" class="w-12 h-12 rounded-xl object-cover shadow-sm">
-                                            <div>
-                                                <div class="font-bold text-slate-700 leading-tight"><?= htmlspecialchars($t['name']) ?></div>
-                                                <div class="text-[10px] font-bold text-indigo-500 uppercase"><?= htmlspecialchars($t['univ_id']) ?> • <?= htmlspecialchars($t['qualification'] ?? 'N/A') ?></div>
+                <div class="xl:col-span-3">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="p-6 border-b border-slate-50 flex items-center justify-between bg-slate-50/30">
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-lg">Faculty Directory</h3>
+                                <p class="text-xs text-slate-500 font-medium">Manage and view all registered teachers</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded-full uppercase"><?= count($teachers) ?> Total</span>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50/50 text-[10px] uppercase text-slate-500 font-bold tracking-widest border-b border-slate-100">
+                                    <tr>
+                                        <th class="px-6 py-4">Faculty Member</th>
+                                        <th class="px-6 py-4">Experience</th>
+                                        <th class="px-6 py-4">Subjects</th>
+                                        <th class="px-6 py-4 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-50">
+                                    <?php if(empty($teachers)): ?>
+                                        <tr>
+                                            <td colspan="4" class="px-6 py-20 text-center">
+                                                <div class="flex flex-col items-center">
+                                                    <i class="fas fa-users-slash text-4xl text-slate-200 mb-4"></i>
+                                                    <p class="text-slate-400 font-medium text-sm">No faculty members registered yet.</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php foreach($teachers as $t): 
+                                        $t_subs = get_teacher_subjects($t['id'], $assignments);
+                                        // Calculate workload on the fly for the badge
+                                        $workload = $_SESSION['last_generated_timetable'] ? calculateTeacherWorkload($_SESSION['last_generated_timetable'], $t['name']) : [];
+                                        $t_load = $workload[$t['name']] ?? ['level' => 'N/A', 'color' => '#94a3b8'];
+                                    ?>
+                                    <tr class="hover:bg-slate-50/80 transition-all group">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center gap-4">
+                                                <div class="relative">
+                                                    <img src="<?= htmlspecialchars($t['photo']) ?>" class="w-11 h-11 rounded-xl object-cover shadow-sm border border-slate-200">
+                                                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full" title="Active"></div>
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold text-slate-800 leading-tight"><?= htmlspecialchars($t['name']) ?></div>
+                                                    <div class="flex items-center gap-2 mt-0.5">
+                                                        <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-tight"><?= htmlspecialchars($t['univ_id']) ?></span>
+                                                        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                                                        <span class="text-[10px] font-bold text-slate-400 uppercase"><?= htmlspecialchars($t['qualification'] ?? 'N/A') ?></span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-5 text-sm text-slate-500 font-medium"><?= htmlspecialchars($t['experience'] ?? 'N/A') ?></td>
-                                    <td class="px-6 py-5">
-                                        <div class="flex flex-wrap gap-1">
-                                            <?php foreach(array_slice($t_subs, 0, 3) as $s): ?>
-                                                <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded text-[9px] font-bold border border-indigo-100 uppercase"><?= htmlspecialchars($s) ?></span>
-                                            <?php endforeach; ?>
-                                            <?php if(count($t_subs) > 3): ?>
-                                                <span class="text-[9px] text-slate-400 font-bold">+<?= count($t_subs)-3 ?> more</span>
-                                            <?php endif; ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-5 text-right space-x-2">
-                                        <a href="?edit_teacher=<?= $t['id'] ?>" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors"><i class="fas fa-edit"></i></a>
-                                        <a href="?delete_teacher=<?= $t['id'] ?>" class="p-2 text-slate-400 hover:text-red-600 transition-colors" onclick="return confirm('Erase this record?');"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex flex-col">
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-sm text-slate-700 font-semibold"><?= htmlspecialchars($t['experience'] ?? 'N/A') ?></span>
+                                                    <span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-tighter" style="background-color: <?= $t_load['color'] ?>15; color: <?= $t_load['color'] ?>">
+                                                        <?= $t_load['level'] ?>
+                                                    </span>
+                                                </div>
+                                                <span class="text-[10px] text-slate-400 font-medium uppercase tracking-tight">Experience & Load</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex flex-wrap gap-1.5 max-w-[200px]">
+                                                <?php if(empty($t_subs)): ?>
+                                                    <span class="text-[10px] text-slate-300 italic font-medium">No subjects assigned</span>
+                                                <?php else: ?>
+                                                    <?php foreach(array_slice($t_subs, 0, 3) as $s): ?>
+                                                        <span class="px-2 py-0.5 bg-slate-100 text-slate-600 rounded text-[9px] font-bold border border-slate-200 uppercase truncate max-w-[80px]"><?= htmlspecialchars($s) ?></span>
+                                                    <?php endforeach; ?>
+                                                    <?php if(count($t_subs) > 3): ?>
+                                                        <span class="w-6 h-6 flex items-center justify-center bg-indigo-50 text-indigo-600 rounded-full text-[9px] font-bold border border-indigo-100">+<?= count($t_subs)-3 ?></span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0">
+                                                <a href="?edit_teacher=<?= $t['id'] ?>" class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition-all" title="Edit Faculty">
+                                                    <i class="fas fa-pencil-alt text-xs"></i>
+                                                </a>
+                                                <a href="?delete_teacher=<?= $t['id'] ?>" class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-all" onclick="return confirm('Erase this record?');" title="Delete Faculty">
+                                                    <i class="fas fa-trash-alt text-xs"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </main>
     <script src="assets/js/chatbot.js"></script>
 </body>

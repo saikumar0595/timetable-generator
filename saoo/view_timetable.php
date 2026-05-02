@@ -32,16 +32,37 @@ $groups_data = DEMO_MODE ? ($_SESSION['groups'] ?? []) : mysqli_fetch_all(mysqli
 $selected_group = $_GET['group'] ?? (is_array($groups_data) && count($groups_data) > 0 ? $groups_data[0]['name'] : null);
 
 $periods = ["09:30 - 10:20", "10:20 - 11:10", "11:10 - 12:00", "12:00 - 12:50", "01:30 - 02:15", "02:15 - 03:00", "03:00 - 03:45", "03:45 - 04:30"];
-$days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+$days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 // PERFORMANCE OPTIMIZATION: Pre-filter timetable for the selected group
 $group_timetable = [];
+$printed_sessions = []; // DEDUPLICATION TRACKER
+
 if ($selected_group && !empty($timetable)) {
     foreach ($days as $day) {
         foreach ($periods as $period) {
             foreach (($timetable[$day][$period] ?? []) as $cls) {
                 if (in_array($selected_group, $cls['groups'])) {
-                    $group_timetable[$day][$period] = $cls;
+                    // CLEAN TEXT FIELDS to prevent alignment issues
+                    $subject = trim(preg_replace('/\s+/', ' ', $cls['subject']));
+                    $teacher = trim(preg_replace('/\s+/', ' ', $cls['teacher']));
+                    $room = trim(preg_replace('/\s+/', ' ', $cls['room']));
+                    
+                    // Create a unique key for deduplication (day + subject + teacher + room)
+                    // We don't include period here because the same class might span multiple periods
+                    // and we only want to show it once or handle its duration.
+                    $session_id = md5($day . $subject . $teacher . $room);
+                    
+                    if (!isset($printed_sessions[$session_id])) {
+                        $group_timetable[$day][$period] = [
+                            'subject' => $subject,
+                            'teacher' => $teacher,
+                            'room' => $room,
+                            'type' => $cls['type'],
+                            'session_id' => $session_id
+                        ];
+                        $printed_sessions[$session_id] = true;
+                    }
                     break;
                 }
             }
@@ -54,7 +75,7 @@ if ($selected_group && !empty($timetable)) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Generated Timetable | Audisankara University</title>
+    <title>Generated Timetable | AUDISANKARA TEACHERS GOLE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -248,16 +269,24 @@ if ($selected_group && !empty($timetable)) {
 
                                             $period = $periods[$i];
                                             $cell = $group_timetable[$day][$period] ?? null;
+                                            
+                                            // LOGIC TO FILL THE SECOND HOUR OF A 2-HOUR SESSION
+                                            if (!$cell && $i > 0) {
+                                                $prev_period = $periods[$i-1];
+                                                $cell = $group_timetable[$day][$prev_period] ?? null;
+                                                // Only stretch if it's not the lunch break boundary
+                                                if ($i == 4) $cell = null; 
+                                            }
                                     ?>
                                     <td class="px-2 py-3 border-r border-slate-100 last:border-0 h-24 align-top">
                                         <?php if ($cell): ?>
                                             <div class="h-full p-3 rounded-xl <?php echo $cell['type'] == 'P' ? 'bg-indigo-50 border border-indigo-100' : 'bg-emerald-50 border border-emerald-100'; ?> transition hover:shadow-md cursor-default group">
                                                 <div class="font-bold <?php echo $cell['type'] == 'P' ? 'text-indigo-700' : 'text-emerald-700'; ?> text-sm mb-1 leading-tight">
-                                                    <?php echo htmlspecialchars($cell['subject']); ?>
+                                                    <?php echo htmlspecialchars($cell['teacher']); ?>
                                                 </div>
                                                 <div class="text-xs text-slate-500 flex items-center gap-1 mb-1">
-                                                    <i class="fas fa-user-circle opacity-50"></i>
-                                                    <?php echo htmlspecialchars($cell['teacher']); ?>
+                                                    <i class="fas fa-book-open opacity-50"></i>
+                                                    <?php echo htmlspecialchars($cell['subject']); ?>
                                                 </div>
                                                 <div class="flex justify-between items-center mt-2">
                                                     <div class="text-[10px] font-medium text-slate-400 bg-white px-2 py-0.5 rounded-full border border-slate-100">
@@ -269,8 +298,8 @@ if ($selected_group && !empty($timetable)) {
                                                 </div>
                                             </div>
                                         <?php else: ?>
-                                            <div class="h-full flex items-center justify-center text-slate-200">
-                                                <i class="fas fa-minus text-xs opacity-20"></i>
+                                            <div class="h-full flex items-center justify-center text-slate-200 bg-slate-50/50 rounded-xl border border-dashed border-slate-200">
+                                                <span class="text-[10px] font-bold uppercase tracking-widest opacity-30">Gap Detected</span>
                                             </div>
                                         <?php endif; ?>
                                     </td>
@@ -373,6 +402,21 @@ if ($selected_group && !empty($timetable)) {
                 Notification.requestPermission();
             }
         }
+    </script>
+    <script src="assets/js/alert_handler.js"></script>
+    <script>
+        // Check for alerts every 10 seconds (faster for SMS/Alarm)
+        setInterval(() => {
+            fetch('notification_service.php')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.sms_sent && window.alertHandler) {
+                        window.alertHandler.show_sms_toast(data.sms_sent);
+                    }
+                });
+        }, 10000);
+        // Initial check
+        fetch('notification_service.php');
     </script>
 </body>
 </html>

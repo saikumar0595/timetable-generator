@@ -1,24 +1,25 @@
 <?php
-// Audisankara University - Logic-Verified Institutional Dataset (R20) - ZERO FREE HOUR EDITION
+// AUDISANKARA TEACHERS GOLE - Logic-Verified Institutional Dataset (R20) - ZERO FREE HOUR EDITION
 
-// 1. Logic-Based Teacher Pool (124 Specialized Faculty)
+// 1. Logic-Based Teacher Pool (400+ Specialized Faculty)
 $teachers = [];
 $tid = 1;
 $depts_config = [
-    'H&S' => 30, 'CSE' => 20, 'ECE' => 16, 'EEE' => 12, 'MECH' => 12,
-    'AI' => 10, 'ML' => 8, 'DS' => 8, 'Cyber Security' => 8
+    'H&S' => 100, 'CSE' => 80, 'ECE' => 60, 'EEE' => 40, 'MECH' => 40,
+    'AI' => 20, 'ML' => 20, 'DS' => 20, 'Cyber Security' => 20
 ];
 
-$firstNames = ['Dr. K.', 'Dr. P.', 'Prof. M.', 'Dr. B.', 'Ms. S.', 'Mr. R.', 'Dr. V.', 'Prof. A.', 'Dr. N.', 'Ms. G.', 'Dr. J.', 'Prof. H.'];
-$lastNames = ['Suresh', 'Ramesh', 'Lakshmi', 'Venkat', 'Anitha', 'Prasad', 'Krishna', 'Priya', 'Reddy', 'Srinivas', 'Murali', 'Karthik', 'Rao', 'Naidu', 'Chowdary'];
+$firstNames = ['Dr. K.', 'Dr. P.', 'Prof. M.', 'Dr. B.', 'Ms. S.', 'Mr. R.', 'Dr. V.', 'Prof. A.', 'Dr. N.', 'Ms. G.', 'Dr. J.', 'Prof. H.', 'Dr. S.', 'Dr. T.', 'Mr. V.', 'Ms. L.'];
+$lastNames = ['Suresh', 'Ramesh', 'Lakshmi', 'Venkat', 'Anitha', 'Prasad', 'Krishna', 'Priya', 'Reddy', 'Srinivas', 'Murali', 'Karthik', 'Rao', 'Naidu', 'Chowdary', 'Kumar', 'Varma', 'Patel', 'Sharma', 'Iyer'];
 
 foreach ($depts_config as $dept => $count) {
     for ($i = 0; $i < $count; $i++) {
         $name = $firstNames[array_rand($firstNames)] . ' ' . $lastNames[array_rand($lastNames)];
         $teachers[] = [
-            'id' => $tid, 'univ_id' => 'STAFF@' . (1000 + $tid), 'name' => $name, 'dept' => $dept,
+            'id' => $tid, 'univ_id' => 'STAFF@' . (1000 + $tid), 'name' => $name . " ($tid)", 'dept' => $dept,
             'role' => ($i % 4 == 0 ? 'Professor' : 'Asst. Professor') . " ($dept)",
-            'email' => strtolower(str_replace([' ', '.'], '', $name)) . rand(10,99) . "@audisankara.ac.in",
+            'email' => strtolower(str_replace([' ', '.'], '', $name)) . $tid . "@audisankara.ac.in",
+            'phone' => (rand(7,9) . rand(100,999) . rand(100,999) . rand(100,999)),
             'qualification' => ($i % 4 == 0 ? 'Ph.D' : 'M.Tech'), 'experience' => rand(5, 28) . ' Years',
             'photo' => "https://i.pravatar.cc/150?u=tid" . $tid
         ];
@@ -26,67 +27,78 @@ foreach ($depts_config as $dept => $count) {
     }
 }
 
-// 2. Expanded R20 Subject Catalog (Increased for No-Free-Hours)
-$subjects = [
-    ['id' => 1, 'name' => 'Linear Algebra and Calculus', 'dept' => 'H&S', 'year' => 1],
-    ['id' => 2, 'name' => 'Applied Physics', 'dept' => 'H&S', 'year' => 1],
-    ['id' => 3, 'name' => 'Communicative English', 'dept' => 'H&S', 'year' => 1],
-    ['id' => 4, 'name' => 'Engineering Chemistry', 'dept' => 'H&S', 'year' => 1],
-    ['id' => 5, 'name' => 'Problem Solving & Programming', 'dept' => 'CSE', 'year' => 1],
-    ['id' => 6, 'name' => 'Data Structures', 'dept' => 'CSE', 'year' => 2],
-    ['id' => 7, 'name' => 'Database Systems', 'dept' => 'CSE', 'year' => 2],
-    ['id' => 8, 'name' => 'Operating Systems', 'dept' => 'CSE', 'year' => 3],
-    ['id' => 9, 'name' => 'Computer Networks', 'dept' => 'CSE', 'year' => 3],
-    ['id' => 10, 'name' => 'Software Engineering', 'dept' => 'CSE', 'year' => 2],
-    ['id' => 11, 'name' => 'Design & Analysis of Algorithms', 'dept' => 'CSE', 'year' => 3],
-    ['id' => 12, 'name' => 'Network Analysis', 'dept' => 'ECE', 'year' => 2],
-    ['id' => 13, 'name' => 'Digital Logic Design', 'dept' => 'ECE', 'year' => 2],
-    ['id' => 14, 'name' => 'Analog Communications', 'dept' => 'ECE', 'year' => 3],
-    ['id' => 15, 'name' => 'Signals and Systems', 'dept' => 'ECE', 'year' => 2],
-    ['id' => 16, 'name' => 'Power Systems', 'dept' => 'EEE', 'year' => 3],
-    ['id' => 17, 'name' => 'Electrical Machines', 'dept' => 'EEE', 'year' => 2],
-    ['id' => 18, 'name' => 'Control Systems', 'dept' => 'EEE', 'year' => 3],
-    ['id' => 19, 'name' => 'Thermodynamics', 'dept' => 'MECH', 'year' => 2],
-    ['id' => 20, 'name' => 'Machine Design', 'dept' => 'MECH', 'year' => 3],
-    ['id' => 21, 'name' => 'Fluid Mechanics', 'dept' => 'MECH', 'year' => 2],
-    ['id' => 22, 'name' => 'Artificial Intelligence', 'dept' => 'AI', 'year' => 3],
-    ['id' => 23, 'name' => 'Machine Learning', 'dept' => 'ML', 'year' => 4],
-    ['id' => 24, 'name' => 'Data Science Foundations', 'dept' => 'DS', 'year' => 3],
-    ['id' => 25, 'name' => 'Ethical Hacking', 'dept' => 'Cyber Security', 'year' => 4],
-    ['id' => 26, 'name' => 'Network Security', 'dept' => 'Cyber Security', 'year' => 3],
-    ['id' => 27, 'name' => 'Deep Learning', 'dept' => 'AI', 'year' => 4],
-    ['id' => 28, 'name' => 'Big Data Analytics', 'dept' => 'DS', 'year' => 4],
-    ['id' => 29, 'name' => 'Digital Image Processing', 'dept' => 'ECE', 'year' => 4],
-    ['id' => 30, 'name' => 'VLSI Design', 'dept' => 'ECE', 'year' => 4],
-    ['id' => 31, 'name' => 'Compiler Design', 'dept' => 'CSE', 'year' => 3],
-    ['id' => 32, 'name' => 'Web Technologies', 'dept' => 'CSE', 'year' => 3],
-    ['id' => 33, 'name' => 'Mobile Application Development', 'dept' => 'CSE', 'year' => 4],
-    ['id' => 34, 'name' => 'Distributed Systems', 'dept' => 'CSE', 'year' => 4],
-    ['id' => 35, 'name' => 'Computer Graphics', 'dept' => 'CSE', 'year' => 3],
-    ['id' => 36, 'name' => 'Digital Signal Processing', 'dept' => 'ECE', 'year' => 3],
-    ['id' => 37, 'name' => 'Microprocessors & Microcontrollers', 'dept' => 'ECE', 'year' => 3],
-    ['id' => 38, 'name' => 'Embedded Systems', 'dept' => 'ECE', 'year' => 4],
-    ['id' => 39, 'name' => 'Antenna & Wave Propagation', 'dept' => 'ECE', 'year' => 3],
-    ['id' => 40, 'name' => 'Satellite Communications', 'dept' => 'ECE', 'year' => 4],
-    ['id' => 41, 'name' => 'Utilization of Electrical Energy', 'dept' => 'EEE', 'year' => 4],
-    ['id' => 42, 'name' => 'Power Electronics', 'dept' => 'EEE', 'year' => 3],
-    ['id' => 43, 'name' => 'Renewable Energy Sources', 'dept' => 'EEE', 'year' => 4],
-    ['id' => 44, 'name' => 'Electrical Measurements', 'dept' => 'EEE', 'year' => 2],
-    ['id' => 45, 'name' => 'Heat Transfer', 'dept' => 'MECH', 'year' => 3],
-    ['id' => 46, 'name' => 'CAD/CAM', 'dept' => 'MECH', 'year' => 4],
-    ['id' => 47, 'name' => 'Robotics', 'dept' => 'MECH', 'year' => 4],
-    ['id' => 48, 'name' => 'Automobile Engineering', 'dept' => 'MECH', 'year' => 4],
-    ['id' => 49, 'name' => 'Natural Language Processing', 'dept' => 'AI', 'year' => 4],
-    ['id' => 50, 'name' => 'Reinforcement Learning', 'dept' => 'ML', 'year' => 4],
-    ['id' => 51, 'name' => 'Cloud Computing', 'dept' => 'CSE', 'year' => 4],
-    ['id' => 52, 'name' => 'Information Security', 'dept' => 'Cyber Security', 'year' => 4]
+// 2. Comprehensive B.Tech Subject Catalog (300+ Subjects)
+$subjects_data = [
+    'H&S' => [
+        1 => [
+            'Engineering Mathematics I', 'Engineering Physics', 'Engineering Chemistry', 
+            'Programming for Problem Solving', 'Engineering Graphics & Design', 
+            'Basic Electrical Engineering', 'Basic Electronics Engineering', 
+            'Engineering Mechanics', 'English for Communication', 'Environmental Science',
+            'Workshop Practice', 'Physics Lab', 'Chemistry Lab', 'Programming Lab', 
+            'Basic Electrical Lab', 'Engineering Mathematics II', 'Biology for Engineers', 
+            'Constitution of India', 'Design Thinking', 'Universal Human Values',
+            'Soft Skills Training', 'Aptitude & Logical Reasoning', 
+            'Personality Development', 'Technical Report Writing', 'English Lab'
+        ]
+    ],
+    'CSE' => [
+        2 => ['Data Structures', 'Logic Design', 'Discrete Mathematics', 'Object-Oriented Programming (Java)', 'Computer Organization', 'Data Structures Lab'],
+        3 => ['Operating Systems', 'Database Management Systems', 'Software Engineering', 'Theory of Computation', 'Design and Analysis of Algorithms', 'Computer Networks', 'Operating Systems Lab', 'Database Lab', 'Algorithms Lab'],
+        4 => ['Compiler Design', 'Artificial Intelligence', 'Web Technologies', 'Microprocessors and Microcontrollers', 'Machine Learning', 'Cryptography & Network Security', 'AI & ML Lab', 'Web Programming Lab', 'Networking Lab'],
+        'Elective' => ['Data Warehousing & Data Mining', 'Cloud Computing', 'Cyber Security', 'Internet of Things (IoT)', 'Deep Learning', 'Big Data Analytics', 'Mobile Application Development', 'Software Testing', 'Computer Graphics', 'Distributed Systems', 'Natural Language Processing', 'Blockchain Technology', 'Human-Computer Interaction', 'Digital Image Processing', 'Parallel Computing', 'Soft Computing', 'Advanced Java', 'R Programming']
+    ],
+    'ECE' => [
+        2 => ['Signals and Systems', 'Network Theory', 'Electronic Devices', 'Analog Circuits', 'Digital System Design', 'Analog Circuits Lab', 'Digital Electronics Lab'],
+        3 => ['Electromagnetic Waves', 'Control Systems', 'Analog Communication', 'Digital Communication', 'Digital Signal Processing', 'Microprocessor Lab', 'Communication Systems Lab'],
+        4 => ['VLSI Design', 'Antennas and Propagation', 'Microwave Engineering', 'Optical Fiber Communication', 'Embedded Systems', 'DSP Lab', 'Electronic Measurement & Instrumentation'],
+        'Elective' => ['Wireless Communication', 'Satellite Communication', 'Radar Systems', 'Information Theory and Coding', 'Nano Electronics', 'Mixed Signal Design', 'CMOS Layout Design', 'Probability & Random Processes', 'Linear Integrated Circuits']
+    ],
+    'MECH' => [
+        2 => ['Thermodynamics', 'Fluid Mechanics', 'Strength of Materials', 'Material Science', 'Kinematics of Machines', 'Material Testing Lab', 'Fluid Mechanics Lab'],
+        3 => ['Manufacturing Processes', 'Machine Design I', 'Dynamics of Machines', 'Heat and Mass Transfer', 'Applied Thermodynamics', 'Machine Shop Lab', 'Heat Transfer Lab'],
+        4 => ['Fluid Machinery', 'Machine Design II', 'Metrology & Quality Control', 'Internal Combustion Engines', 'CAD/CAM', 'Dynamics Lab', 'Power Plant Engineering'],
+        'Elective' => ['Finite Element Analysis', 'Operations Research', 'Automobile Engineering', 'Refrigeration & Air Conditioning', 'Mechatronics', 'Robotics', 'Turbo Machinery', 'Industrial Engineering', 'Production Planning', 'Non-Conventional Energy Sources', 'Total Quality Management', 'Unconventional Machining', 'Mechanical Vibrations', 'Tribology']
+    ],
+    'EEE' => [
+        2 => ['Electric Circuit Theory', 'Electrical Machines I (DC)', 'Electromagnetic Fields', 'Electrical Measurements', 'Machine Lab I'],
+        3 => ['Electrical Machines II (AC)', 'Power Systems I', 'Control Systems I', 'Power Electronics', 'Machine Lab II', 'Control Systems Lab'],
+        4 => ['Power Systems II', 'High Voltage Engineering', 'Switchgear & Protection', 'Digital Signal Processing (EE)', 'Electric Drives', 'Power Electronics Lab', 'Power Systems Lab'],
+        'Elective' => ['Renewable Energy Systems', 'Smart Grid', 'Utilization of Electrical Energy', 'Control Systems II', 'Modern Control Theory', 'FACTS Controllers', 'Power System Operation & Control', 'Power Quality', 'Electrical Machine Design', 'Advanced Power Systems', 'Digital Protection', 'Energy Auditing']
+    ]
 ];
 
-// 3. 88 Groups & Alphanumeric Classrooms
+$subjects = [];
+$sid = 1;
+foreach ($subjects_data as $dept => $years) {
+    foreach ($years as $year => $list) {
+        foreach ($list as $sname) {
+            $subjects[] = [
+                'id' => $sid++,
+                'name' => $sname,
+                'dept' => (in_array($dept, ['CSE', 'ECE', 'EEE', 'MECH', 'H&S']) ? $dept : 'CSE'),
+                'year' => is_numeric($year) ? $year : rand(1, 4)
+            ];
+        }
+    }
+}
+
+// Ensure 300 subjects
+while(count($subjects) < 300) {
+    $subjects[] = [
+        'id' => $sid++,
+        'name' => "Specialization Module " . $sid,
+        'dept' => 'CSE',
+        'year' => rand(1,4)
+    ];
+}
+
+// 3. 116 Groups & Alphanumeric Classrooms
 $groups = []; $classrooms = []; $gid = 1; $cid = 1;
 $branch_config = [
-    'CSE' => ['A', 'B', 'C'], 'ECE' => ['A', 'B', 'C'], 'EEE' => ['A', 'B', 'C'], 'MECH' => ['A', 'B', 'C'],
-    'AI' => ['A', 'B'], 'AI-ML' => ['A', 'B'], 'AI-DS' => ['A', 'B'], 'DS' => ['A', 'B'], 'Cyber Security' => ['A', 'B']
+    'CSE' => ['A', 'B', 'C', 'ADV-A'], 'ECE' => ['A', 'B', 'C', 'ADV-A'], 
+    'EEE' => ['A', 'B', 'ADV-A'], 'MECH' => ['A', 'B', 'ADV-A'],
+    'AI' => ['A', 'B', 'ADV-A']
 ];
 $floor_counters = ['A' => 101, 'B' => 101, 'C' => 101, 'D' => 101];
 
@@ -96,39 +108,35 @@ foreach ($branch_config as $branch => $sections) {
             $group_name = "B.Tech $branch-$sec (Year $y)";
             $floor = ['A', 'B', 'C', 'D'][$y-1];
             $room_num = $floor . ($floor_counters[$floor]++);
-            
-            $groups[] = ['id' => $gid++, 'name' => $group_name, 'branch' => $branch, 'year' => $y, 'room' => "Room $room_num"];
-            
-            $classrooms[] = [
-                'id' => $cid++, 'name' => "Room $room_num", 'desc' => "$branch-$sec Home Room", 'type' => 'LectureHall',
-                'capacity' => (in_array($branch, ['CSE', 'ECE', 'EEE', 'MECH']) ? 65 : 60)
-            ];
+            $groups[] = ['id' => $gid++, 'name' => $group_name, 'branch' => $branch, 'year' => $y];
+            $classrooms[] = ['id' => $cid++, 'name' => "Room $room_num", 'type' => 'LectureHall', 'capacity' => 60];
         }
     }
 }
 
-// 4. Assignments (INCREASED LOAD: 7 subjects per group)
+// 4. Assignments (FULL 24 SLOT COVERAGE)
 $assignments = []; $aid = 1;
 foreach ($groups as $g) {
-    $year = $g['year']; $branch = $g['branch'];
-    
-    $targets = array_filter($subjects, function($s) use ($branch, $year) {
-        if ($year == 1) return $s['year'] == 1;
-        $mapped_dept = (strpos($branch, 'AI') !== false) ? 'AI' : $branch;
-        return ($s['dept'] == $mapped_dept || $s['dept'] == 'CSE' || $s['dept'] == 'H&S') && $s['year'] <= $year;
+    $branch = $g['branch'];
+    $targets = array_filter($subjects, function($s) use ($branch) {
+        return $s['dept'] == $branch || $s['dept'] == 'H&S';
     });
-    
+    if(count($targets) < 24) $targets = $subjects;
     shuffle($targets);
-    $yearSubjects = array_slice($targets, 0, 7); // FULL DAY COVERAGE
-    if(count($yearSubjects) < 7) $yearSubjects = array_slice($subjects, 0, 7);
+    $group_subjects = array_slice($targets, 0, 24);
 
-    foreach ($yearSubjects as $sub) {
-        $valid_teachers = array_filter($teachers, function($t) use ($sub) { return $t['dept'] == $sub['dept']; });
+    $group_teachers_ids = [];
+    foreach ($group_subjects as $sub) {
+        $valid_teachers = array_filter($teachers, function($t) use ($group_teachers_ids) {
+            return !in_array($t['id'], $group_teachers_ids);
+        });
         if(empty($valid_teachers)) $valid_teachers = $teachers;
         $t = $valid_teachers[array_rand($valid_teachers)];
+        $group_teachers_ids[] = $t['id'];
+        
         $assignments[] = [
             'id' => $aid++, 't_id' => $t['id'], 't_name' => $t['name'],
-            's_name' => $sub['name'], 'g_name' => $g['name'], 'g_room' => $g['room']
+            's_name' => $sub['name'], 'g_name' => $g['name']
         ];
     }
 }
@@ -144,7 +152,6 @@ $base_dir = realpath(__DIR__ . '/../timetable-generator');
 if ($base_dir) {
     $rooms_by_type = [];
     foreach($classrooms as $cr) { $rooms_by_type[$cr['type']][] = $cr['name']; }
-    
     $json_data = ["Casovi" => [], "Ucionice" => $rooms_by_type];
     foreach ($assignments as $a) {
         $json_data["Casovi"][] = [
@@ -154,8 +161,4 @@ if ($base_dir) {
     }
     file_put_contents($base_dir . '/input.json', json_encode($json_data, JSON_PRETTY_PRINT));
 }
-
-$_SESSION['flash_message'] = "University Dataset Populated: " . count($teachers) . " Faculty, " . count($groups) . " Groups Ready!";
-header("Location: index.php");
-exit();
 ?>

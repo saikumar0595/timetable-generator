@@ -90,7 +90,7 @@ def main():
     
     output_schedule = output_data["schedule"]
     
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     # 8 Periods Configuration
     period_times = [
         "09:30 - 10:20", # Period 1

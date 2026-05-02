@@ -29,8 +29,8 @@ def generate_fast_schedule(input_file):
     if not available_rooms:
         available_rooms = ["LectureHall"]
     
-    # Time slots: 8 periods per day, 7 days
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    # Time slots: 8 periods per day, 6 days
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     periods = [
         "09:30 - 10:20", "10:20 - 11:10", "11:10 - 12:00", "12:00 - 12:50",
         "01:30 - 02:15", "02:15 - 03:00", "03:00 - 03:45", "03:45 - 04:30"

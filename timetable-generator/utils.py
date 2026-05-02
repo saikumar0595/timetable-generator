@@ -89,9 +89,9 @@ def load_data(file_path, teachers_empty_space, groups_empty_space, subjects_orde
 
 def set_up(num_of_columns):
     """
-    Sets up the timetable matrix. 7 Days * 8 Periods = 56 slots.
+    Sets up the timetable matrix. 6 Days * 8 Periods = 48 slots.
     """
-    w, h = num_of_columns, 56
+    w, h = num_of_columns, 48
     matrix = [[None for x in range(w)] for y in range(h)]
     free = []
 
@@ -105,7 +105,7 @@ def show_timetable(matrix):
     """
     Prints timetable matrix.
     """
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     # 8 Periods
     hours = [1, 2, 3, 4, 5, 6, 7, 8]
 
@@ -167,7 +167,7 @@ def write_solution_to_file(matrix, data, filled, filepath, groups_empty_space, t
     for group_name, group_index in data.groups.items():
         if group_index not in groups_dict:
             groups_dict[group_index] = group_name
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     hours = [1, 2, 3, 4, 5, 6, 7, 8]
 
     f.write('\n--------------------------- SCHEDULE ---------------------------')

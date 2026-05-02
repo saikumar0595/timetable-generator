@@ -51,8 +51,8 @@ def empty_space_groups_cost(groups_empty_space):
 
     for group_index, times in groups_empty_space.items():
         times.sort()
-        # empty space for each day for current group (0=Mon, ..., 6=Sun)
-        empty_per_day = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+        # empty space for each day for current group (0=Mon, ..., 5=Sat)
+        empty_per_day = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
 
         for i in range(1, len(times)):
             a = times[i-1]
@@ -88,8 +88,8 @@ def empty_space_teachers_cost(teachers_empty_space):
 
     for teacher_name, times in teachers_empty_space.items():
         times.sort()
-        # empty space for each day for current teacher (0=Mon, ..., 6=Sun)
-        empty_per_day = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+        # empty space for each day for current teacher (0=Mon, ..., 5=Sat)
+        empty_per_day = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
 
         for i in range(1, len(times) - 1):
             a = times[i - 1]
@@ -115,7 +115,7 @@ def free_hour(matrix):
     """
     Checks if there is an hour without classes. If so, returns it in format 'day: hour', otherwise -1.
     """
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     hours = [1, 2, 3, 4, 5, 6, 7, 8]
 
     for i in range(len(matrix)):

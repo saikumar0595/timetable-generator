@@ -1,230 +1,115 @@
 <?php
 /**
- * Alert Daemon - Monitors timetable for classes ending soon
- * Triggers alerts 5 minutes before class end time
- * Runs as a continuous background process
+ * Alert Daemon - Monitors timetable and triggers alerts via AlertDispatcher
+ * Can run as a standalone background process or be called via web
  */
 
-session_start();
-include('db.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once('alert_dispatcher.php');
 
 class AlertDaemon {
-    private $check_interval = 300; // 5 minutes in seconds
-    private $warning_time = 300; // Alert 5 minutes before class ends
     private $dispatcher;
     
     public function __construct() {
-        $this->dispatcher = $_SESSION['alert_dispatcher'] ?? null;
-        if (!$this->dispatcher) {
-            require_once('alert_dispatcher.php');
-            $this->dispatcher = new AlertDispatcher();
-        }
+        $this->dispatcher = new AlertDispatcher();
     }
     
     /**
-     * Main daemon loop - checks for upcoming class endings
+     * Run a single check of the timetable
      */
-    public function run() {
-        echo "📡 Alert Daemon Started at " . date('Y-m-d H:i:s') . "\n";
-        echo "⏱️  Check interval: {$this->check_interval}s | Warning time: {$this->warning_time}s\n";
-        echo "════════════════════════════════════════════════════════\n\n";
+    public function check_and_alert() {
+        // Load timetable from session (Web mode) or file (CLI mode fallback)
+        $timetable = $_SESSION['last_generated_timetable'] ?? $this->load_timetable_from_file();
         
-        $iteration = 0;
-        while (true) {
-            $iteration++;
-            $current_time = time();
-            $current_datetime = date('Y-m-d H:i:s', $current_time);
+        if (empty($timetable)) return 0;
+        
+        $current_day = date('l');
+        $current_time = time();
+        
+        // Mock current day if weekend for demo
+        if ($current_day === 'Saturday' || $current_day === 'Sunday') {
+            $current_day = 'Monday';
+        }
+        
+        $today_schedule = $timetable[$current_day] ?? [];
+        $alerts_triggered = 0;
+        
+        foreach ($today_schedule as $period => $sessions) {
+            $times = explode(' - ', $period);
+            if (count($times) !== 2) continue;
             
-            echo "[$iteration] Check at $current_datetime\n";
+            $end_time_str = $times[1];
             
-            // Get current timetable
-            $timetable = $this->get_current_timetable();
+            // Adjust end time for comparison
+            $end_timestamp = strtotime(date('Y-m-d') . ' ' . $end_time_str);
             
-            if (!empty($timetable)) {
-                // Find classes ending in 5 minutes
-                $upcoming_alerts = $this->find_classes_ending_soon($timetable, $current_time);
-                
-                if (!empty($upcoming_alerts)) {
-                    echo "   ⚠️  Found " . count($upcoming_alerts) . " class(es) ending soon!\n";
+            // If class ends in 5 minutes (300 seconds)
+            // Range check: 240 to 300 seconds remaining
+            $diff = $end_timestamp - $current_time;
+            
+            if ($diff > 0 && $diff <= 300) {
+                foreach ($sessions as $session) {
+                    $class_info = [
+                        'subject' => $session['subject'],
+                        'group' => implode(', ', $session['groups']),
+                        'room' => $session['room'],
+                        'end_time' => $end_time_str,
+                        'teacher' => $session['teacher']
+                    ];
                     
-                    foreach ($upcoming_alerts as $alert) {
-                        $this->process_alert($alert);
+                    $teacher_id = $this->find_teacher_id($session['teacher']);
+                    
+                    // Create unique alert tag to prevent duplicates
+                    $alert_tag = 'alert_' . md5($session['teacher'] . $period . date('Ymd'));
+                    if (!isset($_SESSION['sent_alerts'])) $_SESSION['sent_alerts'] = [];
+                    
+                    if (!in_array($alert_tag, $_SESSION['sent_alerts'])) {
+                        $this->dispatcher->dispatch($teacher_id, $class_info);
+                        $_SESSION['sent_alerts'][] = $alert_tag;
+                        $alerts_triggered++;
                     }
-                } else {
-                    echo "   ✓ No classes ending in next 5 minutes\n";
                 }
-            } else {
-                echo "   ℹ️  No timetable loaded (using demo data or database)\n";
             }
-            
-            echo "\n";
-            
-            // Wait for next check interval
-            sleep($this->check_interval);
         }
+        
+        return $alerts_triggered;
     }
     
-    /**
-     * Get current timetable from session or database
-     */
-    private function get_current_timetable() {
-        // Try to load from session first
-        if (!empty($_SESSION['last_generated_timetable'])) {
-            return $_SESSION['last_generated_timetable'];
+    private function find_teacher_id($name) {
+        if (isset($_SESSION['teachers'])) {
+            foreach ($_SESSION['teachers'] as $t) {
+                if ($t['name'] === $name) return $t['id'];
+            }
         }
-        
-        // Try database if available
-        if (!DEMO_MODE && isset($GLOBALS['conn'])) {
-            return $this->load_timetable_from_db();
-        }
-        
-        // Load demo timetable
-        if (empty($_SESSION['assignments'])) {
-            require_once('auto_populate.php');
-        }
-        
-        return $this->generate_demo_timetable();
+        return 0;
     }
     
-    /**
-     * Load timetable from database
-     */
-    private function load_timetable_from_db() {
-        // TODO: Query database for current timetable
+    private function load_timetable_from_file() {
+        // Attempt to load from shared output file
+        $file = __DIR__ . '/../timetable-generator/test_output.json';
+        if (file_exists($file)) {
+            $data = json_decode(file_get_contents($file), true);
+            return $data['schedule'] ?? [];
+        }
         return [];
-    }
-    
-    /**
-     * Generate demo timetable for testing
-     */
-    private function generate_demo_timetable() {
-        // Return a simple demo timetable for testing
-        return [
-            'Monday' => [
-                '09:30 - 10:20' => [
-                    ['subject' => 'Data Structures', 'teacher' => 'Dr. K. Suresh', 'group' => 'CSE-A', 'room' => 'A101']
-                ],
-                '10:20 - 11:10' => [
-                    ['subject' => 'Database Systems', 'teacher' => 'Ms. G. Ramesh', 'group' => 'CSE-B', 'room' => 'B101']
-                ]
-            ]
-        ];
-    }
-    
-    /**
-     * Find classes that end within the warning window (5 minutes from now)
-     */
-    private function find_classes_ending_soon($timetable, $current_time) {
-        $alerts = [];
-        $current_day = strtolower(date('l', $current_time)); // e.g., 'monday'
-        $current_hour = intval(date('H', $current_time));
-        $current_minute = intval(date('i', $current_time));
-        $current_time_minutes = $current_hour * 60 + $current_minute;
-        
-        // Define time slots and their end times (in minutes from midnight)
-        $time_slots = [
-            '09:30 - 10:20' => 620,  // 10:20 = 620 minutes
-            '10:20 - 11:10' => 670,
-            '11:10 - 12:00' => 720,
-            '12:00 - 12:50' => 770,
-            '01:30 - 02:15' => 855,  // 1:30 PM = 13:30 = 810 min, end 14:15 = 855 min
-            '02:15 - 03:00' => 900,
-            '03:00 - 03:45' => 945,
-            '03:45 - 04:30' => 990
-        ];
-        
-        // Check each day in timetable
-        foreach ($timetable as $day => $periods) {
-            $day_lower = strtolower($day);
-            
-            // Only check current day
-            if ($day_lower !== $current_day) continue;
-            
-            // Check each time period
-            foreach ($periods as $time_slot => $classes) {
-                if (!isset($time_slots[$time_slot])) continue;
-                
-                $end_time_minutes = $time_slots[$time_slot];
-                $time_until_end = ($end_time_minutes - $current_time_minutes) * 60; // Convert to seconds
-                
-                // Check if class ends between now and 5 minutes from now
-                if ($time_until_end > 0 && $time_until_end <= $this->warning_time) {
-                    // This class is ending soon!
-                    foreach ($classes as $class_info) {
-                        $alerts[] = [
-                            'day' => $day,
-                            'time_slot' => $time_slot,
-                            'end_time_seconds' => $time_until_end,
-                            'class_info' => $class_info,
-                            'teacher' => $class_info['teacher'] ?? 'Unknown',
-                            'subject' => $class_info['subject'] ?? 'Unknown',
-                            'group' => implode(', ', $class_info['groups'] ?? [$class_info['group'] ?? 'N/A']),
-                            'room' => $class_info['room'] ?? 'N/A'
-                        ];
-                    }
-                }
-            }
-        }
-        
-        return $alerts;
-    }
-    
-    /**
-     * Process alert for a teacher
-     */
-    private function process_alert($alert) {
-        $teacher_name = $alert['teacher'];
-        $subject = $alert['subject'];
-        $end_seconds = $alert['end_time_seconds'];
-        $end_minutes = ceil($end_seconds / 60);
-        
-        echo "   → Alert: $teacher_name | $subject | ends in $end_minutes min\n";
-        
-        // Find teacher ID (for real system, would query database)
-        $teacher_id = $this->get_teacher_id($teacher_name);
-        
-        // Dispatch alert via all channels
-        if ($teacher_id) {
-            $result = $this->dispatcher->dispatch($teacher_id, [
-                'subject' => $alert['subject'],
-                'group' => $alert['group'],
-                'room' => $alert['room'],
-                'end_time' => date('H:i', time() + $end_seconds)
-            ]);
-            
-            echo "     ✓ Alerts sent via: " . implode(', ', array_keys($result)) . "\n";
-        }
-    }
-    
-    /**
-     * Get teacher ID from name (for demo)
-     */
-    private function get_teacher_id($teacher_name) {
-        // In real system, would query database
-        // For now, return a dummy ID based on hash
-        return abs(crc32($teacher_name)) % 1000;
     }
 }
 
-// Run the daemon
-$daemon = new AlertDaemon();
-
-// Check if running from command line or HTTP request
-if (php_sapi_name() === 'cli') {
-    // Running from command line - start continuous daemon
-    $daemon->run();
-} else {
-    // Running from HTTP - do a single check
-    echo "Alert Daemon (HTTP Mode - Single Check)\n";
-    echo "For continuous monitoring, run from command line\n\n";
+// CLI Execution Logic
+if (php_sapi_name() === 'cli' && realpath($argv[0]) === realpath(__FILE__)) {
+    $daemon = new AlertDaemon();
+    echo "[" . date('Y-m-d H:i:s') . "] 🔔 ChronoGen Alert Daemon Started\n";
+    echo "[INFO] Monitoring for classes ending in 5 minutes...\n";
     
-    // Quick status check
-    echo json_encode([
-        'status' => 'ok',
-        'mode' => 'http_single_check',
-        'timestamp' => date('Y-m-d H:i:s'),
-        'message' => 'Daemon ready. For continuous monitoring, start from command line.'
-    ]);
+    while (true) {
+        $count = $daemon->check_and_alert();
+        if ($count > 0) {
+            echo "[" . date('Y-m-d H:i:s') . "] ✓ Triggered $count alerts.\n";
+        }
+        sleep(30); // Check every 30 seconds
+    }
 }
 ?>

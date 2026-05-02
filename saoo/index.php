@@ -6,11 +6,15 @@ if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 
 $role = $_SESSION['role'] ?? 'student';
 
-// Strictly redirect non-admins away from the main dashboard
 if ($role != 'admin') {
     header("Location: view_timetable.php");
     exit();
 }
+
+// Include components
+include('components/sidebar.php');
+include('components/header.php');
+include('components/cards.php');
 
 // Fetch Statistics
 if (DEMO_MODE) {
@@ -27,179 +31,219 @@ if (DEMO_MODE) {
     $assignment_count = mysqli_fetch_row(mysqli_query($conn, "SELECT COUNT(*) FROM teacher_subjects"))[0];
 }
 
-$recent_activity = DEMO_MODE ? array_slice($_SESSION['assignments'] ?? [], -5) : mysqli_fetch_all(mysqli_query($conn, "SELECT ts.id, t.name as t_name, s.name as s_name FROM teacher_subjects ts JOIN teachers t ON ts.teacher_id = t.id JOIN subjects s ON ts.subject_id = s.id ORDER BY ts.id DESC LIMIT 5"), MYSQLI_ASSOC);
+$recent_activity = DEMO_MODE ? array_slice($_SESSION['assignments'] ?? [], -5) : [];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard | ChronoGen Timetable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ChronoGen AI - Institutional Timetable System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; } </style>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .stat-card {
+            @apply bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all;
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 flex h-screen overflow-hidden">
-
     <!-- Sidebar -->
-    <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-2xl z-20">
-        <div class="h-20 flex items-center px-8 border-b border-slate-800">
-            <div class="w-8 h-8 mr-3">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-                    <path d="M50 95C50 95 85 75 85 35V15L50 5L15 15V35C15 75 50 95 50 95Z" fill="#1e3a8a" stroke="#fbbf24" stroke-width="5"/>
-                    <text x="50" y="55" font-weight="bold" font-size="28" fill="white" text-anchor="middle">A</text>
-                </svg>
-            </div>
-            <span class="text-lg font-bold tracking-tight uppercase">Audisankara</span>
-        </div>
-        <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-            <p class="px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Main Menu</p>
-            <a href="index.php" class="flex items-center gap-3 px-4 py-3 bg-indigo-600/10 text-indigo-400 rounded-xl border border-indigo-500/20 shadow-sm"><i class="fas fa-th-large w-5 text-center"></i><span class="font-medium">Dashboard</span></a>
-            <a href="manage_teachers.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-chalkboard-teacher w-5 text-center"></i><span class="font-medium">Teachers</span></a>
-            <a href="manage_subjects.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-book w-5 text-center"></i><span class="font-medium">Subjects</span></a>
-            <a href="manage_classrooms.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-door-open w-5 text-center"></i><span class="font-medium">Classrooms</span></a>
-            <a href="manage_groups.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-users w-5 text-center"></i><span class="font-medium">Student Groups</span></a>
-            <a href="view_timetable.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all group"><i class="fas fa-calendar-alt w-5 text-center"></i><span class="font-medium">Timetable</span></a>
-            <div class="mt-8 border-t border-slate-800 pt-6">
-                <a href="logout.php" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition-all group"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="font-medium">Sign Out</span></a>
-            </div>
-        </nav>
-    </aside>
+    <?php renderSidebar('dashboard', 'admin'); ?>
 
-    <main class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50">
-        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10 shadow-sm">
-            <h2 class="text-2xl font-bold text-slate-800 tracking-tight">System Overview</h2>
-            <div class="flex items-center gap-4">
-                <a href="populate_demo.php" class="px-6 py-2.5 bg-amber-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-amber-500/30 hover:bg-amber-600 transition-all">
-                    <i class="fas fa-sync-alt mr-2"></i> Reset Demo Data
-                </a>
-                <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold"><?= strtoupper(substr($_SESSION['user'], 0, 1)) ?></div>
-            </div>
-        </header>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        <!-- Header -->
+        <?php renderHeader('Dashboard', $_SESSION['user'], 'admin', true); ?>
 
-        <div class="flex-1 overflow-y-auto p-8 pb-20">
-            <?php if(isset($_SESSION['flash_message'])): ?>
-                <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-8 shadow-sm">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0"><i class="fas fa-check-circle text-emerald-500"></i></div>
-                        <div class="ml-3"><p class="text-sm font-bold text-emerald-800"><?= $_SESSION['flash_message'] ?></p></div>
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-8 pb-20">
+                <!-- Flash Message -->
+                <?php if(isset($_SESSION['flash_message'])): ?>
+                    <div class="mb-6 p-4 bg-emerald-50 border-l-4 border-emerald-500 rounded-lg fade-in">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-emerald-600 text-xl"></i>
+                            <p class="text-sm font-semibold text-emerald-800"><?= htmlspecialchars($_SESSION['flash_message']) ?></p>
+                        </div>
                         <?php unset($_SESSION['flash_message']); ?>
                     </div>
-                </div>
-            <?php endif; ?>
+                <?php endif; ?>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <div><p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Teachers</p><h3 class="text-2xl font-bold text-slate-800"><?= $teacher_count ?></h3></div>
+                <!-- Stats Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <?php 
+                    renderStatCard('fas fa-chalkboard-teacher', 'indigo', 'Teachers', $teacher_count, 'up', '+2 this month');
+                    renderStatCard('fas fa-book', 'pink', 'Subjects', $subject_count, 'stable', '-');
+                    renderStatCard('fas fa-door-open', 'emerald', 'Classrooms', $classroom_count, 'up', '+0 this month');
+                    renderStatCard('fas fa-users', 'amber', 'Student Groups', $group_count, 'stable', '-');
+                    ?>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl"><i class="fas fa-book"></i></div>
-                    <div><p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Subjects</p><h3 class="text-2xl font-bold text-slate-800"><?= $subject_count ?></h3></div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl"><i class="fas fa-door-open"></i></div>
-                    <div><p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Classrooms</p><h3 class="text-2xl font-bold text-slate-800"><?= $classroom_count ?></h3></div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl"><i class="fas fa-users"></i></div>
-                    <div><p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Groups</p><h3 class="text-2xl font-bold text-slate-800"><?= $group_count ?></h3></div>
-                </div>
-            </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-1 space-y-6">
-                    <?php if(!empty($_SESSION['last_generated_stats'])): 
-                        $ai_stats = $_SESSION['last_generated_stats']; ?>
-                        <div class="bg-slate-900 p-6 rounded-2xl shadow-xl border-t-4 border-indigo-500 text-white">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Left Column - AI Status & Quick Actions -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <!-- AI Engine Status -->
+                        <?php if(!empty($_SESSION['last_generated_stats'])): 
+                            $ai_stats = $_SESSION['last_generated_stats']; 
+                        ?>
+                        <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl shadow-lg border border-slate-700 text-white">
                             <h3 class="font-bold text-lg mb-6 flex items-center gap-3">
-                                <i class="fas fa-microchip text-indigo-400"></i> AI Engine Status
+                                <i class="fas fa-microchip text-indigo-400"></i> AI Engine
                             </h3>
                             <div class="space-y-4">
                                 <div>
-                                    <div class="flex justify-between text-xs font-bold mb-1 uppercase tracking-widest text-slate-400">
-                                        <span>Accuracy</span>
-                                        <span><?= $ai_stats['hard_constraints'] ?>%</span>
+                                    <div class="flex justify-between text-xs font-bold mb-2 uppercase tracking-widest text-slate-400">
+                                        <span>Optimization</span>
+                                        <span><?= (int)$ai_stats['hard_constraints'] ?>%</span>
                                     </div>
-                                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                                        <div class="bg-indigo-500 h-full" style="width: <?= $ai_stats['hard_constraints'] ?>%"></div>
+                                    <div class="w-full bg-slate-700/50 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-gradient-to-r from-indigo-500 to-indigo-400 h-full rounded-full" style="width: <?= (int)$ai_stats['hard_constraints'] ?>%"></div>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-2 gap-4 pt-4">
-                                    <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-800">
-                                        <p class="text-[10px] font-bold text-slate-500 uppercase">Efficiency</p>
-                                        <h4 class="text-lg font-bold text-indigo-400"><?= $ai_stats['soft_constraints'] ?>%</h4>
+                                <div class="grid grid-cols-2 gap-3 pt-2">
+                                    <div class="bg-slate-700/50 p-3 rounded-lg border border-slate-600">
+                                        <p class="text-[10px] font-bold text-slate-400 uppercase">Efficiency</p>
+                                        <p class="text-lg font-bold text-indigo-400"><?= (int)$ai_stats['soft_constraints'] ?>%</p>
                                     </div>
-                                    <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-800">
-                                        <p class="text-[10px] font-bold text-slate-500 uppercase">Avg. Idle</p>
-                                        <h4 class="text-lg font-bold text-amber-400"><?= $ai_stats['avg_idle_groups'] ?></h4>
+                                    <div class="bg-slate-700/50 p-3 rounded-lg border border-slate-600">
+                                        <p class="text-[10px] font-bold text-slate-400 uppercase">Avg Idle</p>
+                                        <p class="text-lg font-bold text-amber-400"><?= (int)$ai_stats['avg_idle_groups'] ?></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                        <h3 class="font-bold text-slate-800 mb-6">Quick Actions</h3>
-                        <div class="space-y-3">
-                            <a href="view_timetable.php?generate=1" class="flex items-center justify-between p-4 bg-indigo-600 text-white rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition-all"><span>Generate AI Schedule</span><i class="fas fa-arrow-right"></i></a>
-                            <a href="legacy_admin.php" class="flex items-center justify-between p-4 bg-slate-900 text-sky-400 rounded-xl font-bold hover:bg-slate-800 border border-sky-900 shadow-lg shadow-sky-900/20"><span>Legacy Admin</span><i class="fas fa-terminal"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-2">
-                    <!-- Workload Analytics Chart -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-6 p-6">
-                        <h3 class="font-bold text-slate-800 mb-4">Entity Distribution Analytics</h3>
-                        <div class="relative h-64 w-full">
-                            <canvas id="entityChart"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50"><h3 class="font-bold text-slate-700">Recent Assignments</h3></div>
-                        <div class="divide-y divide-slate-50">
-                            <?php foreach($recent_activity as $ra): ?>
-                            <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50">
-                                <div><p class="text-sm font-bold text-slate-700"><?= htmlspecialchars($ra['t_name']) ?></p><p class="text-xs text-slate-400">Assigned to <span class="font-bold text-indigo-500"><?= htmlspecialchars($ra['s_name']) ?></span></p></div>
-                                <span class="text-[10px] font-bold text-slate-300 uppercase">ACTIVE</span>
+                        <!-- Quick Actions -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                            <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <i class="fas fa-bolt text-amber-500"></i> Quick Actions
+                            </h3>
+                            <div class="space-y-3">
+                                <a href="view_timetable.php?generate=1" class="flex items-center justify-between p-3.5 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all group">
+                                    <span class="flex items-center gap-2">
+                                        <i class="fas fa-robot group-hover:scale-110 transition-transform"></i> Generate Schedule
+                                    </span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="manage_teachers.php" class="flex items-center justify-between p-3.5 bg-slate-100 text-slate-800 rounded-xl font-semibold hover:bg-slate-200 transition-all">
+                                    <span><i class="fas fa-users mr-2"></i>Manage Teachers</span>
+                                    <i class="fas fa-arrow-right text-slate-400"></i>
+                                </a>
+                                <a href="populate_demo.php" class="flex items-center justify-between p-3.5 bg-slate-100 text-slate-800 rounded-xl font-semibold hover:bg-slate-200 transition-all">
+                                    <span><i class="fas fa-database mr-2"></i>Reset Demo Data</span>
+                                    <i class="fas fa-arrow-right text-slate-400"></i>
+                                </a>
                             </div>
-                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Recent Activity & Resources -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <!-- Resource Overview -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <?php 
+                            renderActionCard('fas fa-chalkboard-teacher', 'Manage Teachers', 'Add, edit, or remove faculty members', '', 'manage_teachers.php');
+                            renderActionCard('fas fa-book', 'Manage Subjects', 'Organize courses and assignments', '', 'manage_subjects.php');
+                            renderActionCard('fas fa-door-open', 'Manage Rooms', 'Configure classroom resources', '', 'manage_classrooms.php');
+                            renderActionCard('fas fa-users-class', 'Manage Groups', 'Create and manage student groups', '', 'manage_groups.php');
+                            ?>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                            <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <i class="fas fa-history text-blue-500"></i> Recent Activity
+                            </h3>
+                            <?php if(!empty($recent_activity)): ?>
+                                <div class="space-y-3">
+                                    <?php foreach(array_slice($recent_activity, 0, 5) as $activity): ?>
+                                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
+                                        <div>
+                                            <p class="text-sm font-semibold text-slate-800"><?= htmlspecialchars($activity['t_name'] ?? 'Unknown') ?></p>
+                                            <p class="text-xs text-slate-500"><?= htmlspecialchars($activity['s_name'] ?? 'N/A') ?></p>
+                                        </div>
+                                        <span class="badge badge-primary text-xs">Assigned</span>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php else: ?>
+                                <div class="text-center py-6">
+                                    <i class="fas fa-inbox text-3xl text-slate-300 mb-2 block"></i>
+                                    <p class="text-slate-500 font-medium">No recent activity</p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <!-- System Status -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                            <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <i class="fas fa-heartbeat text-emerald-500"></i> System Health
+                            </h3>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="text-center p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+                                    <p class="text-xs text-emerald-600 font-semibold uppercase mb-1">Server</p>
+                                    <div class="flex items-center justify-center gap-1 text-emerald-600">
+                                        <i class="fas fa-circle text-sm"></i>
+                                        <span class="font-bold">Online</span>
+                                    </div>
+                                </div>
+                                <div class="text-center p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                                    <p class="text-xs text-indigo-600 font-semibold uppercase mb-1">Database</p>
+                                    <div class="flex items-center justify-center gap-1 text-indigo-600">
+                                        <i class="fas fa-circle text-sm"></i>
+                                        <span class="font-bold">Connected</span>
+                                    </div>
+                                </div>
+                                <div class="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
+                                    <p class="text-xs text-blue-600 font-semibold uppercase mb-1">API</p>
+                                    <div class="flex items-center justify-center gap-1 text-blue-600">
+                                        <i class="fas fa-circle text-sm"></i>
+                                        <span class="font-bold">Running</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <script src="assets/js/chatbot.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const ctx = document.getElementById('entityChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Teachers', 'Subjects', 'Classrooms', 'Groups'],
-                        datasets: [{
-                            data: [<?= $teacher_count ?>, <?= $subject_count ?>, <?= $classroom_count ?>, <?= $group_count ?>],
-                            backgroundColor: ['#6366f1', '#ec4899', '#10b981', '#f59e0b'],
-                            borderWidth: 0,
-                            hoverOffset: 4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'right' }
-                        },
-                        cutout: '70%'
+        // Initialize tooltips and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Dashboard loaded successfully');
+        });
+    </script>
+    <script src="assets/js/alert_handler.js"></script>
+    <script>
+        // Check for alerts every 10 seconds (faster for SMS/Alarm)
+        setInterval(() => {
+            fetch('notification_service.php')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.sms_sent && window.alertHandler) {
+                        window.alertHandler.show_sms_toast(data.sms_sent);
                     }
                 });
-            }
-        });
+        }, 10000);
+        // Initial check
+        fetch('notification_service.php');
     </script>
 </body>
 </html>

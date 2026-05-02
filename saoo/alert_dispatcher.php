@@ -4,19 +4,11 @@
  * Routes alerts to SMS, Browser Notifications, Audio, and Dashboard
  */
 
-// Ensure session is started (check if already active)
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-header('Content-Type: application/json');
-
 class AlertDispatcher {
-    private $alert_type = [];
-    private $pending_alerts = [];
+    private $preferences = [];
     
     public function __construct() {
-        // Load preferences from session or database
-        $this->load_preferences();
+        // Load preferences
     }
     
     /**
@@ -53,9 +45,6 @@ class AlertDispatcher {
         return $result;
     }
     
-    /**
-     * Format alert message with class details
-     */
     private function format_alert_message($class_info) {
         return sprintf(
             "⚠️ CLASS ENDING SOON\n\n" .
@@ -71,185 +60,85 @@ class AlertDispatcher {
         );
     }
     
-    /**
-     * Send SMS via gateway or mock
-     */
     private function send_sms($teacher_id, $phone, $message) {
         if (empty($phone)) {
-            return ['status' => 'failed', 'reason' => 'No phone number'];
+            // Find phone in teachers session if not in prefs
+            if (isset($_SESSION['teachers'])) {
+                foreach ($_SESSION['teachers'] as $t) {
+                    if ($t['id'] == $teacher_id) {
+                        $phone = $t['phone'];
+                        break;
+                    }
+                }
+            }
         }
+
+        if (empty($phone)) return ['status' => 'failed', 'reason' => 'No phone number'];
         
-        // Try local SMS gateway first
-        if ($this->sms_gateway_available()) {
-            return $this->send_via_gateway($phone, $message);
-        }
-        
-        // Fallback to mock SMS (log to file)
-        return $this->mock_sms($teacher_id, $phone, $message);
-    }
-    
-    /**
-     * Check if local SMS gateway is available
-     */
-    private function sms_gateway_available() {
-        // Check for SMS gateway service
-        // This would check for a local service on a specific port
-        // For now, returns false (fallback to mock)
-        return false;
-    }
-    
-    /**
-     * Send via real SMS gateway
-     */
-    private function send_via_gateway($phone, $message) {
-        // TODO: Implement actual SMS gateway integration
-        // Examples: Twilio, AWS SNS, local gateway
-        return [
-            'status' => 'sent',
-            'provider' => 'sms_gateway',
-            'phone' => $phone,
-            'timestamp' => date('Y-m-d H:i:s')
-        ];
-    }
-    
-    /**
-     * Mock SMS (log to file for testing)
-     */
-    private function mock_sms($teacher_id, $phone, $message) {
+        // Mock SMS (log to file)
         $log_dir = __DIR__ . '/../logs';
         if (!is_dir($log_dir)) mkdir($log_dir, 0755, true);
         
         $log_file = $log_dir . '/sms_alerts.log';
         $log_entry = sprintf(
-            "[%s] Teacher #%d | Phone: %s | Message: %s\n",
+            "[%s] SMS to [%s]: %s\n",
             date('Y-m-d H:i:s'),
-            $teacher_id,
             $phone,
             str_replace("\n", " | ", $message)
         );
-        
         file_put_contents($log_file, $log_entry, FILE_APPEND);
         
-        return [
-            'status' => 'mock',
-            'mode' => 'logged_to_file',
-            'phone' => $phone,
-            'timestamp' => date('Y-m-d H:i:s')
-        ];
+        return ['status' => 'sent', 'mode' => 'mock_logged', 'phone' => $phone];
     }
     
-    /**
-     * Send browser notification via Service Worker
-     */
     private function send_browser_notification($teacher_id, $message) {
-        // Store notification in session for client to pick up
+        if (session_status() === PHP_SESSION_NONE) session_start();
         $_SESSION['pending_notifications'][] = [
             'title' => 'Class Ending Soon! 🔔',
             'body' => $message,
-            'icon' => '/assets/images/alert-icon.png',
             'tag' => 'class-alert-' . time(),
             'timestamp' => time()
         ];
-        
-        return [
-            'status' => 'queued',
-            'type' => 'browser_notification',
-            'timestamp' => date('Y-m-d H:i:s')
-        ];
+        return ['status' => 'queued'];
     }
     
-    /**
-     * Create audio alert notification
-     */
     private function send_audio_alert($teacher_id) {
+        if (session_status() === PHP_SESSION_NONE) session_start();
         $_SESSION['audio_alert'] = [
-            'sound_type' => 'alarm',
             'volume' => 0.8,
-            'duration' => 5, // seconds
+            'duration' => 5,
             'repeat' => 2,
             'timestamp' => time()
         ];
-        
-        return [
-            'status' => 'queued',
-            'type' => 'audio_alert',
-            'sound' => 'alarm.mp3',
-            'timestamp' => date('Y-m-d H:i:s')
-        ];
+        return ['status' => 'queued'];
     }
     
-    /**
-     * Create dashboard alert banner
-     */
     private function create_dashboard_alert($teacher_id, $message) {
+        if (session_status() === PHP_SESSION_NONE) session_start();
         $_SESSION['dashboard_alert'] = [
             'message' => $message,
             'type' => 'warning',
             'dismissible' => true,
             'timestamp' => time()
         ];
-        
-        return [
-            'status' => 'displayed',
-            'type' => 'dashboard_banner',
-            'timestamp' => date('Y-m-d H:i:s')
-        ];
+        return ['status' => 'displayed'];
     }
     
-    /**
-     * Get teacher alert preferences
-     */
     private function get_teacher_preferences($teacher_id) {
-        // Default preferences
-        $defaults = [
+        return [
             'enable_sms' => true,
             'enable_browser' => true,
             'enable_audio' => true,
-            'phone_number' => '',
-            'snooze_duration' => 300
+            'phone_number' => ''
         ];
-        
-        // Try to load from session/database
-        if (isset($_SESSION['teacher_preferences'][$teacher_id])) {
-            return array_merge($defaults, $_SESSION['teacher_preferences'][$teacher_id]);
-        }
-        
-        return $defaults;
     }
     
-    /**
-     * Load preferences from database/session
-     */
-    private function load_preferences() {
-        // Initialize session preferences if not exists
-        if (!isset($_SESSION['teacher_preferences'])) {
-            $_SESSION['teacher_preferences'] = [];
-        }
-    }
-    
-    /**
-     * Log alert to history
-     */
     private function log_alert($teacher_id, $class_info, $result) {
         $log_dir = __DIR__ . '/../logs';
         if (!is_dir($log_dir)) mkdir($log_dir, 0755, true);
-        
         $log_file = $log_dir . '/alert_history.log';
-        $log_entry = json_encode([
-            'timestamp' => date('Y-m-d H:i:s'),
-            'teacher_id' => $teacher_id,
-            'class' => $class_info,
-            'result' => $result
-        ]) . "\n";
-        
+        $log_entry = json_encode(['time' => date('Y-m-d H:i:s'), 'tid' => $teacher_id, 'class' => $class_info, 'result' => $result]) . "\n";
         file_put_contents($log_file, $log_entry, FILE_APPEND);
     }
 }
-
-// Return alert dispatcher as singleton
-if (!isset($_SESSION['alert_dispatcher'])) {
-    $_SESSION['alert_dispatcher'] = new AlertDispatcher();
-}
-
-echo json_encode(['status' => 'ok', 'dispatcher_ready' => true]);
 ?>
