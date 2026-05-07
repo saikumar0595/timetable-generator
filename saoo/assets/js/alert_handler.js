@@ -16,14 +16,90 @@ class AlertHandler {
         // Request notification permission
         this.request_notification_permission();
         
+        // Resume audio context on first interaction
+        const resumeAudio = () => {
+            if (this.audio_context && this.audio_context.state === 'suspended') {
+                this.audio_context.resume();
+                console.log('🔊 Audio Context Resumed');
+            } else if (!this.audio_context) {
+                this.audio_context = new (window.AudioContext || window.webkitAudioContext)();
+                console.log('🔊 Audio Context Created');
+            }
+            document.removeEventListener('click', resumeAudio);
+            document.removeEventListener('keydown', resumeAudio);
+        };
+        document.addEventListener('click', resumeAudio);
+        document.addEventListener('keydown', resumeAudio);
+        
         // Start checking for alerts
         this.start_monitoring();
+
+        // Start countdown timer sync
+        this.start_countdown_sync();
         
         // Register Service Worker for notifications
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw_alerts.js')
+            navigator.serviceWorker.register('sw_alerts.js')
                 .then(() => console.log('✓ Service Worker registered for alerts'))
-                .catch(err => console.log('Service Worker registration failed:', err));
+                .catch(err => console.warn('Service Worker registration failed:', err));
+        }
+    }
+
+    /**
+     * Sync countdown timer with server
+     */
+    start_countdown_sync() {
+        this.sync_timer();
+        setInterval(() => this.sync_timer(), 30000); // Sync every 30s
+        
+        // Local countdown tick (every 1s)
+        setInterval(() => {
+            if (this.next_event_diff > 0) {
+                this.next_event_diff--;
+                this.update_countdown_display();
+            } else if (this.next_event_diff === 0) {
+                // When countdown hits zero, sync immediately
+                this.next_event_diff = -1;
+                this.sync_timer();
+            }
+        }, 1000);
+    }
+
+    sync_timer() {
+        fetch('get_timetable_status.php')
+            .then(r => r.json())
+            .then(data => {
+                if (data.success && data.next_event) {
+                    this.next_event = data.next_event;
+                    this.next_event_diff = data.next_event.diff;
+                    document.getElementById('next-class-timer')?.classList.remove('hidden');
+                    this.update_countdown_display();
+                } else {
+                    document.getElementById('next-class-timer')?.classList.add('hidden');
+                }
+            })
+            .catch(err => console.warn('Timer sync failed:', err));
+    }
+
+    update_countdown_display() {
+        const timerEl = document.getElementById('timer-countdown');
+        const labelEl = document.getElementById('timer-label');
+        if (!timerEl || !this.next_event) return;
+
+        const h = Math.floor(this.next_event_diff / 3600);
+        const m = Math.floor((this.next_event_diff % 3600) / 60);
+        const s = this.next_event_diff % 60;
+
+        labelEl.innerText = this.next_event.type === 'STARTING' ? 'Starts In:' : 'Ends In:';
+        timerEl.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        
+        // Visual warning when less than 5 minutes
+        if (this.next_event_diff <= 300) {
+            timerEl.classList.add('text-red-600');
+            timerEl.classList.remove('text-indigo-600', 'text-slate-600');
+        } else {
+            timerEl.classList.remove('text-red-600');
+            timerEl.classList.add('text-indigo-600');
         }
     }
 
@@ -49,7 +125,7 @@ class AlertHandler {
      * Check for pending alerts via AJAX
      */
     check_for_alerts() {
-        fetch('/get_alerts.php')
+        fetch('get_alerts.php')
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -75,7 +151,7 @@ class AlertHandler {
         if ('Notification' in window && Notification.permission === 'granted') {
             const notif = new Notification(notification.title, {
                 body: notification.body,
-                icon: notification.icon || '/assets/images/alert-icon.png',
+                icon: notification.icon || 'assets_login/img/authentication.svg',
                 tag: notification.tag,
                 requireInteraction: true
             });
@@ -94,36 +170,41 @@ class AlertHandler {
     }
 
     /**
-     * Play audio alert
+     * Play audio alert and voice notification
      */
     play_audio_alert(alert_config) {
         if (!alert_config) return;
 
         const volume = alert_config.volume || 0.8;
-        const duration = (alert_config.duration || 5) * 1000;
         const repeat = alert_config.repeat || 2;
+        const message = alert_config.message || "Attention";
 
-        // Create audio context
+        // 1. Play Siren Tone
         if (!this.audio_context) {
             this.audio_context = new (window.AudioContext || window.webkitAudioContext)();
         }
-
         const ctx = this.audio_context;
-        
-        // Play alert tone multiple times
         for (let i = 0; i < repeat; i++) {
             const start_time = ctx.currentTime + (i * 1);
             this.play_alert_tone(ctx, start_time, volume);
         }
 
-        console.log('🔊 Audio alert played');
+        // 2. Voice Synthesis Notification
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(message);
+            utterance.rate = 0.9;
+            utterance.pitch = 1.0;
+            utterance.volume = volume;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        console.log('🔊 Audio & Voice alert played');
     }
 
     /**
      * Generate and play alert tone (Siren Style)
      */
     play_alert_tone(ctx, start_time, volume) {
-        const now = ctx.currentTime;
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
 
@@ -131,16 +212,16 @@ class AlertHandler {
         gain.connect(ctx.destination);
 
         // Siren Effect: Slide frequency from low to high
-        osc.frequency.setValueAtTime(440, now);
-        osc.frequency.exponentialRampToValueAtTime(880, now + 0.3);
-        osc.frequency.exponentialRampToValueAtTime(440, now + 0.6);
+        osc.frequency.setValueAtTime(440, start_time);
+        osc.frequency.exponentialRampToValueAtTime(880, start_time + 0.3);
+        osc.frequency.exponentialRampToValueAtTime(440, start_time + 0.6);
 
-        gain.gain.setValueAtTime(0, now);
-        gain.gain.linearRampToValueAtTime(volume, now + 0.1);
-        gain.gain.linearRampToValueAtTime(0, now + 0.6);
+        gain.gain.setValueAtTime(0, start_time);
+        gain.gain.linearRampToValueAtTime(volume, start_time + 0.1);
+        gain.gain.linearRampToValueAtTime(0, start_time + 0.6);
 
-        osc.start(now);
-        osc.stop(now + 0.6);
+        osc.start(start_time);
+        osc.stop(start_time + 0.6);
     }
 
     /**
@@ -235,7 +316,7 @@ document.head.appendChild(styleSheet);
      * Snooze all alerts for X minutes
      */
     snooze_alerts(minutes = 5) {
-        fetch('/snooze_alerts.php', {
+        fetch('snooze_alerts.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ duration_minutes: minutes })
@@ -254,7 +335,7 @@ document.head.appendChild(styleSheet);
      * Acknowledge alert
      */
     acknowledge_alert(alert_id) {
-        fetch('/acknowledge_alert.php?id=' + alert_id)
+        fetch('acknowledge_alert.php?id=' + alert_id)
             .then(response => response.json())
             .then(data => {
                 console.log('✓ Alert acknowledged');

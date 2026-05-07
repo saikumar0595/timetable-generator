@@ -106,7 +106,7 @@ def generate_fast_schedule(input_file):
         teacher = trim_text(class_item.get("Nastavnik", "Unknown"))
         subject = trim_text(class_item.get("Predmet", "Unknown"))
         groups = [trim_text(g) for g in class_item.get("Grupe", ["Default"])]
-        duration = 2
+        duration = int(class_item.get("Trajanje", 2))
         
         found = False
         random.shuffle(possible_start_slots)

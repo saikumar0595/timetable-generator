@@ -57,11 +57,11 @@ include('components/styles.php');
         <!-- Header -->
         <?php renderHeader('Facility Management', $_SESSION['user'], $_SESSION['role'] ?? 'admin', true); ?>
 
-        <div class="flex-1 overflow-y-auto p-8 pb-20 fade-in">
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 pb-24 fade-in">
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                 <!-- Form Column -->
                 <div class="xl:col-span-1">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 sticky top-24">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 xl:sticky xl:top-24">
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
                                 <i class="fas fa-door-open text-lg"></i>

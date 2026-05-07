@@ -41,35 +41,46 @@ class AlertDaemon {
             $times = explode(' - ', $period);
             if (count($times) !== 2) continue;
             
+            $start_time_str = $times[0];
             $end_time_str = $times[1];
             
-            // Adjust end time for comparison
+            // Adjust times for comparison
+            $start_timestamp = strtotime(date('Y-m-d') . ' ' . $start_time_str);
             $end_timestamp = strtotime(date('Y-m-d') . ' ' . $end_time_str);
             
-            // If class ends in 5 minutes (300 seconds)
-            // Range check: 240 to 300 seconds remaining
-            $diff = $end_timestamp - $current_time;
-            
-            if ($diff > 0 && $diff <= 300) {
-                foreach ($sessions as $session) {
-                    $class_info = [
-                        'subject' => $session['subject'],
-                        'group' => implode(', ', $session['groups']),
-                        'room' => $session['room'],
-                        'end_time' => $end_time_str,
-                        'teacher' => $session['teacher']
-                    ];
-                    
-                    $teacher_id = $this->find_teacher_id($session['teacher']);
-                    
-                    // Create unique alert tag to prevent duplicates
-                    $alert_tag = 'alert_' . md5($session['teacher'] . $period . date('Ymd'));
-                    if (!isset($_SESSION['sent_alerts'])) $_SESSION['sent_alerts'] = [];
-                    
-                    if (!in_array($alert_tag, $_SESSION['sent_alerts'])) {
-                        $this->dispatcher->dispatch($teacher_id, $class_info);
-                        $_SESSION['sent_alerts'][] = $alert_tag;
-                        $alerts_triggered++;
+            // Checks for Starting (5 min before) and Ending (5 min before)
+            $checks = [
+                ['time' => $start_timestamp, 'type' => 'STARTING', 'label' => $start_time_str],
+                ['time' => $end_timestamp, 'type' => 'ENDING', 'label' => $end_time_str]
+            ];
+
+            foreach ($checks as $check) {
+                $diff = $check['time'] - $current_time;
+                
+                // If event happens in 5 minutes (300 seconds)
+                if ($diff > 0 && $diff <= 300) {
+                    foreach ($sessions as $session) {
+                        $class_info = [
+                            'type' => $check['type'],
+                            'subject' => $session['subject'],
+                            'group' => implode(', ', $session['groups']),
+                            'room' => $session['room'],
+                            'start_time' => $start_time_str,
+                            'end_time' => $end_time_str,
+                            'teacher' => $session['teacher']
+                        ];
+                        
+                        $teacher_id = $this->find_teacher_id($session['teacher']);
+                        
+                        // Create unique alert tag to prevent duplicates
+                        $alert_tag = 'alert_' . $check['type'] . '_' . md5($session['teacher'] . $period . date('Ymd'));
+                        if (!isset($_SESSION['sent_alerts'])) $_SESSION['sent_alerts'] = [];
+                        
+                        if (!in_array($alert_tag, $_SESSION['sent_alerts'])) {
+                            $this->dispatcher->dispatch($teacher_id, $class_info);
+                            $_SESSION['sent_alerts'][] = $alert_tag;
+                            $alerts_triggered++;
+                        }
                     }
                 }
             }
@@ -84,7 +95,24 @@ class AlertDaemon {
                 if ($t['name'] === $name) return $t['id'];
             }
         }
+        
+        // Fallback for CLI mode - try to find in shared teachers file if exists
+        $teachers = $this->load_teachers_from_file();
+        foreach ($teachers as $t) {
+            if ($t['name'] === $name) return $t['id'];
+        }
+        
         return 0;
+    }
+
+    private function load_teachers_from_file() {
+        // Attempt to load from shared output file which often has teacher data
+        $file = __DIR__ . '/../timetable-generator/test_output.json';
+        if (file_exists($file)) {
+            $data = json_decode(file_get_contents($file), true);
+            return $data['teachers'] ?? []; // The generator might not return this yet, but good for future
+        }
+        return [];
     }
     
     private function load_timetable_from_file() {
@@ -102,7 +130,7 @@ class AlertDaemon {
 if (php_sapi_name() === 'cli' && realpath($argv[0]) === realpath(__FILE__)) {
     $daemon = new AlertDaemon();
     echo "[" . date('Y-m-d H:i:s') . "] 🔔 ChronoGen Alert Daemon Started\n";
-    echo "[INFO] Monitoring for classes ending in 5 minutes...\n";
+    echo "[INFO] Monitoring for classes starting or ending in 5 minutes...\n";
     
     while (true) {
         $count = $daemon->check_and_alert();

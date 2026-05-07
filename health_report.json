@@ -1,0 +1,27 @@
+{
+    "timestamp": "2026-05-06 08:24:29",
+    "status": "OK",
+    "subsystems": {
+        "database": {
+            "mode": "DEMO",
+            "connected": false,
+            "status": "HEALTHY"
+        },
+        "alert_bridge": {
+            "status": "HEALTHY",
+            "detail": "Operational",
+            "path": "C:\\xampp\\htdocs\\final year project\\saoo\/..\/logs\/shared_alerts.json"
+        },
+        "logs": {
+            "sms_log": "PRESENT",
+            "history_log": "PRESENT",
+            "recent_sms_count": 78
+        },
+        "session": {
+            "active": false,
+            "user": "N\/A",
+            "has_timetable": false,
+            "teachers_count": 520
+        }
+    }
+}

@@ -134,10 +134,10 @@ def free_hour(matrix):
 def hard_constraints_cost(matrix, data):
     """
     Calculates total cost of hard constraints: in every classroom is at most one class at a time, every class is in one
-    of his possible classrooms, every teacher holds at most one class at a time and every group attends at most one
-    class at a time.
+    of his possible classrooms, every teacher holds at most one class at a time, every group attends at most one
+    class at a time, and NO teacher holds consecutive classes.
     For everything that does not satisfy these constraints, one is added to the cost.
-    :return: total cost, cost per class, cost of teachers, cost of classrooms, cost of groups
+    :return: total cost, cost per class, cost of teachers, cost of classrooms, cost of groups, cost of consecutive
     """
     # cost_class: dictionary where key = index of a class, value = total cost of that class
     cost_class = {}
@@ -147,26 +147,31 @@ def hard_constraints_cost(matrix, data):
     cost_classrooms = 0
     cost_teacher = 0
     cost_group = 0
+    cost_consecutive = 0
+    
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             field = matrix[i][j]                                        # for every field in matrix
             if field is not None:
-                c1 = data.classes[field]                                # take class from that field
+                c1_idx = field
+                c1 = data.classes[c1_idx]                                # take class from that field
 
                 # calculate loss for classroom
                 if j not in c1.classrooms:
                     cost_classrooms += 1
-                    cost_class[field] += 1
+                    cost_class[c1_idx] += 1
 
+                # Check overlaps in same row
                 for k in range(j + 1, len(matrix[i])):                  # go through the end of row
                     next_field = matrix[i][k]
                     if next_field is not None:
-                        c2 = data.classes[next_field]                   # take class of that field
+                        c2_idx = next_field
+                        c2 = data.classes[c2_idx]                   # take class of that field
 
                         # calculate loss for teachers
                         if c1.teacher == c2.teacher:
                             cost_teacher += 1
-                            cost_class[field] += 1
+                            cost_class[c1_idx] += 1
 
                         # calculate loss for groups
                         g1 = c1.groups
@@ -174,23 +179,36 @@ def hard_constraints_cost(matrix, data):
                         for g in g1:
                             if g in g2:
                                 cost_group += 1
-                                cost_class[field] += 1
+                                cost_class[c1_idx] += 1
+                
+                # NEW: Check consecutive classes (next period)
+                if i % 8 < 7: # If not last period of the day
+                    next_row = i + 1
+                    for k in range(len(matrix[next_row])):
+                        if matrix[next_row][k] is not None:
+                            c_next_idx = matrix[next_row][k]
+                            c_next = data.classes[c_next_idx]
+                            # Penalize if it's a DIFFERENT class for the same teacher
+                            if c1.teacher == c_next.teacher and c1_idx != c_next_idx:
+                                cost_consecutive += 1
+                                cost_class[c1_idx] += 1
 
-    total_cost = cost_teacher + cost_classrooms + cost_group
+    total_cost = cost_teacher + cost_classrooms + cost_group + cost_consecutive
     return total_cost, cost_class, cost_teacher, cost_classrooms, cost_group
 
 
 def check_hard_constraints(matrix, data):
     """
-    Checks if all hard constraints are satisfied, returns number of overlaps with classes, classrooms, teachers and
-    groups.
+    Checks if all hard constraints are satisfied, returns number of overlaps with classes, classrooms, teachers,
+    groups and consecutive teacher sessions.
     """
     overlaps = 0
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             field = matrix[i][j]                                    # for every field in matrix
             if field is not None:
-                c1 = data.classes[field]                            # take class from that field
+                c1_idx = field
+                c1 = data.classes[c1_idx]                            # take class from that field
 
                 # calculate loss for classroom
                 if j not in c1.classrooms:
@@ -209,9 +227,18 @@ def check_hard_constraints(matrix, data):
                             # calculate loss for groups
                             g1 = c1.groups
                             g2 = c2.groups
-                            # print(g1, g2)
                             for g in g1:
                                 if g in g2:
                                     overlaps += 1
+                
+                # NEW: Check consecutive teacher classes
+                if i % 8 < 7:
+                    next_row = i + 1
+                    for k in range(len(matrix[next_row])):
+                        if matrix[next_row][k] is not None:
+                            c_next_idx = matrix[next_row][k]
+                            c_next = data.classes[c_next_idx]
+                            if c1.teacher == c_next.teacher and c1_idx != c_next_idx:
+                                overlaps += 1
 
     return overlaps

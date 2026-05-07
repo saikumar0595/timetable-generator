@@ -1,0 +1,14 @@
+name: chronogen
+services:
+  web:
+    project: .
+    language: docker
+    host: appservice
+    docker:
+      remoteBuild: true
+      context: .
+      dockerfile: Dockerfile
+
+infra:
+  path: infra
+  module: main

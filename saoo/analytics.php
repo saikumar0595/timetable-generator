@@ -108,7 +108,6 @@ if (!empty($timetable)) {
             </div>
         </div>
     </main>
-
     <script src="assets/js/chatbot.js"></script>
     <script src="assets/js/alert_handler.js"></script>
     <script>

@@ -71,15 +71,39 @@ try {
         <p>✓ Size: " . filesize($input_file) . " bytes</p>
     </div>";
 
-    // STEP 3: Call Python API
-    $cmd = "cd \"$base_dir\" && python api.py input.json 2>&1";
+    // STEP 3: Call Python API via HTTP
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
+    $api_url = "$protocol://$host/api/generate";
+
+    $options = [
+        'http' => [
+            'header'  => "Content-type: application/json\r\n",
+            'method'  => 'POST',
+            'content' => json_encode($input_data),
+            'timeout' => 30
+        ]
+    ];
+    
+    $context  = stream_context_create($options);
     $start = microtime(true);
-    $output = shell_exec($cmd);
+    $output = @file_get_contents($api_url, false, $context);
+    
+    if ($output === false) {
+        // Fallback for local development
+        $local_api_url = "http://localhost:3000/api/generate";
+        $output = @file_get_contents($local_api_url, false, $context);
+        
+        if ($output === false) {
+            throw new Exception("Failed to connect to Python API at $api_url.");
+        }
+        $api_url = $local_api_url;
+    }
     $elapsed = microtime(true) - $start;
     
     echo "<div class='bg-purple-900/30 border-l-4 border-purple-500 p-4 mb-6'>
-        <h2 class='font-bold mb-3'>Step 3: Python API Executed</h2>
-        <p>✓ Command: python api.py input.json</p>
+        <h2 class='font-bold mb-3'>Step 3: Python API Executed (HTTP POST)</h2>
+        <p>✓ URL: $api_url</p>
         <p>✓ Time: " . number_format($elapsed, 2) . "s</p>
         <p>✓ Output size: " . strlen($output) . " bytes</p>
     </div>";

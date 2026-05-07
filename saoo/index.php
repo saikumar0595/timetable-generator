@@ -7,7 +7,11 @@ if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 $role = $_SESSION['role'] ?? 'student';
 
 if ($role != 'admin') {
-    header("Location: view_timetable.php");
+    if ($role == 'faculty') {
+        header("Location: teacher_dashboard.php");
+    } else {
+        header("Location: view_timetable.php");
+    }
     exit();
 }
 
@@ -144,6 +148,18 @@ $recent_activity = DEMO_MODE ? array_slice($_SESSION['assignments'] ?? [], -5) :
                                     <span><i class="fas fa-users mr-2"></i>Manage Teachers</span>
                                     <i class="fas fa-arrow-right text-slate-400"></i>
                                 </a>
+                                <a href="test_alerts.php?redirect=index.php" class="flex items-center justify-between p-3.5 bg-amber-100 text-amber-800 rounded-xl font-semibold hover:bg-amber-200 transition-all">
+                                    <span><i class="fas fa-bell mr-2"></i>Test System Alerts</span>
+                                    <i class="fas fa-vial text-amber-500"></i>
+                                </a>
+                                <a href="api_bell_schedule.php" target="_blank" class="flex items-center justify-between p-3.5 bg-indigo-50 text-indigo-700 rounded-xl font-semibold hover:bg-indigo-100 transition-all">
+                                    <span><i class="fas fa-clock mr-2"></i>Smart Bell Schedule API</span>
+                                    <i class="fas fa-external-link-alt text-indigo-400"></i>
+                                </a>
+                                <a href="populate_500_teachers.php" class="flex items-center justify-between p-3.5 bg-indigo-100 text-indigo-800 rounded-xl font-semibold hover:bg-indigo-200 transition-all">
+                                    <span><i class="fas fa-microchip mr-2"></i>Load Old Project (500T + 500S)</span>
+                                    <i class="fas fa-plus-circle text-indigo-500"></i>
+                                </a>
                                 <a href="populate_demo.php" class="flex items-center justify-between p-3.5 bg-slate-100 text-slate-800 rounded-xl font-semibold hover:bg-slate-200 transition-all">
                                     <span><i class="fas fa-database mr-2"></i>Reset Demo Data</span>
                                     <i class="fas fa-arrow-right text-slate-400"></i>
@@ -187,6 +203,46 @@ $recent_activity = DEMO_MODE ? array_slice($_SESSION['assignments'] ?? [], -5) :
                                     <p class="text-slate-500 font-medium">No recent activity</p>
                                 </div>
                             <?php endif; ?>
+                        </div>
+
+                        <!-- Smart Alarm Sync Status -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                            <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <i class="fas fa-clock text-indigo-500"></i> Smart Alarm Sync
+                            </h3>
+                            <?php
+                            $sync_log_file = '../logs/sync_events.log';
+                            $sync_logs = [];
+                            if (file_exists($sync_log_file)) {
+                                $lines = file($sync_log_file);
+                                $sync_logs = array_reverse(array_slice($lines, -5));
+                            }
+                            ?>
+                            <div class="space-y-3">
+                                <?php if(empty($sync_logs)): ?>
+                                    <p class="text-sm text-slate-500 italic">No sync events recorded yet.</p>
+                                <?php else: ?>
+                                    <?php foreach($sync_logs as $log): 
+                                        $is_success = strpos($log, 'SUCCESS') !== false;
+                                    ?>
+                                        <div class="flex items-center justify-between p-3 <?= $is_success ? 'bg-emerald-50' : 'bg-rose-50' ?> rounded-lg border <?= $is_success ? 'border-emerald-100' : 'border-rose-100' ?>">
+                                            <div class="flex items-center gap-2">
+                                                <i class="fas <?= $is_success ? 'fa-check-circle text-emerald-500' : 'fa-exclamation-circle text-rose-500' ?>"></i>
+                                                <span class="text-[10px] font-medium text-slate-700 truncate w-32" title="<?= htmlspecialchars($log) ?>">
+                                                    <?= htmlspecialchars(trim(explode('|', $log)[2] ?? 'Sync Event')) ?>
+                                                </span>
+                                            </div>
+                                            <span class="text-[10px] text-slate-400 font-mono"><?= substr($log, 11, 8) ?></span>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-50 flex justify-between items-center">
+                                <span class="text-[10px] text-slate-400">Endpoint: /saoo/api_bell_schedule.php</span>
+                                <a href="api_bell_schedule.php" target="_blank" class="text-[10px] text-indigo-600 font-bold hover:underline">
+                                    VIEW JSON
+                                </a>
+                            </div>
                         </div>
 
                         <!-- System Status -->

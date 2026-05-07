@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
     } elseif (strpos($username, 'STAFF@') === 0) {
         $_SESSION['role'] = 'faculty';
         $_SESSION['user'] = $username;
-        header("Location: view_timetable.php");
+        header("Location: teacher_dashboard.php");
         exit();
     } elseif (strpos($username, '_@') !== false) {
         // Format: NAME_@SYMBOLS

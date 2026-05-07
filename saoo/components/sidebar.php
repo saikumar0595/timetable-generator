@@ -18,12 +18,14 @@ function renderSidebar($current_page = '', $role = 'admin') {
             ['icon' => 'fas fa-door-open', 'label' => 'Classrooms', 'href' => 'manage_classrooms.php', 'id' => 'classrooms'],
             ['icon' => 'fas fa-users', 'label' => 'Student Groups', 'href' => 'manage_groups.php', 'id' => 'groups'],
             ['icon' => 'fas fa-calendar-alt', 'label' => 'Timetable', 'href' => 'view_timetable.php', 'id' => 'timetable'],
+            ['icon' => 'fas fa-th', 'label' => 'Matrix View', 'href' => 'conflict_matrix.php', 'id' => 'matrix'],
         ],
         'student' => [
             ['icon' => 'fas fa-calendar-alt', 'label' => 'My Timetable', 'href' => 'view_timetable.php', 'id' => 'timetable'],
             ['icon' => 'fas fa-chalkboard-teacher', 'label' => 'Teachers', 'href' => 'teacher_directory.php', 'id' => 'teachers'],
         ],
         'faculty' => [
+            ['icon' => 'fas fa-th-large', 'label' => 'Dashboard', 'href' => 'teacher_dashboard.php', 'id' => 'dashboard'],
             ['icon' => 'fas fa-chart-line', 'label' => 'My Analytics', 'href' => 'analytics.php', 'id' => 'analytics'],
             ['icon' => 'fas fa-calendar-alt', 'label' => 'My Schedule', 'href' => 'view_timetable.php', 'id' => 'timetable'],
             ['icon' => 'fas fa-book', 'label' => 'Subjects', 'href' => 'manage_subjects.php', 'id' => 'subjects'],
@@ -32,16 +34,22 @@ function renderSidebar($current_page = '', $role = 'admin') {
     
     $items = $nav_items[$role] ?? $nav_items['student'];
     ?>
-    <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-2xl z-20 fixed lg:relative h-screen lg:h-auto overflow-y-auto">
+    <aside id="main-sidebar" class="w-72 flex-shrink-0 bg-slate-900 text-white flex flex-col shadow-2xl z-40 fixed lg:relative h-screen lg:h-auto overflow-y-auto transition-all duration-300 -translate-x-full lg:translate-x-0">
         <!-- Header -->
-        <div class="h-20 flex items-center px-8 border-b border-slate-800">
-            <div class="w-8 h-8 mr-3 flex-shrink-0">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-                    <path d="M50 95C50 95 85 75 85 35V15L50 5L15 15V35C15 75 50 95 50 95Z" fill="#1e3a8a" stroke="#fbbf24" stroke-width="5"/>
-                    <text x="50" y="55" font-weight="bold" font-size="28" fill="white" text-anchor="middle">A</text>
-                </svg>
+        <div class="h-20 flex items-center justify-between px-8 border-b border-slate-800">
+            <div class="flex items-center">
+                <div class="w-8 h-8 mr-3 flex-shrink-0">
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+                        <path d="M50 95C50 95 85 75 85 35V15L50 5L15 15V35C15 75 50 95 50 95Z" fill="#1e3a8a" stroke="#fbbf24" stroke-width="5"/>
+                        <text x="50" y="55" font-weight="bold" font-size="28" fill="white" text-anchor="middle">A</text>
+                    </svg>
+                </div>
+                <span class="text-lg font-bold tracking-tight uppercase">ChronoGen</span>
             </div>
-            <span class="text-lg font-bold tracking-tight uppercase hidden sm:inline">ChronoGen</span>
+            <!-- Mobile Close Button -->
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 text-slate-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
         </div>
         
         <!-- Navigation -->
@@ -70,17 +78,24 @@ function renderSidebar($current_page = '', $role = 'admin') {
         </div>
     </aside>
 
+    <!-- Mobile Overlay Backdrop -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-30 opacity-0 pointer-events-none transition-all duration-300 lg:hidden"></div>
+
     <style>
-        /* Mobile sidebar overlay */
-        @media (max-width: 1024px) {
-            aside.hidden {
-                display: none !important;
+        /* Mobile sidebar visibility */
+        @media (max-width: 1023px) {
+            #main-sidebar.active {
+                transform: translateX(0);
             }
-            aside:not(.hidden) {
-                position: fixed;
-                left: 0;
-                top: 0;
-                z-index: 30;
+            #sidebar-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+        /* Desktop sidebar visibility */
+        @media (min-width: 1024px) {
+            #main-sidebar.collapsed {
+                margin-left: -18rem; /* width 72 is 18rem */
             }
         }
     </style>

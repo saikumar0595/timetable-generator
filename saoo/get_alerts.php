@@ -19,7 +19,36 @@ $response = [
     'dashboard_alert' => null
 ];
 
-// Check for pending notifications in session
+// 1. Check Shared Storage (Bridge from CLI)
+$shared_file = __DIR__ . '/../logs/shared_alerts.json';
+if (file_exists($shared_file)) {
+    $shared_alerts = json_decode(file_get_contents($shared_file), true) ?: [];
+    if (!empty($shared_alerts)) {
+        $alert = array_shift($shared_alerts); // Get oldest
+        file_put_contents($shared_file, json_encode($shared_alerts)); // Save remaining
+
+        // Map to browser response
+        $response['browser_notification'] = [
+            'title' => 'System Alert 🔔',
+            'body' => $alert['message'],
+            'tag' => 'shared-' . $alert['timestamp']
+        ];
+        $response['audio_alert'] = [
+            'volume' => 0.8,
+            'message' => $alert['message']
+        ];
+        $response['dashboard_alert'] = [
+            'message' => $alert['message'],
+            'type' => 'info'
+        ];
+        
+        // Return immediately if we found a shared alert to avoid flooding
+        echo json_encode($response);
+        exit();
+    }
+}
+
+// 2. Check Session-based notifications (Internal Web triggers)
 if (isset($_SESSION['pending_notifications']) && !empty($_SESSION['pending_notifications'])) {
     $response['browser_notification'] = array_shift($_SESSION['pending_notifications']);
 }

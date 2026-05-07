@@ -7,29 +7,53 @@ session_start();
 $teachers = [];
 $tid = 1;
 $depts_config = [
-    'H&S' => 100, 'CSE' => 80, 'ECE' => 60, 'EEE' => 40, 'MECH' => 40,
+    'H&S' => 100, 'CSE' => 180, 'ECE' => 60, 'EEE' => 40, 'MECH' => 40,
     'AI' => 20, 'ML' => 20, 'DS' => 20, 'Cyber Security' => 20
 ];
 
-$firstNames = ['Dr. K.', 'Dr. P.', 'Prof. M.', 'Dr. B.', 'Ms. S.', 'Mr. R.', 'Dr. V.', 'Prof. A.', 'Dr. N.', 'Ms. G.', 'Dr. J.', 'Prof. H.', 'Dr. S.', 'Dr. T.', 'Mr. V.', 'Ms. L.'];
+$femaleTitles = ['Dr. K.', 'Dr. P.', 'Prof. M.', 'Ms. S.', 'Dr. V.', 'Prof. A.', 'Ms. G.', 'Dr. J.', 'Prof. H.', 'Dr. S.', 'Ms. L.'];
+$maleTitles = ['Dr. K.', 'Dr. P.', 'Prof. M.', 'Dr. B.', 'Mr. R.', 'Dr. V.', 'Prof. A.', 'Dr. N.', 'Dr. J.', 'Prof. H.', 'Dr. T.', 'Mr. V.'];
 $lastNames = ['Suresh', 'Ramesh', 'Lakshmi', 'Venkat', 'Anitha', 'Prasad', 'Krishna', 'Priya', 'Reddy', 'Srinivas', 'Murali', 'Karthik', 'Rao', 'Naidu', 'Chowdary', 'Kumar', 'Varma', 'Patel', 'Sharma', 'Iyer'];
 
 foreach ($depts_config as $dept => $count) {
     for ($i = 0; $i < $count; $i++) {
-        $name = $firstNames[array_rand($firstNames)] . ' ' . $lastNames[array_rand($lastNames)];
+        $gender = (rand(0, 1) == 0) ? 'female' : 'male';
+        $titles = ($gender == 'female') ? $femaleTitles : $maleTitles;
+        $name = $titles[array_rand($titles)] . ' ' . $lastNames[array_rand($lastNames)];
+        
+        $photo_id = rand(1, 95);
+        $photo_url = ($gender == 'male') 
+            ? "https://randomuser.me/api/portraits/men/{$photo_id}.jpg" 
+            : "https://randomuser.me/api/portraits/women/{$photo_id}.jpg";
+
         $teachers[] = [
             'id' => $tid, 'univ_id' => 'STAFF@' . (1000 + $tid), 'name' => $name . " ($tid)", 'dept' => $dept,
             'role' => ($i % 4 == 0 ? 'Professor' : 'Asst. Professor') . " ($dept)",
             'email' => strtolower(str_replace([' ', '.'], '', $name)) . $tid . "@audisankara.ac.in",
             'phone' => (rand(7,9) . rand(100,999) . rand(100,999) . rand(100,999)),
             'qualification' => ($i % 4 == 0 ? 'Ph.D' : 'M.Tech'), 'experience' => rand(5, 28) . ' Years',
-            'photo' => "https://i.pravatar.cc/150?u=tid" . $tid
+            'photo' => $photo_url
         ];
         $tid++;
     }
 }
 
-// 2. Expanded R20 Subject Catalog (300+ Subjects)
+// 2. Expanded R20 Subject Catalog (500+ Subjects)
+$famous_courses = [
+    'General Relativity', 'Classical Mechanics', 'Quantum Electrodynamics', 'Theory of Everything',
+    'Natural Selection', 'Turing Completeness', 'Radiological Science', 'Alternating Current Systems',
+    'Black Hole Thermodynamics', 'Principles of Chemistry', 'Genetic Inheritance', 'Universal Gravitation',
+    'Wave Mechanics', 'Nuclear Fission', 'Penicillin & Microbiology', 'DNA Double Helix Structure',
+    'Evolutionary Biology', 'Astrobiology', 'Cosmology', 'Quantum Computing', 'Artificial Intelligence',
+    'Cybernetics', 'Calculus I', 'Calculus II', 'Calculus III', 'Differential Equations',
+    'Linear Algebra', 'Number Theory', 'Geometry', 'Trigonometry', 'Optics', 'Thermodynamics',
+    'Electromagnetism', 'Special Relativity', 'Fluid Dynamics', 'Particle Physics',
+    'String Theory', 'Information Theory', 'Game Theory', 'Complexity Theory',
+    'Compiler Construction', 'Operating Systems Design', 'Database Internals', 'Distributed Systems',
+    'Neural Networks', 'Deep Learning', 'Computer Vision', 'Robotics Engineering',
+    'Nanotechnology', 'Biotechnology', 'Astronomy & Astrophysics'
+];
+
 $subjects_data = [
     'H&S' => [
         1 => [
@@ -228,12 +252,12 @@ foreach ($subjects_data as $dept => $years) {
     }
 }
 
-// Fill up to 300 if needed (though the list above is already around 300)
-while (count($subjects) < 300) {
-    $dept = array_keys($subjects_data)[array_rand(array_keys($subjects_data))];
+// Ensure 500 subjects
+while (count($subjects) < 500) {
+    $base_course = $famous_courses[array_rand($famous_courses)];
     $subjects[] = [
         'id' => $sid++,
-        'name' => "Extra Subject " . $sid . " ($dept)",
+        'name' => $base_course . " (M-" . $sid . ")",
         'dept' => 'CSE',
         'year' => rand(1, 4)
     ];

@@ -200,4 +200,56 @@ body {
 .toast-info {
     @apply bg-indigo-500;
 }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sidebar-hidden {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar-visible {
+        transform: translateX(0);
+    }
+    
+    main {
+        padding-bottom: 70px; /* Space for mobile nav */
+    }
+    
+    .grid-responsive {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .mobile-hide {
+        display: none !important;
+    }
+}
+
+/* Floating Bottom Navigation for Mobile */
+.mobile-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-slate-200 flex justify-around items-center h-16 md:hidden z-50;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-nav-item {
+    @apply flex flex-col items-center justify-center text-slate-500 gap-1;
+}
+
+.mobile-nav-item.active {
+    @apply text-indigo-600;
+}
+
+.mobile-nav-item i {
+    @apply text-xl;
+}
+
+.mobile-nav-item span {
+    @apply text-[10px] font-bold uppercase tracking-wider;
+}
+
+/* Touch Friendly Buttons */
+@media (pointer: coarse) {
+    .btn, .mobile-nav-item, a, button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
 </style>

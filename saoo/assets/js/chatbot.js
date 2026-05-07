@@ -187,7 +187,7 @@
 
     function addMessage(text, sender) {
         const msgDiv = document.createElement('div');
-        msgDiv.className = `chat-msg msg-\${sender}`;
+        msgDiv.className = `chat-msg msg-${sender}`;
         msgDiv.textContent = text;
         chatMessages.insertBefore(msgDiv, typingIndicator);
         chatMessages.scrollTop = chatMessages.scrollHeight;

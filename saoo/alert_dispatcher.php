@@ -23,7 +23,12 @@ class AlertDispatcher {
         
         // SMS Alert
         if ($prefs['enable_sms']) {
-            $result['sms'] = $this->send_sms($teacher_id, $prefs['phone_number'], $alert_message);
+            $sms_res = $this->send_sms($teacher_id, $prefs['phone_number'], $alert_message);
+            $result['sms'] = $sms_res;
+            // Bridge to Web UI if session is active
+            if ($sms_res['status'] === 'sent' && session_status() === PHP_SESSION_ACTIVE) {
+                $_SESSION['sms_sent_flash'] = "Sent to " . ($sms_res['phone'] ?? 'Teacher');
+            }
         }
         
         // Browser Notification
@@ -33,30 +38,59 @@ class AlertDispatcher {
         
         // Audio Alarm
         if ($prefs['enable_audio']) {
-            $result['audio'] = $this->send_audio_alert($teacher_id);
+            $result['audio'] = $this->send_audio_alert($teacher_id, $class_info);
         }
         
         // Dashboard Alert
         $result['dashboard'] = $this->create_dashboard_alert($teacher_id, $alert_message);
         
+        // SHARED STORAGE for CLI -> WEB bridge
+        $this->store_shared_alert([
+            'teacher_id' => $teacher_id,
+            'message' => $alert_message,
+            'class_info' => $class_info,
+            'timestamp' => time()
+        ]);
+
         // Log alert
         $this->log_alert($teacher_id, $class_info, $result);
         
         return $result;
     }
+
+    private function store_shared_alert($alert_data) {
+        $file = __DIR__ . '/../logs/shared_alerts.json';
+        $alerts = [];
+        if (file_exists($file)) {
+            $alerts = json_decode(file_get_contents($file), true) ?: [];
+        }
+        $alerts[] = $alert_data;
+        // Keep only last 20
+        if (count($alerts) > 20) $alerts = array_slice($alerts, -20);
+        file_put_contents($file, json_encode($alerts));
+    }
     
     private function format_alert_message($class_info) {
+        $type = $class_info['type'] ?? 'ENDING';
+        $title = $type === 'STARTING' ? "🔔 CLASS STARTING SOON" : "⚠️ CLASS ENDING SOON";
+        $time_label = $type === 'STARTING' ? "Starts at" : "Ends at";
+        $time_val = $type === 'STARTING' ? $class_info['start_time'] : $class_info['end_time'];
+        $footer = $type === 'STARTING' ? "Prepare for your class!" : "Wrap up your class!";
+
         return sprintf(
-            "⚠️ CLASS ENDING SOON\n\n" .
+            "%s\n\n" .
             "Subject: %s\n" .
             "Group: %s\n" .
             "Room: %s\n" .
-            "Ends at: %s\n\n" .
-            "Wrap up your class!",
+            "%s: %s\n\n" .
+            "%s",
+            $title,
             $class_info['subject'] ?? 'N/A',
             $class_info['group'] ?? 'N/A',
             $class_info['room'] ?? 'N/A',
-            $class_info['end_time'] ?? 'N/A'
+            $time_label,
+            $time_val ?? 'N/A',
+            $footer
         );
     }
     
@@ -94,7 +128,7 @@ class AlertDispatcher {
     private function send_browser_notification($teacher_id, $message) {
         if (session_status() === PHP_SESSION_NONE) session_start();
         $_SESSION['pending_notifications'][] = [
-            'title' => 'Class Ending Soon! 🔔',
+            'title' => 'Class Alert! 🔔',
             'body' => $message,
             'tag' => 'class-alert-' . time(),
             'timestamp' => time()
@@ -102,12 +136,23 @@ class AlertDispatcher {
         return ['status' => 'queued'];
     }
     
-    private function send_audio_alert($teacher_id) {
+    private function send_audio_alert($teacher_id, $class_info) {
         if (session_status() === PHP_SESSION_NONE) session_start();
+        
+        $type = $class_info['type'] ?? 'ENDING';
+        $verb = $type === 'STARTING' ? "starting" : "ending";
+        $voice_msg = sprintf(
+            "Attention, your class %s is %s in 5 minutes in Room %s.",
+            $class_info['subject'] ?? 'session',
+            $verb,
+            $class_info['room'] ?? 'the assigned hall'
+        );
+
         $_SESSION['audio_alert'] = [
             'volume' => 0.8,
             'duration' => 5,
-            'repeat' => 2,
+            'repeat' => 1,
+            'message' => $voice_msg,
             'timestamp' => time()
         ];
         return ['status' => 'queued'];

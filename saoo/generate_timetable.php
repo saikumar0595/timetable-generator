@@ -67,16 +67,31 @@ try {
         throw new Exception('Failed to write input.json');
     }
 
-    // Call Python API with timeout
-    $cmd = "cd \"$base_dir\" && python api.py input.json 2>&1";
-    $start_time = time();
-    $timeout = 30; // 30 second timeout
+    // Call Python API via HTTP
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
+    $api_url = "$protocol://$host/api/generate";
+
+    $options = [
+        'http' => [
+            'header'  => "Content-type: application/json\r\n",
+            'method'  => 'POST',
+            'content' => json_encode($input_data),
+            'timeout' => 30
+        ]
+    ];
     
-    // Execute with output capture
-    $output = shell_exec($cmd);
+    $context  = stream_context_create($options);
+    $output = @file_get_contents($api_url, false, $context);
     
-    if ($output === null || empty($output)) {
-        throw new Exception('Python API returned no output. Is Python installed and in PATH?');
+    if ($output === false) {
+        // Fallback for local development if Vercel routes aren't active
+        $local_api_url = "http://localhost:3000/api/generate"; 
+        $output = @file_get_contents($local_api_url, false, $context);
+        
+        if ($output === false) {
+            throw new Exception("Failed to connect to Python API at $api_url. Ensure the API service is running.");
+        }
     }
 
     // Parse JSON output

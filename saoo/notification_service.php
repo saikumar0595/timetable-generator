@@ -2,7 +2,10 @@
 session_start();
 require_once('alert_daemon.php');
 
-if (!isset($_SESSION['user'])) { die("Access Denied"); }
+if (!isset($_SESSION['user'])) { 
+    echo json_encode(["status" => "error", "message" => "Access Denied"]);
+    exit(); 
+}
 
 $daemon = new AlertDaemon();
 $alerts_count = $daemon->check_and_alert();

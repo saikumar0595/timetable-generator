@@ -103,19 +103,39 @@ def exchange_two(matrix, filled, ind1, ind2):
 
 def valid_teacher_group_row(matrix, data, index_class, row):
     """
-    Returns if the class can be in that row because of possible teacher or groups overlaps.
+    Returns if the class can be in that row because of possible teacher or groups overlaps,
+    and ensures the teacher has a break (not taking consecutive DIFFERENT classes).
     """
     c1 = data.classes[index_class]
+    
+    # 1. Check current row for teacher/group overlaps (Hard Constraint)
     for j in range(len(matrix[row])):
-        if matrix[row][j] is not None:
+        if matrix[row][j] is not None and matrix[row][j] != index_class:
             c2 = data.classes[matrix[row][j]]
-            # check teacher
+            # check teacher overlap
             if c1.teacher == c2.teacher:
                 return False
-            # check groups
+            # check groups overlap
             for g in c2.groups:
                 if g in c1.groups:
                     return False
+    
+    # 2. Check previous row for same teacher (User Break Constraint)
+    if row % 8 > 0: # Not first period of day
+        prev_row = row - 1
+        for j in range(len(matrix[prev_row])):
+            if matrix[prev_row][j] is not None and matrix[prev_row][j] != index_class:
+                if data.classes[matrix[prev_row][j]].teacher == c1.teacher:
+                    return False
+                    
+    # 3. Check next row for same teacher (User Break Constraint)
+    if row % 8 < 7: # Not last period of day
+        next_row = row + 1
+        for j in range(len(matrix[next_row])):
+            if matrix[next_row][j] is not None and matrix[next_row][j] != index_class:
+                if data.classes[matrix[next_row][j]].teacher == c1.teacher:
+                    return False
+                    
     return True
 
 

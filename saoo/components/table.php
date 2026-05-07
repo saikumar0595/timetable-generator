@@ -71,7 +71,8 @@ function renderTable($headers, $rows, $table_id = 'data-table', $enable_search =
                                 if (is_array($cell)) {
                                     echo '<span class="badge badge-' . ($cell['type'] ?? 'primary') . '">' . htmlspecialchars($cell['text']) . '</span>';
                                 } else {
-                                    echo htmlspecialchars($cell ?? '-');
+                                    // Allow raw HTML for complex cells (common in this project's architecture)
+                                    echo $cell ?? '-';
                                 }
                                 ?>
                             </td>
@@ -95,66 +96,73 @@ function renderTable($headers, $rows, $table_id = 'data-table', $enable_search =
         </div>
     </div>
 
-    <script>
-        // Search functionality
-        function filterTable(tableId) {
-            const input = document.getElementById('search-' + tableId);
-            const filter = input?.value.toUpperCase();
-            const table = document.getElementById(tableId);
-            const tr = table?.getElementsByTagName('tr');
-            
-            if (!table) return;
-            
-            for (let i = 1; i < tr.length; i++) {
-                const text = tr[i].textContent || tr[i].innerText;
-                tr[i].style.display = text.toUpperCase().includes(filter) ? '' : 'none';
-            }
-        }
-
-        // Sort functionality
-        function sortTable(tableId, header) {
-            const table = document.getElementById(tableId);
-            const tbody = table?.querySelector('tbody');
-            if (!table || !tbody) return;
-            
-            const rows = Array.from(tbody.querySelectorAll('tr'));
-            const colIndex = Array.from(header.parentNode.children).indexOf(header);
-            const isAsc = !header.classList.toggle('asc');
-            
-            rows.sort((a, b) => {
-                const aVal = a.cells[colIndex].textContent.trim();
-                const bVal = b.cells[colIndex].textContent.trim();
-                return isAsc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
-            });
-            
-            rows.forEach(row => tbody.appendChild(row));
-        }
-
-        // Export to CSV
-        function exportTableCSV(tableId) {
-            const table = document.getElementById(tableId);
-            if (!table) return;
-            
-            let csv = [];
-            const rows = table.querySelectorAll('tr');
-            
-            rows.forEach(row => {
-                const cols = row.querySelectorAll('td, th');
-                const csvRow = [];
-                cols.forEach(col => csvRow.push(col.textContent.trim()));
-                csv.push(csvRow.join(','));
-            });
-            
-            const csvContent = csv.join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'export.csv';
-            a.click();
-            window.URL.revokeObjectURL(url);
-        }
-    </script>
     <?php
+    // Ensure scripts are defined only once
+    static $scripts_rendered = false;
+    if (!$scripts_rendered) {
+        $scripts_rendered = true;
+        ?>
+        <script>
+            // Search functionality
+            function filterTable(tableId) {
+                const input = document.getElementById('search-' + tableId);
+                const filter = input?.value.toUpperCase();
+                const table = document.getElementById(tableId);
+                const tr = table?.getElementsByTagName('tr');
+                
+                if (!table) return;
+                
+                for (let i = 1; i < tr.length; i++) {
+                    const text = tr[i].textContent || tr[i].innerText;
+                    tr[i].style.display = text.toUpperCase().includes(filter) ? '' : 'none';
+                }
+            }
+
+            // Sort functionality
+            function sortTable(tableId, header) {
+                const table = document.getElementById(tableId);
+                const tbody = table?.querySelector('tbody');
+                if (!table || !tbody) return;
+                
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                const colIndex = Array.from(header.parentNode.children).indexOf(header);
+                const isAsc = !header.classList.toggle('asc');
+                
+                rows.sort((a, b) => {
+                    const aVal = a.cells[colIndex].textContent.trim();
+                    const bVal = b.cells[colIndex].textContent.trim();
+                    return isAsc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                });
+                
+                rows.forEach(row => tbody.appendChild(row));
+            }
+
+            // Export to CSV
+            function exportTableCSV(tableId) {
+                const table = document.getElementById(tableId);
+                if (!table) return;
+                
+                let csv = [];
+                const rows = table.querySelectorAll('tr');
+                
+                rows.forEach(row => {
+                    const cols = row.querySelectorAll('td, th');
+                    const csvRow = [];
+                    cols.forEach(col => csvRow.push(col.textContent.trim()));
+                    csv.push(csvRow.join(','));
+                });
+                
+                const csvContent = csv.join('\n');
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'export.csv';
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        </script>
+        <?php
+    }
 }
 ?>

@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 // Check 3: Auto populate
 echo "\n--- Data Check ---\n";
 if (empty($_SESSION['teachers'])) {
-    require_once('auto_populate.php');
+    require_once('saoo/auto_populate.php');
     echo "✓ Demo data populated\n";
 } else {
     echo "✓ Demo data already in session\n";

@@ -8,6 +8,10 @@ include('db.php');
 
 if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 
+// Include components
+include('components/sidebar.php');
+include('components/header.php');
+
 $role = $_SESSION['role'] ?? 'student';
 
 // Helper function to safely access array values
@@ -36,35 +40,37 @@ $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 // PERFORMANCE OPTIMIZATION: Pre-filter timetable for the selected group
 $group_timetable = [];
-$printed_sessions = []; // DEDUPLICATION TRACKER
 
 if ($selected_group && !empty($timetable)) {
     foreach ($days as $day) {
+        $prev_session_info = null;
         foreach ($periods as $period) {
+            $found_for_group = false;
             foreach (($timetable[$day][$period] ?? []) as $cls) {
                 if (in_array($selected_group, $cls['groups'])) {
-                    // CLEAN TEXT FIELDS to prevent alignment issues
                     $subject = trim(preg_replace('/\s+/', ' ', $cls['subject']));
                     $teacher = trim(preg_replace('/\s+/', ' ', $cls['teacher']));
                     $room = trim(preg_replace('/\s+/', ' ', $cls['room']));
                     
-                    // Create a unique key for deduplication (day + subject + teacher + room)
-                    // We don't include period here because the same class might span multiple periods
-                    // and we only want to show it once or handle its duration.
-                    $session_id = md5($day . $subject . $teacher . $room);
+                    $current_session_info = "$subject|$teacher|$room";
                     
-                    if (!isset($printed_sessions[$session_id])) {
+                    // Only add if it's NOT a continuation of the same class from the previous period
+                    if ($current_session_info !== $prev_session_info) {
                         $group_timetable[$day][$period] = [
                             'subject' => $subject,
                             'teacher' => $teacher,
                             'room' => $room,
-                            'type' => $cls['type'],
-                            'session_id' => $session_id
+                            'type' => $cls['type']
                         ];
-                        $printed_sessions[$session_id] = true;
                     }
+                    
+                    $prev_session_info = $current_session_info;
+                    $found_for_group = true;
                     break;
                 }
+            }
+            if (!$found_for_group) {
+                $prev_session_info = null;
             }
         }
     }
@@ -91,88 +97,44 @@ if ($selected_group && !empty($timetable)) {
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <?php renderSidebar('timetable', $role); ?>
 
-    <!-- Sidebar (Same as Dashboard) -->
-    <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-2xl z-20 no-print">
-        <div class="h-20 flex items-center px-8 border-b border-slate-800">
-            <!-- Mini ASCET Logo -->
-            <div class="w-8 h-8 mr-3 filter drop-shadow-md">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 95C50 95 85 75 85 35V15L50 5L15 15V35C15 75 50 95 50 95Z" fill="#1e3a8a" stroke="#fbbf24" stroke-width="5"/>
-                    <text x="50" y="55" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#ffffff" text-anchor="middle">A</text>
-                </svg>
-            </div>
-            <span class="text-lg font-bold tracking-tight uppercase text-white/90">Audisankara</span>
-        </div>
-        <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-            <p class="px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Main Menu</p>
-            <a href="index.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all duration-200 group">
-                <i class="fas fa-th-large w-5 text-center group-hover:text-indigo-400 transition-colors"></i>
-                <span class="font-medium">Dashboard</span>
-            </a>
-            <a href="teacher_directory.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all duration-200 group">
-                <i class="fas fa-id-badge w-5 text-center group-hover:text-indigo-400 transition-colors"></i>
-                <span class="font-medium">Faculty Directory</span>
-            </a>
-            <a href="manage_teachers.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all duration-200 group">
-            <a href="manage_subjects.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all duration-200 group">
-                <i class="fas fa-book w-5 text-center group-hover:text-pink-400 transition-colors"></i>
-                <span class="font-medium">Subjects</span>
-            </a>
-            <a href="manage_classrooms.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all duration-200 group">
-                <i class="fas fa-door-open w-5 text-center group-hover:text-indigo-400 transition-colors"></i>
-                <span class="font-medium">Classrooms</span>
-            </a>
-            <a href="manage_groups.php" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-xl transition-all duration-200 group">
-                <i class="fas fa-users w-5 text-center group-hover:text-amber-400 transition-colors"></i>
-                <span class="font-medium">Student Groups</span>
-            </a>
-            <a href="view_timetable.php" class="flex items-center gap-3 px-4 py-3 bg-indigo-600/10 text-indigo-400 rounded-xl transition-all duration-200 border border-indigo-500/20 shadow-sm">
-                <i class="fas fa-calendar-alt w-5 text-center"></i>
-                <span class="font-medium">Timetable</span>
-            </a>
-            <div class="mt-8 border-t border-slate-800 pt-6">
-                <a href="logout.php" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition-all duration-200 group">
-                    <i class="fas fa-sign-out-alt w-5 text-center"></i>
-                    <span class="font-medium">Sign Out</span>
-                </a>
-            </div>
-        </nav>
-    </aside>
-
+    <!-- Main Content -->
     <main class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50">
         <!-- Header -->
-        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10 shadow-sm no-print">
-            <h2 class="text-2xl font-bold text-slate-800 tracking-tight">AI Schedule Generator</h2>
-            <div class="flex items-center gap-4">
-                <div class="filters flex items-center gap-2 mr-4">
-                    <label class="text-xs font-bold text-slate-400 uppercase">View For:</label>
-                    <select onchange="window.location.href='?group='+this.value" class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-bold text-indigo-600 focus:ring-2 focus:ring-indigo-500 outline-none">
-                        <?php foreach($groups_data as $g): ?>
-                            <option value="<?php echo htmlspecialchars($g['name']); ?>" <?php echo $selected_group == $g['name'] ? 'selected' : ''; ?>>
-                                <?php echo htmlspecialchars($g['name']); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <button onclick="shareTimetable()" class="flex items-center gap-2 px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition font-medium text-sm shadow-lg shadow-emerald-500/30">
-                    <i class="fas fa-share-alt"></i> Share
-                </button>
-                <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium text-sm shadow-lg shadow-indigo-500/30">
-                    <i class="fas fa-file-pdf"></i> Save PDF
-                </button>
-                <button onclick="exportToCSV()" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium text-sm shadow-lg shadow-blue-500/30">
-                    <i class="fas fa-file-csv"></i> Export CSV
-                </button>
-                <?php if($role=='admin'): ?>
-                <button onclick="generateTimetable(this)" class="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition font-medium text-sm shadow-lg shadow-amber-500/30">
-                    <i class="fas fa-sync-alt"></i> <span>Update AI Schedule</span>
-                </button>
-                <?php endif; ?>
-            </div>
-        </header>
+        <?php renderHeader('AI Schedule Generator', $_SESSION['user'], $role, false); ?>
 
-        <div class="flex-1 overflow-y-auto p-8 pb-20">
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 pb-24">
+            <!-- Filter Section (Mobile Friendly) -->
+            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200 flex items-center gap-2">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">Group:</label>
+                        <select onchange="window.location.href='?group='+this.value" class="bg-transparent font-bold text-indigo-600 focus:outline-none text-sm">
+                            <?php foreach($groups_data as $g): ?>
+                                <option value="<?php echo htmlspecialchars($g['name']); ?>" <?php echo $selected_group == $g['name'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($g['name']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0">
+                    <button onclick="shareTimetable()" class="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition font-medium text-xs shadow-lg shadow-emerald-500/20">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <button onclick="window.print()" class="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium text-xs shadow-lg shadow-indigo-500/20">
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </button>
+                    <?php if($role=='admin'): ?>
+                    <button onclick="generateTimetable(this)" class="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition font-medium text-xs shadow-lg shadow-amber-500/20">
+                        <i class="fas fa-sync-alt"></i> <span>Regen</span>
+                    </button>
+                    <?php endif; ?>
+                </div>
+            </div>
             <?php if ($error): ?>
                 <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8">
                     <div class="flex">
@@ -403,6 +365,7 @@ if ($selected_group && !empty($timetable)) {
             }
         }
     </script>
+
     <script src="assets/js/alert_handler.js"></script>
     <script>
         // Check for alerts every 10 seconds (faster for SMS/Alarm)
